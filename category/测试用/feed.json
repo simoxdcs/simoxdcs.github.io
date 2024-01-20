@@ -1,0 +1,18 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "欲买桂花同载酒，终不似，少年游。 • All posts by \"测试用\" category",
+    "description": "吾心吾行澄如明镜,所作所为皆为正义",
+    "home_page_url": "http://simoxdcs.github.io",
+    "items": [
+        {
+            "id": "http://simoxdcs.github.io/2021/08/14/ceshi/ce-shi/",
+            "url": "http://simoxdcs.github.io/2021/08/14/ceshi/ce-shi/",
+            "title": "ce shi",
+            "date_published": "2021-08-14T05:21:03.000Z",
+            "content_html": "<p><div class=\"media-container\"><div class=\"player\" data-type=\"audio\" data-src='[{\"title\":\"列表 1\",\"list\":[\"https://music.163.com/#/playlist?id=2943811283\",\"https://music.163.com/#/playlist?id=2297706586\"]},{\"title\":\"列表 2\",\"list\":[\"https://music.163.com/#/playlist?id=2031842656\"]}]'></div></div></p>\n<p><div class=\"media-container\"><div class=\"player\" data-type=\"video\" data-src='[{\"name\":\"测试 1\",\"url\":\"https://cdn.kastatic.org/ka-youtube-converted/O_nY1TM2RZM.mp4/O_nY1TM2RZM.mp4#t=0\"},{\"name\":\"测试 2\",\"url\":\"https://cdn.kastatic.org/ka-youtube-converted/O_nY1TM2RZM.mp4/O_nY1TM2RZM.mp4#t=0\"}]'></div></div></p>\n<p>&lt;div style=&quot;position: relative; width: 100%; height: 0; padding-bottom: 75%;&quot;&gt;&lt;iframe<br />\nsrc=&quot;<a href=\"//player.bilibili.com/player.html?aid=39807850&amp;cid=69927212&amp;page=1\">//player.bilibili.com/player.html?aid=39807850&amp;cid=69927212&amp;page=1</a>&quot; scrolling=&quot;no&quot; border=&quot;0&quot;<br />\nframeborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot; style=&quot;position: absolute; width: 100%;<br />\nheight: 100%; left: 0; top: 0;&quot;&gt; &lt;/iframe&gt;&lt;/div&gt;</p>\n",
+            "tags": [
+                "测试"
+            ]
+        }
+    ]
+}

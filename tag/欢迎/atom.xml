@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://simoxdcs.github.io</id>
+    <title>欲买桂花同载酒，终不似，少年游。 • Posts by &#34;欢迎&#34; tag</title>
+    <link href="http://simoxdcs.github.io" />
+    <updated>2021-08-03T18:56:05.000Z</updated>
+    <category term="测试" />
+    <category term="随笔" />
+    <category term="欢迎" />
+    <category term="游记" />
+    <category term="学习&amp;技术" />
+    <entry>
+        <id>http://simoxdcs.github.io/2021/08/04/qiguai/%E6%AC%A2%E8%BF%8E/</id>
+        <title>欢迎</title>
+        <link rel="alternate" href="http://simoxdcs.github.io/2021/08/04/qiguai/%E6%AC%A2%E8%BF%8E/"/>
+        <content type="html">&lt;p&gt;看到这篇文章的朋友们，欢迎光临我的这么一个小破站。虽然这个站又小又破，加载速度还慢  &lt;s&gt;挂在 github 的服务器上面当然慢&lt;/s&gt;，但是能够把这么一个博客逐渐完善和修补还是蛮不容易的，欢迎阅读我写的文章，左下角有音乐可以自行打开哦，接下来就自行阅读吧。&lt;/p&gt;
+</content>
+        <category term="欢迎" />
+        <updated>2021-08-03T18:56:05.000Z</updated>
+    </entry>
+</feed>

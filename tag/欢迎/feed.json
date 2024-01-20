@@ -1,0 +1,18 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "欲买桂花同载酒，终不似，少年游。 • All posts by \"欢迎\" tag",
+    "description": "吾心吾行澄如明镜,所作所为皆为正义",
+    "home_page_url": "http://simoxdcs.github.io",
+    "items": [
+        {
+            "id": "http://simoxdcs.github.io/2021/08/04/qiguai/%E6%AC%A2%E8%BF%8E/",
+            "url": "http://simoxdcs.github.io/2021/08/04/qiguai/%E6%AC%A2%E8%BF%8E/",
+            "title": "欢迎",
+            "date_published": "2021-08-03T18:56:05.000Z",
+            "content_html": "<p>看到这篇文章的朋友们，欢迎光临我的这么一个小破站。虽然这个站又小又破，加载速度还慢  <s>挂在 github 的服务器上面当然慢</s>，但是能够把这么一个博客逐渐完善和修补还是蛮不容易的，欢迎阅读我写的文章，左下角有音乐可以自行打开哦，接下来就自行阅读吧。</p>\n",
+            "tags": [
+                "欢迎"
+            ]
+        }
+    ]
+}

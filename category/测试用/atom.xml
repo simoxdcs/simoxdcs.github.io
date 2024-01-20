@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://simoxdcs.github.io</id>
+    <title>欲买桂花同载酒，终不似，少年游。 • Posts by &#34;测试用&#34; category</title>
+    <link href="http://simoxdcs.github.io" />
+    <updated>2021-08-14T05:21:03.000Z</updated>
+    <category term="测试" />
+    <category term="随笔" />
+    <category term="欢迎" />
+    <category term="游记" />
+    <category term="学习&amp;技术" />
+    <entry>
+        <id>http://simoxdcs.github.io/2021/08/14/ceshi/ce-shi/</id>
+        <title>ce shi</title>
+        <link rel="alternate" href="http://simoxdcs.github.io/2021/08/14/ceshi/ce-shi/"/>
+        <content type="html">&lt;p&gt;&lt;div class=&#34;media-container&#34;&gt;&lt;div class=&#34;player&#34; data-type=&#34;audio&#34; data-src=&#39;[{&#34;title&#34;:&#34;列表 1&#34;,&#34;list&#34;:[&#34;https://music.163.com/#/playlist?id=2943811283&#34;,&#34;https://music.163.com/#/playlist?id=2297706586&#34;]},{&#34;title&#34;:&#34;列表 2&#34;,&#34;list&#34;:[&#34;https://music.163.com/#/playlist?id=2031842656&#34;]}]&#39;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;media-container&#34;&gt;&lt;div class=&#34;player&#34; data-type=&#34;video&#34; data-src=&#39;[{&#34;name&#34;:&#34;测试 1&#34;,&#34;url&#34;:&#34;https://cdn.kastatic.org/ka-youtube-converted/O_nY1TM2RZM.mp4/O_nY1TM2RZM.mp4#t=0&#34;},{&#34;name&#34;:&#34;测试 2&#34;,&#34;url&#34;:&#34;https://cdn.kastatic.org/ka-youtube-converted/O_nY1TM2RZM.mp4/O_nY1TM2RZM.mp4#t=0&#34;}]&#39;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div style=&amp;quot;position: relative; width: 100%; height: 0; padding-bottom: 75%;&amp;quot;&amp;gt;&amp;lt;iframe&lt;br /&gt;
+src=&amp;quot;&lt;a href=&#34;//player.bilibili.com/player.html?aid=39807850&amp;amp;cid=69927212&amp;amp;page=1&#34;&gt;//player.bilibili.com/player.html?aid=39807850&amp;amp;cid=69927212&amp;amp;page=1&lt;/a&gt;&amp;quot; scrolling=&amp;quot;no&amp;quot; border=&amp;quot;0&amp;quot;&lt;br /&gt;
+frameborder=&amp;quot;no&amp;quot; framespacing=&amp;quot;0&amp;quot; allowfullscreen=&amp;quot;true&amp;quot; style=&amp;quot;position: absolute; width: 100%;&lt;br /&gt;
+height: 100%; left: 0; top: 0;&amp;quot;&amp;gt; &amp;lt;/iframe&amp;gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+</content>
+        <category term="测试" />
+        <updated>2021-08-14T05:21:03.000Z</updated>
+    </entry>
+</feed>
