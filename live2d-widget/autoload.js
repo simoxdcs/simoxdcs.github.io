@@ -37,6 +37,7 @@ if (screen.width >= 768) {
 			//apiPath: "https://live2d.fghrsh.net/api/",
 			// cdnPath: "https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/",
 			cdnPath: "https://cdn.jsdelivr.net/gh/simoxdcs/live2d_api@1.1/",
+			// apiPath: "http://loolob.cn/live2d_api/",
 			tools: ["hitokoto", "asteroids", "switch-model", "switch-texture", "photo", "info", "quit"]
 		});
 	});
