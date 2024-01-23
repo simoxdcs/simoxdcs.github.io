@@ -37,7 +37,7 @@ if (screen.width >= 768) {
 			//apiPath: "https://live2d.fghrsh.net/api/",
 			// cdnPath: "https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/",
 			// cdnPath: "https://npm.elemecdn.com/akilar-live2dapi@latest/"
-			// cdnPath: "https://cdn.jsdelivr.net/gh/simoxdcs/live2d_api@latest/",
+			//cdnPath: "https://cdn.jsdelivr.net/gh/simoxdcs/live2d_api@1.4/",
 			cdnPath: "/live2d_api/",
 			// apiPath: "http://loolob.cn/live2d_api/",
 			tools: ["hitokoto", "asteroids", "switch-model", "switch-texture", "photo", "info", "quit"]
