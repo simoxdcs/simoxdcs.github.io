@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://localhost:4001</id>
+    <title>Ciallo～(∠・ω )⌒☆ • Posts by &#34;javascript&#34; tag</title>
+    <link href="http://localhost:4001" />
+    <updated>2026-07-23T02:00:00.000Z</updated>
+    <category term="测试" />
+    <category term="欢迎" />
+    <category term="学习&amp;技术" />
+    <category term="Hexo" />
+    <category term="ShokaX" />
+    <category term="前端开发" />
+    <category term="博客管理" />
+    <category term="Waline" />
+    <category term="Algolia" />
+    <category term="博客故障排查" />
+    <category term="JavaScript" />
+    <category term="CSS" />
+    <category term="随笔" />
+    <category term="游记" />
+    <category term="手办" />
+    <category term="知识科普" />
+    <entry>
+        <id>http://localhost:4001/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/</id>
+        <title>从页面卡在加载中到恢复构建：一次 Hexo 博客故障排查记录</title>
+        <link rel="alternate" href="http://localhost:4001/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/"/>
+        <content type="html">&lt;p&gt;这次重新折腾博客，并不是从“我想换一个主题”开始的，而是从一个看起来很普通、实际上让我排查了很久的问题开始的。&lt;/p&gt;
+&lt;p&gt;当时我只是进入博客目录，执行了一条以前经常使用的命令：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;hexo&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; s&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;命令执行之后，本地服务能够启动，浏览器也能够打开本地地址，但是页面一直停留在加载状态，博客正文、文章列表和侧栏都没有正常显示。刚开始我以为只是图床加载比较慢，或者是 Live2D 看板娘的资源没有加载出来，但等了很久之后，页面仍然没有恢复。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/blog-dev-series/blog-fixed-home.png&#34; alt=&#34;修复后博客首页&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;现在回头看，这次故障最重要的地方并不是最后改了哪一行代码，而是让我第一次比较完整地意识到：Hexo 服务启动成功，并不等于浏览器中的页面运行成功。&lt;/p&gt;
+&lt;h2 id=&#34;一-先确认问题到底发生在哪里&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-先确认问题到底发生在哪里&#34;&gt;#&lt;/a&gt; 一、先确认问题到底发生在哪里&lt;/h2&gt;
+&lt;p&gt;遇到博客打不开时，最容易做的事情是重新安装依赖、换一个主题，或者把生成目录全部删除。但这些操作有一个共同的问题：它们都没有回答“错误究竟发生在什么位置”。&lt;/p&gt;
+&lt;p&gt;所以我先把整个过程拆成了几层：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;Hexo 服务是否启动&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;        ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;静态 HTML 是否生成&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;        ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;主题 CSS 和 JavaScript 是否加载&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;        ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;浏览器脚本是否能够执行&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;        ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;页面初始化逻辑是否完成&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/blog-dev-series/hexo-debug-flow.svg&#34; alt=&#34;Hexo 页面故障排查路径&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;首先检查终端。&lt;code&gt;hexo s&lt;/code&gt; 并没有立即退出，4000 端口也能够访问，这说明 Hexo 服务本身并不是完全没有启动。&lt;/p&gt;
+&lt;p&gt;接下来我打开浏览器开发者工具，终于看到了真正有用的线索：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;Uncaught SyntaxError: Identifier &#39;t&#39; has already been declared&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;(at app.js?v=0.2.5:1:1)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这类错误和“网络慢”没有关系。浏览器在解析 JavaScript 的阶段就已经失败了，同一个作用域内出现了重复声明的变量，后续依赖这段脚本执行的初始化代码也就不会继续运行。页面中那个一直显示的加载框，本质上只是一个还没有机会被替换掉的初始状态。&lt;/p&gt;
+&lt;h2 id=&#34;二-为什么终端没有报错页面却不能显示&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-为什么终端没有报错页面却不能显示&#34;&gt;#&lt;/a&gt; 二、为什么终端没有报错，页面却不能显示&lt;/h2&gt;
+&lt;p&gt;Hexo 的工作方式很容易让人产生误判。Hexo 负责读取 Markdown、调用渲染器并输出 HTML，浏览器拿到这些 HTML 之后，还要继续加载主题的 CSS、JavaScript 和各种第三方资源。&lt;/p&gt;
+&lt;p&gt;因此一个页面可能处于下面这种状态：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HTML 已经生成。&lt;/li&gt;
+&lt;li&gt;HTTP 服务已经启动。&lt;/li&gt;
+&lt;li&gt;浏览器已经请求到了页面。&lt;/li&gt;
+&lt;li&gt;但主题 JavaScript 在解析阶段失败。&lt;/li&gt;
+&lt;li&gt;依赖 JavaScript 的菜单、加载器、PJAX 和评论初始化没有执行。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这也是为什么我后来不再把“终端没有 FATAL”当作页面正常的充分条件。终端负责告诉我构建和服务端做了什么，浏览器控制台则告诉我页面在客户端做了什么，两边的信息必须结合起来看。&lt;/p&gt;
+&lt;h2 id=&#34;三-逐项隔离主题和附加功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-逐项隔离主题和附加功能&#34;&gt;#&lt;/a&gt; 三、逐项隔离主题和附加功能&lt;/h2&gt;
+&lt;p&gt;旧项目中除了 Shoka 主题本身，还加入了 Live2D 看板娘、播放器、图床和其他脚本。它们都可能在布局文件中插入 JavaScript，所以我没有一上来就认定一定是主题本身的问题，而是先做隔离。&lt;/p&gt;
+&lt;h3 id=&#34;1-检查生成后的-public-目录&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-检查生成后的-public-目录&#34;&gt;#&lt;/a&gt; 1. 检查生成后的 public 目录&lt;/h3&gt;
+&lt;p&gt;首先确认首页和文章页的 HTML 文件是否存在，再查看页面中是否出现了重复的脚本引用。如果 HTML 根本没有生成，排查重点应该放在 Hexo 渲染器、文章 Front Matter 和主题模板；如果 HTML 内容完整但页面不动，才应该把重点放到资源和浏览器脚本上。&lt;/p&gt;
+&lt;h3 id=&#34;2-检查主题布局中的脚本&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-检查主题布局中的脚本&#34;&gt;#&lt;/a&gt; 2. 检查主题布局中的脚本&lt;/h3&gt;
+&lt;p&gt;我重点检查了主题公共布局和 head、footer 相关文件，主要看以下几件事：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;同一个 &lt;code&gt;app.js&lt;/code&gt; 是否被引用了两次。&lt;/li&gt;
+&lt;li&gt;主题原本的脚本和手动添加的脚本是否重复。&lt;/li&gt;
+&lt;li&gt;Live2D 是否同时加载了本地脚本和 CDN 脚本。&lt;/li&gt;
+&lt;li&gt;生成后的页面是否仍然保留旧版本的资源路径。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里有一个很容易忽略的地方：浏览器报错中显示的是生成页面里最终加载的资源，不一定就是你正在编辑的那个源文件。主题源文件、Hexo 生成目录和浏览器缓存之间如果没有区分清楚，修改很容易变成“改了一个文件，但页面仍然加载另一个文件”。&lt;/p&gt;
+&lt;h3 id=&#34;3-暂时关闭-live2d-等附加脚本&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-暂时关闭-live2d-等附加脚本&#34;&gt;#&lt;/a&gt; 3. 暂时关闭 Live2D 等附加脚本&lt;/h3&gt;
+&lt;p&gt;看板娘功能本身并不是博客正文显示的必要条件，所以我把它暂时当作一个独立变量处理。先关闭附加脚本，再清理生成目录并重新启动博客。如果主题主体恢复正常，再逐项恢复 Live2D、播放器和其他功能，就可以判断是哪个功能引入了新的冲突。&lt;/p&gt;
+&lt;p&gt;这个过程看起来比较慢，但比一次性修改多个文件更容易得到确定结论。前端问题最怕“同时改了五处，然后页面突然好了”，因为下一次再出问题时，自己也不知道真正起作用的是哪一处。&lt;/p&gt;
+&lt;h2 id=&#34;四-为什么没有直接删除旧项目重装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#四-为什么没有直接删除旧项目重装&#34;&gt;#&lt;/a&gt; 四、为什么没有直接删除旧项目重装&lt;/h2&gt;
+&lt;p&gt;旧博客里已经积累了很多不能轻易丢掉的内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文章 Markdown 文件。&lt;/li&gt;
+&lt;li&gt;分类、标签和文章路径。&lt;/li&gt;
+&lt;li&gt;GitHub 图床直链。&lt;/li&gt;
+&lt;li&gt;主题背景和页脚配置。&lt;/li&gt;
+&lt;li&gt;Live2D 本体、API 和模型文件。&lt;/li&gt;
+&lt;li&gt;Algolia 搜索配置。&lt;/li&gt;
+&lt;li&gt;GitHub Pages 部署配置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果只是为了处理一个页面加载错误，就把整个目录删除重新开始，表面上可能比较干净，实际上会把问题扩大成一次完整迁移。文章可以复制，但图片路径、评论、搜索索引和主题细节都需要重新处理。&lt;/p&gt;
+&lt;p&gt;所以我后来采用了更稳妥的方式：保留原来的 &lt;code&gt;now&lt;/code&gt; 项目，另外复制出测试项目进行排查。原项目作为回退，测试项目负责实验，任何不确定的改动都不直接覆盖原始环境。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/blog-dev-series/theme-migration-flow.svg&#34; alt=&#34;从旧项目到测试项目的迁移思路&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;五-重新建立一个可以验证的构建基线&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#五-重新建立一个可以验证的构建基线&#34;&gt;#&lt;/a&gt; 五、重新建立一个可以验证的构建基线&lt;/h2&gt;
+&lt;p&gt;当问题逐渐从“页面完全打不开”缩小到“主题资源和附加脚本的兼容性”之后，我开始重新建立构建基线。&lt;/p&gt;
+&lt;p&gt;首先清理旧生成文件：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;hexo&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; clean&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后重新生成：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;hexo&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; generate&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;最后启动本地预览：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;hexo&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; server&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我把“构建成功”定义得比命令返回成功更严格一些：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;public/index.html&lt;/code&gt; 确实生成。&lt;/li&gt;
+&lt;li&gt;文章、分类、标签和归档页面都存在。&lt;/li&gt;
+&lt;li&gt;首页和文章页可以正常打开。&lt;/li&gt;
+&lt;li&gt;浏览器控制台没有致命 JavaScript 错误。&lt;/li&gt;
+&lt;li&gt;暂时关闭附加功能时，博客主体仍然可以显示。&lt;/li&gt;
+&lt;li&gt;恢复附加功能后，能够确定每一个功能的影响范围。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这样的验证方式比单纯看终端最后有没有红字可靠得多。尤其是静态博客，构建、服务端和浏览器其实是三套不同的运行环节。&lt;/p&gt;
+&lt;h2 id=&#34;六-这次故障给我的几个启发&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#六-这次故障给我的几个启发&#34;&gt;#&lt;/a&gt; 六、这次故障给我的几个启发&lt;/h2&gt;
+&lt;p&gt;第一，浏览器控制台往往比终端更接近页面真正的故障原因。终端告诉你 Hexo 有没有启动，控制台告诉你主题脚本有没有运行，这两类信息不能互相替代。&lt;/p&gt;
+&lt;p&gt;第二，遇到问题时要先分层，再修改。服务端、生成结果、主题资源和第三方脚本分别检查，排查速度反而会更快。&lt;/p&gt;
+&lt;p&gt;第三，博客项目不能只看成一堆文章。主题、插件、图片、评论、搜索和部署配置共同组成了博客，任何一层出问题，都可能让最终页面看起来像是“整个博客坏了”。&lt;/p&gt;
+&lt;p&gt;第四，备份并不是保守，而是提高试错效率。如果知道随时可以回到旧版本，就不会因为害怕破坏环境而不敢尝试，也不会在失败后只能从头重建。&lt;/p&gt;
+&lt;p&gt;最后，这次问题让我开始认真思考一个更大的问题：如果每次改文章、上传图片、更新搜索和部署都要手动记住一串命令，那么博客维护本身就会变成新的负担。也正因为如此，我才开始考虑迁移到更现代的 ShokaX，并把后续的维护流程整理成一个可以操作的管理台。&lt;/p&gt;
+&lt;p&gt;这也就引出了下一篇文章：如何从 Shoka 迁移到 ShokaX，以及如何把一个需要反复敲命令的 Hexo 博客，逐步整理成一个可视化管理系统。&lt;/p&gt;
+</content>
+        <category term="Hexo" />
+        <category term="博客故障排查" />
+        <category term="JavaScript" />
+        <updated>2026-07-23T02:00:00.000Z</updated>
+    </entry>
+</feed>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="520" viewBox="0 0 1500 520">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f5f8f7"/><stop offset="1" stop-color="#e5f0ec"/></linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="11" refY="4" orient="auto"><path d="M0,0 L12,4 L0,8 Z" fill="#3d7569"/></marker>
+  </defs>
+  <rect width="1500" height="520" fill="url(#bg)"/>
+  <text x="65" y="68" font-family="Microsoft YaHei, sans-serif" font-size="32" font-weight="700" fill="#173b34">从写文章到发布博客的最终工作流</text>
+  <g font-family="Microsoft YaHei, sans-serif" text-anchor="middle">
+    <g fill="#fff" stroke="#bcd8cf" stroke-width="2">
+      <rect x="55" y="190" width="170" height="100" rx="15"/><rect x="275" y="190" width="170" height="100" rx="15"/><rect x="495" y="190" width="170" height="100" rx="15"/><rect x="715" y="190" width="170" height="100" rx="15"/><rect x="935" y="190" width="170" height="100" rx="15"/><rect x="1155" y="190" width="170" height="100" rx="15"/>
+    </g>
+    <g font-size="19" font-weight="700" fill="#173b34"><text x="140" y="232">编辑文章</text><text x="360" y="232">上传素材</text><text x="580" y="232">构建站点</text><text x="800" y="232">本地预览</text><text x="1020" y="232">更新搜索</text><text x="1240" y="232">部署远端</text></g>
+    <g font-size="14" fill="#617a72"><text x="140" y="260">Markdown / Front Matter</text><text x="360" y="260">图片与封面</text><text x="580" y="260">hexo generate</text><text x="800" y="260">hexo server</text><text x="1020" y="260">hexo algolia</text><text x="1240" y="260">hexo deploy</text></g>
+  </g>
+  <g stroke="#3d7569" stroke-width="4" marker-end="url(#arrow)"><path d="M225 240 H275"/><path d="M445 240 H495"/><path d="M665 240 H715"/><path d="M885 240 H935"/><path d="M1105 240 H1155"/></g>
+  <path d="M1240 290 C1240 390 140 390 140 290" fill="none" stroke="#85a99f" stroke-width="3" stroke-dasharray="9 8" marker-end="url(#arrow)"/>
+  <text x="700" y="430" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="18" fill="#4f6d64">发现问题后回到文章、素材或配置环节重新修正，而不是从头手动排查所有命令</text>
+</svg>

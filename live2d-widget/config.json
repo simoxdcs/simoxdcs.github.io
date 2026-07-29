@@ -1,0 +1,55 @@
+{
+  "enabled": true,
+  "loadDelay": 1200,
+  "showOnMobile": false,
+  "minWidth": 768,
+  "layout": {
+    "side": "right",
+    "edgeOffset": 50,
+    "bottomOffset": 100,
+    "width": 250,
+    "height": 250,
+    "zIndex": 1000,
+    "opacity": 1
+  },
+  "model": {
+    "id": 1,
+    "textureId": 38,
+    "remember": true,
+    "switchModelMode": "sequential",
+    "switchTextureMode": "sequential"
+  },
+  "tips": {
+    "enabled": true,
+    "width": 210,
+    "minHeight": 62,
+    "fontSize": 13,
+    "lineHeight": 22,
+    "background": "rgba(236, 217, 188, 0.82)",
+    "color": "#3f3a35",
+    "borderColor": "rgba(224, 186, 140, 0.78)",
+    "idleInterval": 20000,
+    "welcomeDuration": 7000
+  },
+  "behavior": {
+    "draggable": true,
+    "dragAxis": "both",
+    "dragRevert": false,
+    "hoverLift": true,
+    "hideHours": 24
+  },
+  "tools": [
+    "hitokoto",
+    "asteroids",
+    "switch-model",
+    "switch-texture",
+    "photo",
+    "info",
+    "quit"
+  ],
+  "paths": {
+    "waifuTips": "/live2d-widget/waifu-tips.shokax.json",
+    "cdn": "/live2d_api/"
+  },
+  "infoUrl": "https://github.com/stevenjoezhang/live2d-widget"
+}

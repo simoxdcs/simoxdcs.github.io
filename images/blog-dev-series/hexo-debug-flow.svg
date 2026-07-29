@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f4f8f6"/><stop offset="1" stop-color="#e3efeb"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#1c5146" flood-opacity=".12"/></filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#4f8075"/></marker>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg)"/>
+  <text x="70" y="74" font-family="Microsoft YaHei, sans-serif" font-size="34" font-weight="700" fill="#173b34">Hexo 页面卡在加载中的排查路径</text>
+  <text x="72" y="108" font-family="Microsoft YaHei, sans-serif" font-size="17" fill="#5b756e">先判断故障发生在哪一层，再决定修改对象</text>
+  <g filter="url(#shadow)">
+    <rect x="70" y="170" width="220" height="115" rx="14" fill="#fff" stroke="#bcd8cf" stroke-width="2"/>
+    <rect x="350" y="170" width="220" height="115" rx="14" fill="#fff" stroke="#bcd8cf" stroke-width="2"/>
+    <rect x="630" y="170" width="220" height="115" rx="14" fill="#fff" stroke="#bcd8cf" stroke-width="2"/>
+    <rect x="910" y="170" width="220" height="115" rx="14" fill="#fff" stroke="#bcd8cf" stroke-width="2"/>
+  </g>
+  <g font-family="Microsoft YaHei, sans-serif" text-anchor="middle">
+    <text x="180" y="212" font-size="22" font-weight="700" fill="#173b34">① Hexo 服务</text><text x="180" y="247" font-size="16" fill="#58756d">端口能否启动</text>
+    <text x="460" y="212" font-size="22" font-weight="700" fill="#173b34">② 生成结果</text><text x="460" y="247" font-size="16" fill="#58756d">HTML 和资源是否存在</text>
+    <text x="740" y="212" font-size="22" font-weight="700" fill="#173b34">③ 主题资源</text><text x="740" y="247" font-size="16" fill="#58756d">布局、CSS、脚本是否重复</text>
+    <text x="1020" y="212" font-size="22" font-weight="700" fill="#173b34">④ 浏览器运行</text><text x="1020" y="247" font-size="16" fill="#58756d">控制台和网络请求</text>
+  </g>
+  <path d="M290 228 H350 M570 228 H630 M850 228 H910" stroke="#4f8075" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="185" y="370" width="830" height="170" rx="16" fill="#fff8f6" stroke="#df9b8d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="220" y="414" font-family="Consolas, monospace" font-size="23" fill="#8a3027">Uncaught SyntaxError</text>
+  <text x="220" y="452" font-family="Consolas, monospace" font-size="21" fill="#8a3027">Identifier 't' has already been declared</text>
+  <text x="220" y="496" font-family="Microsoft YaHei, sans-serif" font-size="17" fill="#7d625d">页面 HTML 可能已经生成，但主题 JavaScript 在解析阶段停止，</text>
+  <text x="220" y="524" font-family="Microsoft YaHei, sans-serif" font-size="17" fill="#7d625d">所以加载框不会被后续初始化逻辑替换。</text>
+  <path d="M600 285 V370" stroke="#d47c6c" stroke-width="4" stroke-dasharray="10 8" marker-end="url(#arrow)"/>
+  <rect x="300" y="605" width="600" height="48" rx="24" fill="#167c68"/>
+  <text x="600" y="637" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="19" font-weight="700" fill="#fff">隔离附加脚本 · 清理生成目录 · 重新构建验证</text>
+</svg>

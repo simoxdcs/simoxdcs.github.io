@@ -1,0 +1,40 @@
+{
+  "time": [
+    { "hour": "6-8", "text": "早上好，今天也要元气满满。" },
+    { "hour": "9-11", "text": "上午好，记得适当休息。" },
+    { "hour": "12-14", "text": "中午好，先吃饭再继续吧。" },
+    { "hour": "18-20", "text": "晚上好，欢迎回来。" },
+    { "hour": "22-23", "text": "夜深了，别忘了早点休息。" }
+  ],
+  "message": {
+    "default": ["有什么想看的文章吗？", "欢迎来到 Momingのsite。", "页面右上角可以搜索内容。"],
+    "console": "你打开了开发者工具，是在检查页面吗？",
+    "copy": "复制成功，引用内容时记得注明来源。",
+    "visibilitychange": "欢迎回来，继续阅读吧。"
+  },
+  "mouseover": [
+    { "selector": "header .item a[href='/']", "text": ["回到首页看看吧。"] },
+    { "selector": "header .item a[href='/about/']", "text": ["这里记录了关于站点和作者的信息。"] },
+    { "selector": "header .item a[href='/archives/']", "text": ["所有文章都整理在归档里。"] },
+    { "selector": "header .item a[href='/categories/']", "text": ["按分类寻找感兴趣的内容吧。"] },
+    { "selector": "header .item a[href='/tags/']", "text": ["标签可以更快定位主题。"] },
+    { "selector": "header .item a[href='/friends/']", "text": ["去拜访一下朋友们吧。"] },
+    { "selector": "header .item.search", "text": ["找不到内容时可以试试搜索。"] },
+    { "selector": "article.item h3 a", "text": ["要阅读「{text}」吗？"] },
+    { "selector": ".overview .menu li a", "text": ["这里是「{text}」页面。"] },
+    { "selector": "a[href^='/tags/']", "text": ["查看「{text}」标签下的文章。"] },
+    { "selector": "a[href^='/categories/']", "text": ["查看「{text}」分类下的文章。"] },
+    { "selector": ".back-to-top", "text": ["点击就能回到页面顶部。"] },
+    { "selector": ".reward", "text": ["感谢你对作者的支持。"] },
+    { "selector": ".wl-editor", "text": ["想说些什么呢？"] },
+    { "selector": ".wl-btn.primary", "text": ["确认内容无误后再提交评论。"] },
+    { "selector": "pre, .highlight", "text": ["代码块可以复制后再慢慢研究。"] },
+    { "selector": "article img", "text": ["点击图片可以查看更清晰的内容。"] }
+  ],
+  "click": [
+    { "selector": "#live2d", "text": ["我在这里。", "有什么事吗？", "请轻一点。"] },
+    { "selector": ".item.theme", "text": ["换一种配色看看吧。"] },
+    { "selector": ".back-to-top", "text": ["出发，回到顶部。"] },
+    { "selector": ".wl-btn.primary", "text": ["评论正在提交，请稍候。"] }
+  ]
+}

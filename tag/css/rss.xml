@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Ciallo～(∠・ω )⌒☆ • Posts by &#34;css&#34; tag</title>
+        <link>http://localhost:4001</link>
+        <description>合于时而动，不合于时而止</description>
+        <language>zh-CN</language>
+        <pubDate>Thu, 23 Jul 2026 12:00:00 +0800</pubDate>
+        <lastBuildDate>Thu, 23 Jul 2026 12:00:00 +0800</lastBuildDate>
+        <category>测试</category>
+        <category>欢迎</category>
+        <category>学习&amp;技术</category>
+        <category>Hexo</category>
+        <category>ShokaX</category>
+        <category>前端开发</category>
+        <category>博客管理</category>
+        <category>Waline</category>
+        <category>Algolia</category>
+        <category>博客故障排查</category>
+        <category>JavaScript</category>
+        <category>CSS</category>
+        <category>随笔</category>
+        <category>游记</category>
+        <category>手办</category>
+        <category>知识科普</category>
+        <item>
+            <guid isPermalink="true">http://localhost:4001/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/</guid>
+            <title>从一张被裁坏的封面开始：给 Hexo 管理台加入文章封面焦点选择</title>
+            <link>http://localhost:4001/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/</link>
+            <category>Hexo</category>
+            <category>ShokaX</category>
+            <category>前端开发</category>
+            <category>博客管理</category>
+            <category>CSS</category>
+            <pubDate>Thu, 23 Jul 2026 12:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;完成 ShokaX 迁移和博客管理台之后，我原本以为文章封面的工作流已经比较完整了：可以从素材库选择图片，可以把图片地址填入文章，也可以在管理台里直接预览。实际使用一段时间后，我才发现“图片能够作为封面显示”和“封面在首页看起来合适”其实是两回事。&lt;/p&gt;
+&lt;p&gt;问题出现在首页的文章列表。为了让每张文章卡片保持统一高度，主题会把不同尺寸的图片放进一个固定比例的区域，再裁掉超出范围的部分。如果主体刚好在图片中央，效果通常没有问题；但如果人物、文字或者截图中的重点位于边缘，首页最终留下来的可能只是一块背景，真正想展示的内容反而被裁掉了。&lt;/p&gt;
+&lt;p&gt;所以这次给管理台增加的功能并不是“再上传一张封面”，而是让每篇文章都可以记录自己的封面焦点。以后主题改变卡片比例时，浏览器仍然会尽量围绕这个焦点进行裁切。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/blog-dev-series/manager-cover-focus.png&#34; alt=&#34;管理台中的文章封面焦点选择器&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;一-问题并不在图片而在显示容器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-问题并不在图片而在显示容器&#34;&gt;#&lt;/a&gt; 一、问题并不在图片，而在显示容器&lt;/h2&gt;
+&lt;p&gt;ShokaX 首页中的文章封面使用了比较常见的写法：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;cover&lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt; img&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#998418;--shiki-dark:#B8A965&#34;&gt;  width&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#2F798A;--shiki-dark:#4C9A91&#34;&gt; 100&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#998418;--shiki-dark:#B8A965&#34;&gt;  height&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#2F798A;--shiki-dark:#4C9A91&#34;&gt; 100&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#998418;--shiki-dark:#B8A965&#34;&gt;  object-fit&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#A65E2B;--shiki-dark:#C99076&#34;&gt; cover&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;object-fit: cover&lt;/code&gt; 会保证图片铺满整个容器，同时保持原始宽高比。它不会把图片压扁，但当图片和容器比例不一致时，必然会裁掉一部分内容。&lt;/p&gt;
+&lt;p&gt;浏览器默认从图片中央进行裁切，也就是接近下面的效果：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;object-position&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;: 50% 50%;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里第一个百分比表示水平方向，第二个表示垂直方向。&lt;code&gt;50% 50%&lt;/code&gt; 是正中央，&lt;code&gt;20% 50%&lt;/code&gt; 会让裁切区域更偏向左侧，&lt;code&gt;50% 20%&lt;/code&gt; 则会保留更多靠上的内容。&lt;/p&gt;
+&lt;p&gt;因此真正需要保存的不是裁切后的像素坐标，而是一个相对于整张图片的焦点位置。&lt;/p&gt;
+&lt;h2 id=&#34;二-为什么没有直接生成一张裁切后的新图片&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-为什么没有直接生成一张裁切后的新图片&#34;&gt;#&lt;/a&gt; 二、为什么没有直接生成一张裁切后的新图片&lt;/h2&gt;
+&lt;p&gt;一开始最直接的想法，是在管理台中加入一个图片裁切器，选好区域后生成新的文件。但继续考虑之后，我没有采用这种方案。&lt;/p&gt;
+&lt;p&gt;首先，桌面端和手机端的文章卡片比例不同。同一张裁切图片可能适合桌面端，却不适合手机端。如果分别生成两张图片，文章配置和素材管理都会变得更复杂。&lt;/p&gt;
+&lt;p&gt;其次，裁切会产生新的图片文件。原图、桌面封面、手机封面之间需要维护对应关系，上传到 GitHub 图床时也要多处理几个文件。&lt;/p&gt;
+&lt;p&gt;最后，焦点位置比固定裁切区域更能适应主题变化。只要主题仍然使用 &lt;code&gt;object-fit: cover&lt;/code&gt;，同一个焦点就可以在不同宽高比中继续发挥作用。&lt;/p&gt;
+&lt;p&gt;所以最终的数据结构只有一个很简单的字段：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#998418;--shiki-dark:#B8A965&#34;&gt;cover&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; images/blog-dev-series/manager-cover-focus.png&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#998418;--shiki-dark:#B8A965&#34;&gt;cover_position&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; 74% 36%&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;原始图片不会发生任何变化。主题只在渲染首页文章卡片时读取 &lt;code&gt;cover_position&lt;/code&gt;，把它转换成 CSS 的 &lt;code&gt;object-position&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;三-在文章编辑器中加入可视化选择器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-在文章编辑器中加入可视化选择器&#34;&gt;#&lt;/a&gt; 三、在文章编辑器中加入可视化选择器&lt;/h2&gt;
+&lt;p&gt;如果只在编辑器里增加两个数字输入框，功能虽然能用，但我很难仅凭 &lt;code&gt;74% 36%&lt;/code&gt; 想象最终画面。因此管理台中的选择器由三个部分组成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按首页卡片比例显示的封面预览；&lt;/li&gt;
+&lt;li&gt;可以点击和拖动的焦点准星；&lt;/li&gt;
+&lt;li&gt;水平和垂直两个滑块，用于精确调整。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;拖动时，管理台会根据鼠标或触摸点相对于预览区域的位置计算百分比：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;const&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt; x&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt; =&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;pointerX&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; -&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt; rect&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;left&lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; /&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt; rect&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;width&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; *&lt;/span&gt;&lt;span style=&#34;color:#2F798A;--shiki-dark:#4C9A91&#34;&gt; 100&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;const&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt; y&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt; =&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;pointerY&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; -&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt; rect&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;top&lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; /&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt; rect&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;height&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; *&lt;/span&gt;&lt;span style=&#34;color:#2F798A;--shiki-dark:#4C9A91&#34;&gt; 100&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;随后把结果限制在 &lt;code&gt;0&lt;/code&gt; 到 &lt;code&gt;100&lt;/code&gt; 之间，并同时更新准星、滑块和预览图片：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;preview&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;style&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;objectPosition&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt; =&lt;/span&gt;&lt;span style=&#34;color:#B5695977;--shiki-dark:#C98A7D77&#34;&gt; `&lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;$&amp;#123;&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt;% &lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;$&amp;#123;&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt;y&lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color:#B5695977;--shiki-dark:#C98A7D77&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样在拖动过程中看到的画面，和首页最终采用的裁切规则是一致的。需要恢复默认状态时，可以点击右上角的重置按钮回到 &lt;code&gt;50% 50%&lt;/code&gt;。预览区也支持方向键微调，按住 &lt;code&gt;Shift&lt;/code&gt; 时可以一次移动更大的距离。&lt;/p&gt;
+&lt;p&gt;本地素材和远程图床图片的加载方式并不相同。本地的 &lt;code&gt;images&lt;/code&gt;、&lt;code&gt;covers&lt;/code&gt; 和 &lt;code&gt;_data/assets&lt;/code&gt; 需要经过管理台的受限文件接口读取，而 jsDelivr 等完整网络地址可以由浏览器直接加载。把两者统一转换成预览地址后，选择器不需要关心图片究竟来自哪里。&lt;/p&gt;
+&lt;h2 id=&#34;四-保存时仍然要在服务端校验&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#四-保存时仍然要在服务端校验&#34;&gt;#&lt;/a&gt; 四、保存时仍然要在服务端校验&lt;/h2&gt;
+&lt;p&gt;前端的滑块范围已经是 &lt;code&gt;0&lt;/code&gt; 到 &lt;code&gt;100&lt;/code&gt;，但这并不代表服务端可以直接相信提交结果。请求也可能来自旧页面、手动调用或者被修改过的浏览器脚本，所以保存文章时仍然要重新解析 &lt;code&gt;cover_position&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;服务端只接受两个百分比，并检查它们是否都处于有效范围：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;有效：25% 70%&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;有效：25 70&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;无效：120% 50%&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;无效：left center&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;校验通过后统一保存成 &lt;code&gt;25% 70%&lt;/code&gt;。如果文章没有设置封面，则同时删除没有意义的 &lt;code&gt;cover_position&lt;/code&gt;，避免 Front Matter 中留下孤立配置。&lt;/p&gt;
+&lt;p&gt;文章仍然沿用管理台原来的保存流程：写入之前先创建备份，再用临时文件进行原子替换。新增一个封面字段不应该绕过原本已经建立的安全边界。&lt;/p&gt;
+&lt;h2 id=&#34;五-没有直接修改-node_modules-中的主题文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#五-没有直接修改-node_modules-中的主题文件&#34;&gt;#&lt;/a&gt; 五、没有直接修改 node_modules 中的主题文件&lt;/h2&gt;
+&lt;p&gt;最容易想到的主题改法，是直接打开 ShokaX 的 &lt;code&gt;segment.pug&lt;/code&gt;，给封面图片增加一段内联样式。但主题安装在 &lt;code&gt;node_modules&lt;/code&gt; 中，下次执行 &lt;code&gt;npm install&lt;/code&gt; 或升级 ShokaX 后，这些修改很可能被覆盖。&lt;/p&gt;
+&lt;p&gt;因此我把适配逻辑写成了一个独立的 Hexo 脚本。构建开始时，它读取所有文章的 &lt;code&gt;cover_position&lt;/code&gt;，再为配置过焦点的文章生成一条限定范围的 CSS：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;segments&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt; .&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;cover&lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt; a&lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#B5695977;--shiki-dark:#C98A7D77&#34;&gt;&#34;&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt;/2026/07/23/example/&lt;/span&gt;&lt;span style=&#34;color:#B5695977;--shiki-dark:#C98A7D77&#34;&gt;&#34;&lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;&gt;&lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt; img&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#998418;--shiki-dark:#B8A965&#34;&gt;  object-position&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#2F798A;--shiki-dark:#4C9A91&#34;&gt; 74&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color:#2F798A;--shiki-dark:#4C9A91&#34;&gt; 36&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;选择器只命中首页和列表页中的文章卡片，不会修改文章详情页头图，也不会影响分类封面。没有配置 &lt;code&gt;cover_position&lt;/code&gt; 的旧文章仍然使用主题默认的居中裁切。&lt;/p&gt;
+&lt;p&gt;这里还有一个不太显眼的问题：中文文章路径在最终 HTML 中会变成百分号编码。如果生成的 CSS 使用未编码路径，选择器看起来没有错误，却无法命中真实链接。因此构建脚本使用文章的最终永久链接生成选择器，并专门加入了中文路径测试。&lt;/p&gt;
+&lt;h2 id=&#34;六-一次功能需要经过三层验证&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#六-一次功能需要经过三层验证&#34;&gt;#&lt;/a&gt; 六、一次功能需要经过三层验证&lt;/h2&gt;
+&lt;p&gt;这个功能看起来只是“拖动一个点”，实际验证时我把它分成了三层。&lt;/p&gt;
+&lt;p&gt;第一层是数据测试。确认 &lt;code&gt;cover_position&lt;/code&gt; 能被规范化、写入 Front Matter，越界值会被拒绝，文章原有的未知字段也不会丢失。&lt;/p&gt;
+&lt;p&gt;第二层是构建测试。确认 Hexo 能加载新的注入脚本，中文文章路径可以生成正确选择器，ShokaX 的静态站点仍然能够完整生成。&lt;/p&gt;
+&lt;p&gt;第三层是浏览器测试。分别使用桌面和手机宽度打开管理台，选择一篇已有封面的文章，把焦点拖到 &lt;code&gt;73% 31%&lt;/code&gt; 左右，再检查：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;准星是否跟随鼠标移动；&lt;/li&gt;
+&lt;li&gt;两个滑块是否同步变化；&lt;/li&gt;
+&lt;li&gt;图片的 &lt;code&gt;object-position&lt;/code&gt; 是否与数值一致；&lt;/li&gt;
+&lt;li&gt;手机布局是否出现横向溢出；&lt;/li&gt;
+&lt;li&gt;浏览器控制台是否产生新的错误。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最终管理台原有的 32 项测试全部通过，Hexo 也能够正常构建。测试没有直接保存被选中的文章，所以不会为了验证界面而改动实际内容。&lt;/p&gt;
+&lt;h2 id=&#34;七-这次小功能带给我的启发&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#七-这次小功能带给我的启发&#34;&gt;#&lt;/a&gt; 七、这次小功能带给我的启发&lt;/h2&gt;
+&lt;p&gt;这个功能的代码量和整个管理台相比并不算多，但它解决的是一个很典型的问题：统一布局和内容表达之间经常存在冲突。设计系统希望每张卡片尺寸一致，文章作者却希望每张图片展示不同的重点。&lt;/p&gt;
+&lt;p&gt;比起取消统一尺寸，给内容增加一个“焦点”元数据更合适。布局仍然稳定，作者也能表达这张图片最重要的部分。&lt;/p&gt;
+&lt;p&gt;另外，可视化编辑并不意味着数据一定要复杂。管理台里有准星、拖动和滑块，最后写入 Markdown 的仍然只是一行容易理解的文本：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#998418;--shiki-dark:#B8A965&#34;&gt;cover_position&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; 74% 36%&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这也延续了整个博客管理台的设计思路：界面负责降低操作成本，Hexo 的 Markdown 和 YAML 仍然是最终数据来源。即使将来不再使用管理台，打开文章文件也能够看懂配置，并且可以直接手动修改。&lt;/p&gt;
+&lt;p&gt;从页面卡在加载中，到迁移 ShokaX，再到给一张文章封面选择焦点，博客维护逐渐从“遇到问题就临时修改”变成了“找到可以长期保存的配置方式”。对个人项目来说，这种变化可能比单独增加某一个按钮更有价值。&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

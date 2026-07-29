@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f5f8f7"/><stop offset="1" stop-color="#e7f0ed"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="11" flood-color="#244a41" flood-opacity=".13"/></filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="11" refY="4" orient="auto"><path d="M0,0 L12,4 L0,8 Z" fill="#3d7569"/></marker>
+  </defs>
+  <rect width="1400" height="800" fill="url(#bg)"/>
+  <text x="70" y="72" font-family="Microsoft YaHei, sans-serif" font-size="34" font-weight="700" fill="#173b34">从旧项目到 ShokaX 的迁移思路</text>
+  <text x="72" y="108" font-family="Microsoft YaHei, sans-serif" font-size="17" fill="#5b756e">不覆盖旧项目，而是把文章、配置和第三方服务分开迁移</text>
+  <g filter="url(#shadow)">
+    <rect x="75" y="180" width="300" height="390" rx="18" fill="#fff" stroke="#c6d8d3" stroke-width="2"/>
+    <rect x="550" y="180" width="300" height="390" rx="18" fill="#f2fbf7" stroke="#85c7b5" stroke-width="3"/>
+    <rect x="1025" y="180" width="300" height="390" rx="18" fill="#fff" stroke="#c6d8d3" stroke-width="2"/>
+  </g>
+  <g font-family="Microsoft YaHei, sans-serif">
+    <text x="225" y="230" text-anchor="middle" font-size="26" font-weight="700" fill="#415f58">旧项目 now</text>
+    <text x="700" y="230" text-anchor="middle" font-size="26" font-weight="700" fill="#126653">shokax-test</text>
+    <text x="1175" y="230" text-anchor="middle" font-size="26" font-weight="700" fill="#415f58">外部服务</text>
+    <g font-size="18" fill="#506b64">
+      <text x="120" y="285">文章与页面</text><text x="120" y="325">旧主题配置</text><text x="120" y="365">原有图床链接</text><text x="120" y="405">Live2D 文件</text><text x="120" y="445">部署配置</text><text x="120" y="485">作为回退备份</text>
+      <text x="595" y="285">ShokaX 主题</text><text x="595" y="325">Waline 评论</text><text x="595" y="365">Algolia 搜索</text><text x="595" y="405">本地图床工具</text><text x="595" y="445">Live2D 适配</text><text x="595" y="485">管理台与测试</text>
+      <text x="1070" y="285">Waline</text><text x="1070" y="325">Algolia</text><text x="1070" y="365">GitHub 图床</text><text x="1070" y="405">GitHub Pages</text><text x="1070" y="445">jsDelivr</text><text x="1070" y="485">Release</text>
+    </g>
+  </g>
+  <path d="M375 375 H550" stroke="#3d7569" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M850 375 H1025" stroke="#3d7569" stroke-width="5" marker-end="url(#arrow)"/>
+  <text x="463" y="350" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="16" fill="#3d7569">保留数据，重整配置</text>
+  <text x="938" y="350" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="16" fill="#3d7569">调用服务，保留权限边界</text>
+  <rect x="345" y="650" width="710" height="55" rx="28" fill="#167c68"/>
+  <text x="700" y="686" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="19" font-weight="700" fill="#fff">迁移的核心不是换主题，而是重新建立一条可验证的发布链路</text>
+</svg>

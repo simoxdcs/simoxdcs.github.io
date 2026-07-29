@@ -1,0 +1,351 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="Ciallo～(∠・ω )⌒☆" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="Ciallo～(∠・ω )⌒☆" type="application/atom+xml"><link rel="alternate" type="application/json" title="Ciallo～(∠・ω )⌒☆" href="http://localhost:4001/feed.json"/><link rel="preconnect" href="https://s4.zstatic.net"/><link rel="preconnect" href="https://at.alicdn.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CFredericka%20the%20Great:400,400italic,700,700italic%7CNoto%20Serif%20JP:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CInconsolata:400,400italic,700,700italic&display=swap&subset=latin,latin-ext" media="none" onload="this.media&#x3D;&#39;all&#39;"><link rel="modulepreload" href="/js/siteInit.js"></link><link rel="modulepreload" href="/js/nyx-player-GRPSJKLW.js"></link><link rel="modulepreload" href="/js/copy-tex-JFFJN5K7.js"></link><link rel="modulepreload" href="/js/post-OIVUHXWK.js"></link><link rel="modulepreload" href="/js/chunk-6UNDK5LB.js"></link><link rel="modulepreload" href="/js/waline-NVSVNCZW.js"></link><link rel="modulepreload" href="/js/comments-XY4LVWMC.js"></link><link rel="modulepreload" href="/js/chunk-6MQDZFGH.js"></link><link rel="modulepreload" href="/js/search-QGTOTMZH.js"></link><link rel="modulepreload" href="/js/chunk-JNB2Y6YO.js"></link><link rel="modulepreload" href="/js/chunk-4VJDMPUV.js"></link><link rel="modulepreload" href="/js/index.esm-AHY3PKU6.js"></link><link rel="modulepreload" href="/js/chunk-77ABLH4L.js"></link><link rel="modulepreload" href="/js/chunk-AFILKRBQ.js"></link><link rel="modulepreload" href="/js/chunk-WIQECBEN.js"></link><link rel="stylesheet" href="/css/siteInit.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="stylesheet" href="/css/waline-2PCQXSKL.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="stylesheet" href="/css/comments-NVBMGFU5.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="preload" href="/images/blog-dev-series/blog-fixed-home.png" as="image" fetchpriority="high"><meta name="keywords" content="Hexo,JavaScript"/><meta name="description" content="合于时而动，不合于时而止"/><link rel="canonical" href="http://localhost:4001/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/"><link rel="stylesheet" href="/css/post.css?v=0.5.4"><link rel="stylesheet" href="/css/mermaid.css?v=0.5.4"><!-- 临时处理--><link rel="stylesheet" media="none" onload="this.media='all'" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css"><title>从页面卡在加载中到恢复构建：一次 Hexo 博客故障排查记录</title><!-- hexo injector head_end start -->
+<style id="legacy-footer-style">
+  #footer .site-runtime {
+    margin-top: .45rem;
+    color: var(--grey-5);
+    font-size: .875rem;
+    line-height: 1.8;
+  }
+
+  #footer .site-pixel-counter {
+    display: flex;
+    min-height: 5rem;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: .65rem;
+    overflow: hidden;
+  }
+
+  #footer .site-pixel-counter img {
+    display: block;
+    max-width: min(100%, 31rem);
+    height: auto;
+    image-rendering: pixelated;
+  }
+
+  @media (max-width: 480px) {
+    #footer .site-runtime {
+      font-size: .8125rem;
+    }
+
+    #footer .site-pixel-counter img {
+      max-width: 100%;
+    }
+  }
+</style><style id="post-cover-positions">.segments .cover a[href="/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/"] > img{object-position:50% 15%}.segments .cover a[href="/2024/09/24/jiaocheng/%E5%A4%A9%E9%80%89%E5%A7%AC%E8%B0%83%E6%95%99%E8%AE%B0%E5%BD%95/"] > img{object-position:50% 17%}.segments .cover a[href="/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/"] > img{object-position:50% 4%}.segments .cover a[href="/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/"] > img{object-position:57% 21%}.segments .cover a[href="/2025/10/23/xuexi/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"] > img{object-position:52% 13%}.segments .cover a[href="/2026/07/31/%E6%89%8B%E5%8A%9E%E8%AF%A6%E8%A7%A3/"] > img{object-position:54% 45%}.segments .cover a[href="/2026/07/30/%E6%89%8B%E5%8A%9E%E8%AE%B0%E5%BD%95/"] > img{object-position:58% 7%}</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="pagefind_mount"></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">从页面卡在加载中到恢复构建：一次 Hexo 博客故障排查记录</h1><div class="meta"><span class="item" title="创建时间：2026-07-23 10:00:00"><span class="icon"><i class="ic i-calendar"></i></span><span class="text">发表于</span><time itemprop="dateCreated datePublished" datetime="2026-07-23T10:00:00+08:00">2026-07-23</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span class="text">本文字数</span><span>3.4k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span class="text">阅读时长</span><span>3 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Momingのsite</a></li></ul><ul class="right" id="rightNav"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><img src="/images/blog-dev-series/blog-fixed-home.png" loading="eager" decoding="async" fetchpriority="high" alt="Ciallo～(∠・ω )⌒☆"></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="article wrap"><div class="breadcrumb" itemListElement itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i><span><a href="/">首页</a></span><i class="ic i-angle-right"></i><span class="current" itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem"><a href="/categories/xuexi/" itemprop="item" rel="index" title="分类于学习&amp;技术"><span itemprop="name">学习&技术<meta itemprop="position" content="0"/></span></a></span></div><article class="post block" itemscope="itemscope" itemtype="http://schema.org/Article" data-pagefind-body="data-pagefind-body" lang="zh-CN"><link itemprop="mainEntityOfPage" href="http://localhost:4001/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/"/><span hidden="hidden" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="image" content="/assets/avatar.jpg"/><meta itemprop="name" content="试末"/><meta itemprop="description" content=", 合于时而动，不合于时而止"/></span><span hidden="hidden" itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="Ciallo～(∠・ω )⌒☆"/></span><div class="body md" itemprop="articleBody"><p>这次重新折腾博客，并不是从“我想换一个主题”开始的，而是从一个看起来很普通、实际上让我排查了很久的问题开始的。</p>
+<p>当时我只是进入博客目录，执行了一条以前经常使用的命令：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-shell"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">hexo</span><span style="color:#B56959;--shiki-dark:#C98A7D"> s</span></span></code></pre>
+<p>命令执行之后，本地服务能够启动，浏览器也能够打开本地地址，但是页面一直停留在加载状态，博客正文、文章列表和侧栏都没有正常显示。刚开始我以为只是图床加载比较慢，或者是 Live2D 看板娘的资源没有加载出来，但等了很久之后，页面仍然没有恢复。</p>
+<p><img loading="lazy" src="/images/blog-dev-series/blog-fixed-home.png" alt="修复后博客首页" /></p>
+<p>现在回头看，这次故障最重要的地方并不是最后改了哪一行代码，而是让我第一次比较完整地意识到：Hexo 服务启动成功，并不等于浏览器中的页面运行成功。</p>
+<h2 id="一-先确认问题到底发生在哪里"><a class="anchor" href="#一-先确认问题到底发生在哪里">#</a> 一、先确认问题到底发生在哪里</h2>
+<p>遇到博客打不开时，最容易做的事情是重新安装依赖、换一个主题，或者把生成目录全部删除。但这些操作有一个共同的问题：它们都没有回答“错误究竟发生在什么位置”。</p>
+<p>所以我先把整个过程拆成了几层：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>Hexo 服务是否启动</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>静态 HTML 是否生成</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>主题 CSS 和 JavaScript 是否加载</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>浏览器脚本是否能够执行</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>页面初始化逻辑是否完成</span></span></code></pre>
+<p><img loading="lazy" src="/images/blog-dev-series/hexo-debug-flow.svg" alt="Hexo 页面故障排查路径" /></p>
+<p>首先检查终端。<code>hexo s</code> 并没有立即退出，4000 端口也能够访问，这说明 Hexo 服务本身并不是完全没有启动。</p>
+<p>接下来我打开浏览器开发者工具，终于看到了真正有用的线索：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>Uncaught SyntaxError: Identifier 't' has already been declared</span></span>
+<span class="line"><span>(at app.js?v=0.2.5:1:1)</span></span></code></pre>
+<p>这类错误和“网络慢”没有关系。浏览器在解析 JavaScript 的阶段就已经失败了，同一个作用域内出现了重复声明的变量，后续依赖这段脚本执行的初始化代码也就不会继续运行。页面中那个一直显示的加载框，本质上只是一个还没有机会被替换掉的初始状态。</p>
+<h2 id="二-为什么终端没有报错页面却不能显示"><a class="anchor" href="#二-为什么终端没有报错页面却不能显示">#</a> 二、为什么终端没有报错，页面却不能显示</h2>
+<p>Hexo 的工作方式很容易让人产生误判。Hexo 负责读取 Markdown、调用渲染器并输出 HTML，浏览器拿到这些 HTML 之后，还要继续加载主题的 CSS、JavaScript 和各种第三方资源。</p>
+<p>因此一个页面可能处于下面这种状态：</p>
+<ul>
+<li>HTML 已经生成。</li>
+<li>HTTP 服务已经启动。</li>
+<li>浏览器已经请求到了页面。</li>
+<li>但主题 JavaScript 在解析阶段失败。</li>
+<li>依赖 JavaScript 的菜单、加载器、PJAX 和评论初始化没有执行。</li>
+</ul>
+<p>这也是为什么我后来不再把“终端没有 FATAL”当作页面正常的充分条件。终端负责告诉我构建和服务端做了什么，浏览器控制台则告诉我页面在客户端做了什么，两边的信息必须结合起来看。</p>
+<h2 id="三-逐项隔离主题和附加功能"><a class="anchor" href="#三-逐项隔离主题和附加功能">#</a> 三、逐项隔离主题和附加功能</h2>
+<p>旧项目中除了 Shoka 主题本身，还加入了 Live2D 看板娘、播放器、图床和其他脚本。它们都可能在布局文件中插入 JavaScript，所以我没有一上来就认定一定是主题本身的问题，而是先做隔离。</p>
+<h3 id="1-检查生成后的-public-目录"><a class="anchor" href="#1-检查生成后的-public-目录">#</a> 1. 检查生成后的 public 目录</h3>
+<p>首先确认首页和文章页的 HTML 文件是否存在，再查看页面中是否出现了重复的脚本引用。如果 HTML 根本没有生成，排查重点应该放在 Hexo 渲染器、文章 Front Matter 和主题模板；如果 HTML 内容完整但页面不动，才应该把重点放到资源和浏览器脚本上。</p>
+<h3 id="2-检查主题布局中的脚本"><a class="anchor" href="#2-检查主题布局中的脚本">#</a> 2. 检查主题布局中的脚本</h3>
+<p>我重点检查了主题公共布局和 head、footer 相关文件，主要看以下几件事：</p>
+<ul>
+<li>同一个 <code>app.js</code> 是否被引用了两次。</li>
+<li>主题原本的脚本和手动添加的脚本是否重复。</li>
+<li>Live2D 是否同时加载了本地脚本和 CDN 脚本。</li>
+<li>生成后的页面是否仍然保留旧版本的资源路径。</li>
+</ul>
+<p>这里有一个很容易忽略的地方：浏览器报错中显示的是生成页面里最终加载的资源，不一定就是你正在编辑的那个源文件。主题源文件、Hexo 生成目录和浏览器缓存之间如果没有区分清楚，修改很容易变成“改了一个文件，但页面仍然加载另一个文件”。</p>
+<h3 id="3-暂时关闭-live2d-等附加脚本"><a class="anchor" href="#3-暂时关闭-live2d-等附加脚本">#</a> 3. 暂时关闭 Live2D 等附加脚本</h3>
+<p>看板娘功能本身并不是博客正文显示的必要条件，所以我把它暂时当作一个独立变量处理。先关闭附加脚本，再清理生成目录并重新启动博客。如果主题主体恢复正常，再逐项恢复 Live2D、播放器和其他功能，就可以判断是哪个功能引入了新的冲突。</p>
+<p>这个过程看起来比较慢，但比一次性修改多个文件更容易得到确定结论。前端问题最怕“同时改了五处，然后页面突然好了”，因为下一次再出问题时，自己也不知道真正起作用的是哪一处。</p>
+<h2 id="四-为什么没有直接删除旧项目重装"><a class="anchor" href="#四-为什么没有直接删除旧项目重装">#</a> 四、为什么没有直接删除旧项目重装</h2>
+<p>旧博客里已经积累了很多不能轻易丢掉的内容：</p>
+<ul>
+<li>文章 Markdown 文件。</li>
+<li>分类、标签和文章路径。</li>
+<li>GitHub 图床直链。</li>
+<li>主题背景和页脚配置。</li>
+<li>Live2D 本体、API 和模型文件。</li>
+<li>Algolia 搜索配置。</li>
+<li>GitHub Pages 部署配置。</li>
+</ul>
+<p>如果只是为了处理一个页面加载错误，就把整个目录删除重新开始，表面上可能比较干净，实际上会把问题扩大成一次完整迁移。文章可以复制，但图片路径、评论、搜索索引和主题细节都需要重新处理。</p>
+<p>所以我后来采用了更稳妥的方式：保留原来的 <code>now</code> 项目，另外复制出测试项目进行排查。原项目作为回退，测试项目负责实验，任何不确定的改动都不直接覆盖原始环境。</p>
+<p><img loading="lazy" src="/images/blog-dev-series/theme-migration-flow.svg" alt="从旧项目到测试项目的迁移思路" /></p>
+<h2 id="五-重新建立一个可以验证的构建基线"><a class="anchor" href="#五-重新建立一个可以验证的构建基线">#</a> 五、重新建立一个可以验证的构建基线</h2>
+<p>当问题逐渐从“页面完全打不开”缩小到“主题资源和附加脚本的兼容性”之后，我开始重新建立构建基线。</p>
+<p>首先清理旧生成文件：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-shell"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">hexo</span><span style="color:#B56959;--shiki-dark:#C98A7D"> clean</span></span></code></pre>
+<p>然后重新生成：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-shell"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">hexo</span><span style="color:#B56959;--shiki-dark:#C98A7D"> generate</span></span></code></pre>
+<p>最后启动本地预览：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-shell"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">hexo</span><span style="color:#B56959;--shiki-dark:#C98A7D"> server</span></span></code></pre>
+<p>我把“构建成功”定义得比命令返回成功更严格一些：</p>
+<ol>
+<li><code>public/index.html</code> 确实生成。</li>
+<li>文章、分类、标签和归档页面都存在。</li>
+<li>首页和文章页可以正常打开。</li>
+<li>浏览器控制台没有致命 JavaScript 错误。</li>
+<li>暂时关闭附加功能时，博客主体仍然可以显示。</li>
+<li>恢复附加功能后，能够确定每一个功能的影响范围。</li>
+</ol>
+<p>这样的验证方式比单纯看终端最后有没有红字可靠得多。尤其是静态博客，构建、服务端和浏览器其实是三套不同的运行环节。</p>
+<h2 id="六-这次故障给我的几个启发"><a class="anchor" href="#六-这次故障给我的几个启发">#</a> 六、这次故障给我的几个启发</h2>
+<p>第一，浏览器控制台往往比终端更接近页面真正的故障原因。终端告诉你 Hexo 有没有启动，控制台告诉你主题脚本有没有运行，这两类信息不能互相替代。</p>
+<p>第二，遇到问题时要先分层，再修改。服务端、生成结果、主题资源和第三方脚本分别检查，排查速度反而会更快。</p>
+<p>第三，博客项目不能只看成一堆文章。主题、插件、图片、评论、搜索和部署配置共同组成了博客，任何一层出问题，都可能让最终页面看起来像是“整个博客坏了”。</p>
+<p>第四，备份并不是保守，而是提高试错效率。如果知道随时可以回到旧版本，就不会因为害怕破坏环境而不敢尝试，也不会在失败后只能从头重建。</p>
+<p>最后，这次问题让我开始认真思考一个更大的问题：如果每次改文章、上传图片、更新搜索和部署都要手动记住一串命令，那么博客维护本身就会变成新的负担。也正因为如此，我才开始考虑迁移到更现代的 ShokaX，并把后续的维护流程整理成一个可以操作的管理台。</p>
+<p>这也就引出了下一篇文章：如何从 Shoka 迁移到 ShokaX，以及如何把一个需要反复敲命令的 Hexo 博客，逐步整理成一个可视化管理系统。</p>
+<div class="tags"><a href="/tags/Hexo/" rel="tag"><i class="ic i-tag"></i>Hexo</a><a href="/tags/%E5%8D%9A%E5%AE%A2%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/" rel="tag"><i class="ic i-tag"></i>博客故障排查</a><a href="/tags/JavaScript/" rel="tag"><i class="ic i-tag"></i>JavaScript</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-eye"></i></span><span class="text">总访问量：</span><span class="waline-pageview-count" id="twikoo_visitors" data-path="/2026/07/23/jiaocheng/从页面卡在加载中到恢复构建/">加载中...</span></span><span class="item"><span class="icon"><i class="ic i-calendar-check"></i></span><span class="text">更新于 </span><time title="修改时间：2026-07-23 03:00:17" itemprop="dateModified" datetime="2026-07-23T03:00:17+08:00">2026-07-23</time></span></div><div class="reward"><button><i class="ic i-heartbeat"></i>赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img loading="lazy" src="/assetswechatpay.png" alt="试末 微信支付"/><p>微信支付</p></div><div><img loading="lazy" src="/assetsalipay.jpg" alt="试末 支付宝"/><p>支付宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者：</strong>试末<i class="ic i-at"><em>@</em></i>Ciallo～(∠・ω )⌒☆</li><li class="link"><strong>本文链接：</strong><a href="http://localhost:4001/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/" title="从页面卡在加载中到恢复构建：一次 Hexo 博客故障排查记录">http://localhost:4001/2026/07/23/jiaocheng/从页面卡在加载中到恢复构建/</a></li><li class="license"><strong>版权声明：</strong>本站所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/2025/10/23/xuexi/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" itemprop="url" data-background-image="&#x2F;images&#x2F;1784693030544.jpeg" title="人工智能学习笔记"><span class="type">上一篇</span><span class="category"><i class="ic i-flag"></i>学习&技术</span><h3>人工智能学习笔记</h3></a></div><div class="item right"><a href="/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/" rel="next" itemprop="url" data-background-image="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;simoxdcs&#x2F;csgo@v1.7&#x2F;img&#x2F;4.jpg" title="从 Shoka 到 ShokaX：一次 Hexo 主题迁移与博客管理台开发记录"><span class="type">下一篇</span><span class="category"><i class="ic i-flag"></i>学习&技术</span><h3>从 Shoka 到 ShokaX：一次 Hexo 主题迁移与博客管理台开发记录</h3></a></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%85%88%E7%A1%AE%E8%AE%A4%E9%97%AE%E9%A2%98%E5%88%B0%E5%BA%95%E5%8F%91%E7%94%9F%E5%9C%A8%E5%93%AA%E9%87%8C"><span class="toc-number">1.</span> <span class="toc-text"> 一、先确认问题到底发生在哪里</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%BB%88%E7%AB%AF%E6%B2%A1%E6%9C%89%E6%8A%A5%E9%94%99%E9%A1%B5%E9%9D%A2%E5%8D%B4%E4%B8%8D%E8%83%BD%E6%98%BE%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text"> 二、为什么终端没有报错，页面却不能显示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E9%80%90%E9%A1%B9%E9%9A%94%E7%A6%BB%E4%B8%BB%E9%A2%98%E5%92%8C%E9%99%84%E5%8A%A0%E5%8A%9F%E8%83%BD"><span class="toc-number">3.</span> <span class="toc-text"> 三、逐项隔离主题和附加功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A3%80%E6%9F%A5%E7%94%9F%E6%88%90%E5%90%8E%E7%9A%84-public-%E7%9B%AE%E5%BD%95"><span class="toc-number">3.1.</span> <span class="toc-text"> 1. 检查生成后的 public 目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%A3%80%E6%9F%A5%E4%B8%BB%E9%A2%98%E5%B8%83%E5%B1%80%E4%B8%AD%E7%9A%84%E8%84%9A%E6%9C%AC"><span class="toc-number">3.2.</span> <span class="toc-text"> 2. 检查主题布局中的脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9A%82%E6%97%B6%E5%85%B3%E9%97%AD-live2d-%E7%AD%89%E9%99%84%E5%8A%A0%E8%84%9A%E6%9C%AC"><span class="toc-number">3.3.</span> <span class="toc-text"> 3. 暂时关闭 Live2D 等附加脚本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B2%A1%E6%9C%89%E7%9B%B4%E6%8E%A5%E5%88%A0%E9%99%A4%E6%97%A7%E9%A1%B9%E7%9B%AE%E9%87%8D%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text"> 四、为什么没有直接删除旧项目重装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E9%87%8D%E6%96%B0%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E9%AA%8C%E8%AF%81%E7%9A%84%E6%9E%84%E5%BB%BA%E5%9F%BA%E7%BA%BF"><span class="toc-number">5.</span> <span class="toc-text"> 五、重新建立一个可以验证的构建基线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E8%BF%99%E6%AC%A1%E6%95%85%E9%9A%9C%E7%BB%99%E6%88%91%E7%9A%84%E5%87%A0%E4%B8%AA%E5%90%AF%E5%8F%91"><span class="toc-number">6.</span> <span class="toc-text"> 六、这次故障给我的几个启发</span></a></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li ><a href="/2020/11/18/jiaocheng/%E6%95%99%E7%A8%8B/" rel="bookmark" title="博客教程">博客教程</a></li><li ><a href="/2020/11/18/xuexi/linux%E6%8D%A2%E6%BA%90/" rel="bookmark" title="linux相关">linux相关</a></li><li ><a href="/2020/12/06/xuexi/MarkDown/" rel="bookmark" title="MarkDown">MarkDown</a></li><li ><a href="/2020/12/14/xuexi/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="bookmark" title="排序算法">排序算法</a></li><li ><a href="/2022/01/29/xuexi/c-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="bookmark" title="c++学习笔记">c++学习笔记</a></li><li ><a href="/2024/01/27/jiaocheng/G502%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/" rel="bookmark" title="G502折腾记录">G502折腾记录</a></li><li ><a href="/2024/01/31/jiaocheng/%E6%97%B6%E9%9A%94n%E4%B9%85%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BF%BB%E6%96%B0%E8%AE%B0%E5%BD%95/" rel="bookmark" title="时隔n久的博客翻新记录">时隔n久的博客翻新记录</a></li><li ><a href="/2024/09/24/jiaocheng/%E5%A4%A9%E9%80%89%E5%A7%AC%E8%B0%83%E6%95%99%E8%AE%B0%E5%BD%95/" rel="bookmark" title="折腾天选姬记录">折腾天选姬记录</a></li><li ><a href="/2025/10/23/xuexi/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="bookmark" title="人工智能学习笔记">人工智能学习笔记</a></li><li  class="active"><a href="/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/" rel="bookmark" title="从页面卡在加载中到恢复构建：一次 Hexo 博客故障排查记录">从页面卡在加载中到恢复构建：一次 Hexo 博客故障排查记录</a></li><li ><a href="/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/" rel="bookmark" title="从 Shoka 到 ShokaX：一次 Hexo 主题迁移与博客管理台开发记录">从 Shoka 到 ShokaX：一次 Hexo 主题迁移与博客管理台开发记录</a></li><li ><a href="/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/" rel="bookmark" title="从一张被裁坏的封面开始：给 Hexo 管理台加入文章封面焦点选择">从一张被裁坏的封面开始：给 Hexo 管理台加入文章封面焦点选择</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" loading="lazy" decoding="async" itemprop="image" alt="试末" src="/assets/avatar.jpg"/><p class="name" itemprop="name">试末</p><div class="description" itemprop="description">合于时而动，不合于时而止</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">38</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">4</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">16</span><span class="name">标签</span></a></div></nav><div class="social"><a target="_blank" rel="noopener" href="https://github.com/simoxdcs" class="item github" title="https:&#x2F;&#x2F;github.com&#x2F;simoxdcs"><i class="ic i-github"></i></a><a target="_blank" rel="noopener" href="https://twitter.com/sikutimo?s=09" class="item twitter" title="https:&#x2F;&#x2F;twitter.com&#x2F;sikutimo?s&#x3D;09"><i class="ic i-twitter"></i></a><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/8646e25fb2bbbf1388cb6e40936cee5d" class="item zhihu" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;8646e25fb2bbbf1388cb6e40936cee5d"><i class="ic i-zhihu"></i></a><a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=536728338" class="item music" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;536728338"><i class="ic i-cloud-music"></i></a><a target="_blank" rel="noopener" href="https://weibo.com/u/7101341111" class="item weibo" title="https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;7101341111"><i class="ic i-weibo"></i></a><a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCm0Vhzr3Mx0BYy5wLN4U5CQ" class="item youtube" title="https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCm0Vhzr3Mx0BYy5wLN4U5CQ"><i class="ic i-youtube"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item dropdown"><a href="#" onclick="return false;"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"><a href="/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/2025/10/23/xuexi/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div><div id="player"></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2026/07/30/%E6%89%8B%E5%8A%9E%E8%AE%B0%E5%BD%95/">手办记录</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/youji/" title="分类于快乐の游记">快乐の游记</a></div><span><a href="/2021/10/03/youji/%E5%8D%8E%E5%B1%B1%E6%B8%B8%E8%AE%B0/">华山游记</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/xuexi/" title="分类于学习&amp;技术">学习&技术</a></div><span><a href="/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/">从页面卡在加载中到恢复构建：一次 Hexo 博客故障排查记录</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/xuexi/" title="分类于学习&amp;技术">学习&技术</a></div><span><a href="/2025/10/23/xuexi/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">人工智能学习笔记</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2026/07/31/%E6%89%8B%E5%8A%9E%E8%AF%A6%E8%A7%A3/">手办详解</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2022/02/22/suibi/%E9%9A%8F%E7%AC%94%E4%B9%8B%E5%8D%81%E4%B8%83/">随笔之十七</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2022/01/10/suibi/%E9%9A%8F%E7%AC%94%E4%B9%8B%E5%8D%81%E5%85%AD/">随笔之十六</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/xuexi/" title="分类于学习&amp;技术">学习&技术</a></div><span><a href="/2024/01/31/jiaocheng/%E6%97%B6%E9%9A%94n%E4%B9%85%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BF%BB%E6%96%B0%E8%AE%B0%E5%BD%95/">时隔n久的博客翻新记录</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/xuexi/" title="分类于学习&amp;技术">学习&技术</a></div><span><a href="/2020/11/18/xuexi/linux%E6%8D%A2%E6%BA%90/">linux相关</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2021/09/21/suibi/%E9%9A%8F%E7%AC%94%E4%B9%8B%E5%8D%81%E4%B8%89/">随笔之十三</a></span></li></ul></div><div class="rpost pjax"><h2>最新评论</h2><ul class="leancloud-recent-comment" id="new-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2020 -<span itemprop="copyrightYear">2026</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">试末 @ Momingのsite</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">170k 字</span><span class="post-meta-divider"> | </span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长">2:34</span></div><div class="powered-by">基于 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & Theme.<a target="_blank" rel="noopener" href="https://github.com/theme-shoka-x/hexo-theme-shokaX/">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
+    ispost: true,
+    path: `2026/07/23/jiaocheng/从页面卡在加载中到恢复构建/`,
+    favicon: {
+        show: `（●´3｀●）やれやれだぜ`,
+        hide: `(´Д｀)大変だ！`
+    },
+    search: {
+        placeholder: "文章搜索",
+        empty: "关于 「 ${query} 」，什么也没搜到",
+        stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    nocopy: "false",
+    copyright: `复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。`,
+    copy_tex: false,
+    katex: false,
+    mermaid: false,
+    audio: undefined,
+    nocopy: false,
+    outime: true,
+    template: `<div class="note warning"><p><span class="label warning">文章时效性提示</span><br>这是一篇发布于 {{publish}} 天前，最后一次更新在 {{updated}} 天前的文章，部分信息可能已经发生改变，请注意甄别。</p></div>`,
+    quiz: {
+        choice: `单选题`,
+        multiple: `多选题`,
+        true_false: `判断题`,
+        essay: `问答题`,
+        gap_fill: `填空题`,
+        mistake: `错题备注`
+    }
+};
+</script><script src="/js/siteInit.js?v=0.5.4" type="module" fetchpriority="high" defer></script><!-- hexo injector body_end start -->
+<script id="legacy-footer-script">
+  (() => {
+    const startTime = Date.parse('2020-10-24T10:52:50+08:00');
+    const second = 1000;
+    const minute = second * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+    const year = day * 365;
+
+    const initLegacyFooter = () => {
+      const status = document.querySelector('#footer .status');
+      if (!status || document.getElementById('site-runtime')) return;
+
+      const powered = status.querySelector('.powered-by');
+      const runtime = document.createElement('div');
+      runtime.id = 'site-runtime';
+      runtime.className = 'site-runtime';
+      runtime.setAttribute('aria-label', '本站运行时间');
+      runtime.innerHTML = '<span class="site-runtime-text"></span>';
+
+      if (powered) status.insertBefore(runtime, powered);
+      else status.appendChild(runtime);
+
+      const counter = document.createElement('div');
+      counter.className = 'site-pixel-counter';
+
+      const counterImage = document.createElement('img');
+      counterImage.src = 'https://count.getloli.com/@simoxdcs?name=simoxdcs&theme=rule34&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto';
+      counterImage.alt = 'Moming 网站访问计数像素人物';
+      counterImage.loading = 'eager';
+      counterImage.decoding = 'async';
+      counterImage.referrerPolicy = 'no-referrer';
+      counter.appendChild(counterImage);
+
+      if (powered) powered.insertAdjacentElement('afterend', counter);
+      else status.appendChild(counter);
+
+      const text = runtime.querySelector('.site-runtime-text');
+      const updateRuntime = () => {
+        let diff = Math.max(0, Date.now() - startTime);
+        const years = Math.floor(diff / year);
+        diff -= years * year;
+        const days = Math.floor(diff / day);
+        diff -= days * day;
+        const hours = Math.floor(diff / hour);
+        diff -= hours * hour;
+        const minutes = Math.floor(diff / minute);
+        diff -= minutes * minute;
+        const seconds = Math.floor(diff / second);
+
+        text.textContent = '本站在风雨中运行了' + years + ' 年 ' + days + ' 天 ' + hours + ' 小时 ' + minutes + ' 分钟 ' + seconds + ' 秒';
+      };
+
+      updateRuntime();
+      const timer = window.setInterval(updateRuntime, second);
+      window.addEventListener('pagehide', () => window.clearInterval(timer), { once: true });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLegacyFooter, { once: true });
+    } else {
+      initLegacyFooter();
+    }
+  })();
+</script><script>
+  (() => {
+    // Keep the theme's own startup path unblocked.  Adding ?no-live2d=1 is a
+    // convenient diagnostic escape hatch if a model breaks in the future.
+    if (new URLSearchParams(window.location.search).has('no-live2d')) return;
+
+    const loadLive2D = () => {
+      if (document.querySelector('script[data-live2d-widget]')) return;
+      const script = document.createElement('script');
+      script.src = '/live2d-widget/autoload.js';
+      script.async = true;
+      script.dataset.live2dWidget = 'true';
+      document.body.appendChild(script);
+    };
+
+    if (document.readyState === 'complete') loadLive2D();
+    else window.addEventListener('load', loadLive2D, { once: true });
+  })();
+  </script><!-- hexo injector body_end end -->
+<script id="waline-recent-comments-fix">
+  (() => {
+    if (window.__walineRecentCommentsFix) return;
+    window.__walineRecentCommentsFix = true;
+
+    const serverURL = "https://commit-ywg7.vercel.app";
+    const lang = "zh-CN";
+    const boundLists = new WeakSet();
+
+    const htmlToText = (html) => {
+      const documentNode = new DOMParser().parseFromString(html || '', 'text/html');
+      return (documentNode.body.textContent || '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    };
+
+    const truncate = (text, length = 50) => {
+      const characters = Array.from(text);
+      return characters.length > length
+        ? characters.slice(0, length).join('') + '...'
+        : text;
+    };
+
+    const formatTime = (time) => {
+      const date = new Date(time);
+      const elapsed = Date.now() - date.getTime();
+
+      if (elapsed < 60 * 60 * 1000) {
+        return Math.max(0, Math.floor(elapsed / 60000)) + ' 分钟前';
+      }
+      if (elapsed < 24 * 60 * 60 * 1000) {
+        return Math.floor(elapsed / 3600000) + ' 小时前';
+      }
+      if (elapsed < 30 * 24 * 60 * 60 * 1000) {
+        return Math.floor(elapsed / 86400000) + ' 天前';
+      }
+      return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    };
+
+    const createItem = (comment) => {
+      const item = document.createElement('li');
+      const link = document.createElement('a');
+      const meta = document.createElement('span');
+      const content = document.createElement('span');
+      const path = String(comment.url || '/');
+      const plainText = htmlToText(comment.orig || comment.comment || '');
+
+      item.className = 'item';
+      link.href = (path.startsWith('/') ? path : '/' + path) + '#' + comment.objectId;
+      meta.className = 'breadcrumb';
+      meta.textContent = (comment.nick || '匿名') + ' @ ' + formatTime(comment.time);
+      content.textContent = truncate(plainText);
+
+      content.appendChild(document.createElement('br'));
+      link.appendChild(meta);
+      link.appendChild(content);
+      item.appendChild(link);
+      return item;
+    };
+
+    const bindList = (list) => {
+      if (boundLists.has(list) || !serverURL) return;
+      boundLists.add(list);
+
+      let comments = null;
+      let renderTimer = 0;
+      const observer = new MutationObserver(() => {
+        if (!comments) return;
+        window.clearTimeout(renderTimer);
+        renderTimer = window.setTimeout(render, 0);
+      });
+
+      const render = () => {
+        if (!comments || !list.isConnected) return;
+        observer.disconnect();
+        const fragment = document.createDocumentFragment();
+        comments.forEach((comment) => fragment.appendChild(createItem(comment)));
+        list.replaceChildren(fragment);
+        observer.observe(list, { childList: true });
+      };
+
+      observer.observe(list, { childList: true });
+
+      fetch(
+        serverURL + '/api/comment?type=recent&count=10&lang=' + encodeURIComponent(lang),
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          comments = Array.isArray(response.data) ? response.data : [];
+          render();
+        })
+        .catch(() => {
+          // Leave ShokaX's original list available if the extra formatting
+          // request fails; the normal comment component is unaffected.
+        });
+    };
+
+    const bindLists = () => {
+      document.querySelectorAll('#new-comment').forEach(bindList);
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bindLists, { once: true });
+    } else {
+      bindLists();
+    }
+
+    new MutationObserver(bindLists).observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+    });
+  })();
+</script></body></html>

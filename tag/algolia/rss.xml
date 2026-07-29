@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Ciallo～(∠・ω )⌒☆ • Posts by &#34;algolia&#34; tag</title>
+        <link>http://localhost:4001</link>
+        <description>合于时而动，不合于时而止</description>
+        <language>zh-CN</language>
+        <pubDate>Thu, 23 Jul 2026 11:00:00 +0800</pubDate>
+        <lastBuildDate>Thu, 23 Jul 2026 11:00:00 +0800</lastBuildDate>
+        <category>测试</category>
+        <category>欢迎</category>
+        <category>学习&amp;技术</category>
+        <category>Hexo</category>
+        <category>ShokaX</category>
+        <category>前端开发</category>
+        <category>博客管理</category>
+        <category>Waline</category>
+        <category>Algolia</category>
+        <category>博客故障排查</category>
+        <category>JavaScript</category>
+        <category>CSS</category>
+        <category>随笔</category>
+        <category>游记</category>
+        <category>手办</category>
+        <category>知识科普</category>
+        <item>
+            <guid isPermalink="true">http://localhost:4001/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/</guid>
+            <title>从 Shoka 到 ShokaX：一次 Hexo 主题迁移与博客管理台开发记录</title>
+            <link>http://localhost:4001/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/</link>
+            <category>Hexo</category>
+            <category>ShokaX</category>
+            <category>前端开发</category>
+            <category>博客管理</category>
+            <category>Waline</category>
+            <category>Algolia</category>
+            <pubDate>Thu, 23 Jul 2026 11:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;第一篇文章里记录的是“页面为什么卡在加载中”，这篇文章接着记录后面的事情：博客恢复构建之后，我为什么又决定从 Shoka 迁移到 ShokaX，以及一个原本只用来写文章的 Hexo 项目，最后是怎样逐渐长出一个本地管理台的。&lt;/p&gt;
+&lt;p&gt;这次迁移并不是单纯把主题文件夹换掉。旧博客里已经积累了文章、分类、标签、图床、评论、搜索和 Live2D 配置。如果只关注首页能不能打开，很容易在迁移之后才发现评论丢了、图片失效，或者原来的导航和页面无法继续编辑。因此我把这次工作拆成“主题迁移、第三方服务迁移、附加功能适配、管理台开发”四条线并行处理。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/blog-dev-series/theme-migration-flow.svg&#34; alt=&#34;从旧主题到管理台的迁移路线&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;一-为什么建立一个独立的-shokax-测试项目&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-为什么建立一个独立的-shokax-测试项目&#34;&gt;#&lt;/a&gt; 一、为什么建立一个独立的 ShokaX 测试项目&lt;/h2&gt;
+&lt;p&gt;旧项目位于 &lt;code&gt;now&lt;/code&gt; 目录。它虽然已经能够继续使用，但早期添加过不少临时脚本，主题和附加功能之间的边界也不够清楚。另一方面，ShokaX 的文档和配置方式与原来的 Shoka 有差异，直接在旧目录里修改，出了问题时很难判断是主题变化、配置变化还是旧文件残留造成的。&lt;/p&gt;
+&lt;p&gt;所以我保留了 &lt;code&gt;now&lt;/code&gt;，再复制出一个独立的 &lt;code&gt;shokax-test&lt;/code&gt; 作为迁移和验证环境。这个决定看起来只是多占了一份磁盘空间，却带来了一个很实际的好处：每一步都有可回退的参照，文章、图片和原配置不会因为一次实验被覆盖。&lt;/p&gt;
+&lt;p&gt;迁移前我阅读了 &lt;code&gt;jc&lt;/code&gt; 文件夹中保存的本地教程，也对照了 ShokaX 官方文档，重点确认了以下内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;站点基本信息和主题配置应该放在哪里；&lt;/li&gt;
+&lt;li&gt;顶部导航、关于页和友链页的写法；&lt;/li&gt;
+&lt;li&gt;主题菜单中子菜单的 &lt;code&gt;default&lt;/code&gt; 结构；&lt;/li&gt;
+&lt;li&gt;评论、搜索和第三方脚本的接入方式；&lt;/li&gt;
+&lt;li&gt;文章封面、背景图和静态资源的路径规则。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;实际迁移时，先复制文章和资源，再逐项迁移站点标题、作者信息、分类、标签、图床地址和部署配置。主题配置则按 ShokaX 的字段重新整理，没有把旧主题的配置文件原封不动地覆盖过去。这样做的代价是需要多看几遍文档，但能避免“配置项名称相同、含义却不同”的问题。&lt;/p&gt;
+&lt;h2 id=&#34;二-把-leancloud-评论迁移到-waline&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-把-leancloud-评论迁移到-waline&#34;&gt;#&lt;/a&gt; 二、把 LeanCloud 评论迁移到 Waline&lt;/h2&gt;
+&lt;p&gt;旧博客的评论存储在 LeanCloud。由于原服务不适合继续作为长期依赖，我先导出了评论数据，再把数据转换成 Waline 可以识别的字段，最后导入已经配置好的 Waline 服务。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/blog-dev-series/waline-migration.svg&#34; alt=&#34;LeanCloud 评论迁移到 Waline 的流程&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这里有一个容易混淆的地方：评论数据导入成功，并不代表页面一定能正确显示评论。数据迁移至少包含两部分：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;数据库里是否存在评论记录，以及文章路径、昵称、时间等字段是否对应。&lt;/li&gt;
+&lt;li&gt;ShokaX 页面是否正确加载 Waline 客户端，并把服务地址传给评论组件。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我先在 Waline 后台确认记录数量，再在博客文章页提交测试评论。这样可以把“导入失败”和“前端没有渲染”区分开。之后首页最新评论出现了语法格式被直接显示的问题，排查发现评论内容经过了 HTML/Markdown 处理，但组件输出时没有按照预期的渲染链路处理，导致标签文本被当成普通内容展示。修复时需要同时检查数据字段和页面模板，不能只修改数据库里的字符串。&lt;/p&gt;
+&lt;p&gt;迁移过程中没有把 App ID、管理密钥或邮箱写进文章。实际配置时，这些值应该放在本地环境变量或部署平台的密钥配置中，并在提交代码前检查是否误加入 Git。&lt;/p&gt;
+&lt;h2 id=&#34;三-重新配置-algolia-搜索&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-重新配置-algolia-搜索&#34;&gt;#&lt;/a&gt; 三、重新配置 Algolia 搜索&lt;/h2&gt;
+&lt;p&gt;旧博客已经使用 Algolia，新主题也支持它，因此这部分没有改成另一套搜索系统，而是按照新主题的字段重新配置 &lt;code&gt;hexo-algolia&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;Algolia 的索引不是在浏览器打开博客时自动生成的，而是在部署前主动上传：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;hexo&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; algolia&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;它的正确位置应该是在文章内容和站点配置确认之后、正式部署之前。后来我把这条命令加入管理台的“构建与预览”区域，点击按钮时由管理台启动任务并显示日志。这样做的意义不只是少敲一条命令，更重要的是让索引上传成为发布流程中的一个明确步骤，避免“页面已经上线，但搜索还没有新文章”的情况。&lt;/p&gt;
+&lt;h2 id=&#34;四-保留原来的-github-图床工作流&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#四-保留原来的-github-图床工作流&#34;&gt;#&lt;/a&gt; 四、保留原来的 GitHub 图床工作流&lt;/h2&gt;
+&lt;p&gt;图片仍然存放在 &lt;code&gt;D:\\hexo\\github(picture\\picture\\csgo&lt;/code&gt; 对应的仓库目录中。原来的习惯是为每篇文章建立独立文件夹，再把图片按照 &lt;code&gt;00.png&lt;/code&gt;、&lt;code&gt;01.png&lt;/code&gt;、&lt;code&gt;02.png&lt;/code&gt; 的顺序命名，执行 Git 提交和推送，之后发布新的 GitHub Release，最后使用 jsDelivr 地址插入文章：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;文章图片文件夹&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;按 00、01、02 编号&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;git add *&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;git commit -m &#34;add files&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;git push&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;发布 GitHub Release&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;使用 jsDelivr 直链&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;例如直链中的版本号会随着新的 Release 改变：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;https://cdn.jsdelivr.net/gh/simoxdcs/csgo@2.4/jiaocheng/2/00.png&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/blog-dev-series/manager-image-host.png&#34; alt=&#34;管理台中的图床素材功能&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;管理台的素材页围绕这个工作流增加了几个小功能：按文件夹浏览、显示缩略图、点击放大、复制图片直链、复制相对路径、自动生成下一个编号，以及提交 Git 变更。Git 推送可以在本机自动完成，但 GitHub Release 是否能完全自动发布，取决于令牌权限和 API 配置。因此管理台同时保留了“打开 GitHub Release 发布页”的备用按钮，至少不会因为自动化权限不足而卡住整个发布流程。&lt;/p&gt;
+&lt;h2 id=&#34;五-重新适配-live2d-看板娘&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#五-重新适配-live2d-看板娘&#34;&gt;#&lt;/a&gt; 五、重新适配 Live2D 看板娘&lt;/h2&gt;
+&lt;p&gt;看板娘使用的是 &lt;code&gt;stevenjoezhang/live2d-widget&lt;/code&gt;。原来的方案主要面向其他主题，模型资源、API 路径、脚本加载顺序和页面层级与 ShokaX 并不完全一致。迁移后最明显的问题是模型切换和换装请求在没有后端服务时无法正常工作，移动端的显示位置也需要重新调整。&lt;/p&gt;
+&lt;p&gt;我先把 Live2D 拆成几个独立部分检查：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;widget 脚本是否只加载一次；&lt;/li&gt;
+&lt;li&gt;模型和贴图路径是否能从当前站点根路径访问；&lt;/li&gt;
+&lt;li&gt;API 或本地模型列表是否返回正确的 JSON；&lt;/li&gt;
+&lt;li&gt;看板娘容器的 &lt;code&gt;z-index&lt;/code&gt; 是否被主题遮挡；&lt;/li&gt;
+&lt;li&gt;移动端尺寸、位置和台词框是否超出屏幕。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在确认资源路径后，再把模型分组、换装参数和位置配置迁移到 ShokaX 能识别的结构中。管理台里也增加了看板娘调整页，可以修改位置、宽高、缩放、台词、模型和皮肤，并提供实时预览；原始 JSON 仍然保留，遇到主题没有暴露的高级选项时可以直接编辑。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/blog-dev-series/manager-live2d.png&#34; alt=&#34;管理台中的 Live2D 调整功能&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这里的经验是：第三方脚本最好不要直接塞进主题公共布局里。先用独立配置确认它能单独运行，再决定把哪些内容写入主题，这样更容易定位加载顺序和全局变量冲突。&lt;/p&gt;
+&lt;h2 id=&#34;六-为什么要做一个本地管理台&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#六-为什么要做一个本地管理台&#34;&gt;#&lt;/a&gt; 六、为什么要做一个本地管理台&lt;/h2&gt;
+&lt;p&gt;迁移完成后，我发现日常维护需要记住的命令越来越多：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;编辑 Markdown&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;上传图片&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;提交图床&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;发布 Release&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;hexo generate&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;hexo server&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;hexo algolia&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;hexo deploy&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这些命令本身并不复杂，但它们之间有顺序关系，而且每一步失败后都要回到终端查日志。于是我做了一个只在本机运行的管理台：不引入独立数据库，直接读取和写入 Hexo 的 Markdown、YAML 和资源目录；写入前自动备份；每项任务都有统一日志；构建、预览、搜索、图床和部署集中在同一个页面里。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/blog-dev-series/management-architecture.svg&#34; alt=&#34;管理台的整体架构&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;管理台的核心不是把每条命令换成一个按钮，而是把容易遗漏的步骤固定成可检查的工作流。比如构建任务完成后才能进行预览，Algolia 上传应该在文章更新之后进行，部署前则需要能看到最近一次构建日志。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/blog-dev-series/manager-dashboard.png&#34; alt=&#34;管理台概览&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;七-管理台逐步增加的功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#七-管理台逐步增加的功能&#34;&gt;#&lt;/a&gt; 七、管理台逐步增加的功能&lt;/h2&gt;
+&lt;h3 id=&#34;1-构建-预览-停止和部署&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-构建-预览-停止和部署&#34;&gt;#&lt;/a&gt; 1. 构建、预览、停止和部署&lt;/h3&gt;
+&lt;p&gt;最初“本地博客预览”按钮只是一个链接，点击后并没有启动 &lt;code&gt;hexo s&lt;/code&gt;，所以看起来像是按钮失效。后来改成由管理台启动 Hexo 子进程，并记录端口和进程状态。预览地址固定为 &lt;code&gt;http://localhost:4000/&lt;/code&gt;，同时增加停止按钮，避免多个 Hexo 进程抢占端口。&lt;/p&gt;
+&lt;p&gt;停止服务前会检查构建、Algolia、部署和图床任务是否仍在运行，防止误杀正在执行的任务。部署仍然沿用原来的 &lt;code&gt;hexo d&lt;/code&gt; 流程，管理台只是负责启动命令、显示日志和报告退出状态。&lt;/p&gt;
+&lt;h3 id=&#34;2-文章导入与筛选&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-文章导入与筛选&#34;&gt;#&lt;/a&gt; 2. 文章导入与筛选&lt;/h3&gt;
+&lt;p&gt;文章管理支持导入外部 &lt;code&gt;.md&lt;/code&gt; 文件，新建文章时可以填写标题、日期、分类、标签、封面和摘要等参数。分类和标签既可以从已有候选中选择，也可以直接新建。&lt;/p&gt;
+&lt;p&gt;后来又增加了按分类筛选。后端原本已经支持 &lt;code&gt;category&lt;/code&gt; 查询，前端增加分类下拉框后，可以把关键词、分类和文章状态组合使用，更快找到需要修改的文章。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/blog-dev-series/manager-articles.png&#34; alt=&#34;管理台文章管理&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-素材管理&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-素材管理&#34;&gt;#&lt;/a&gt; 3. 素材管理&lt;/h3&gt;
+&lt;p&gt;素材页支持上传、删除、缩略图预览、放大查看、复制相对地址和设置为文章封面。复制相对地址后可以直接填入文章的封面字段，减少手动查找路径的次数。删除操作需要二次确认，并且只允许在素材目录范围内执行，避免误删站点其他文件。&lt;/p&gt;
+&lt;h3 id=&#34;4-页面-友联和顶部导航&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4-页面-友联和顶部导航&#34;&gt;#&lt;/a&gt; 4. 页面、友联和顶部导航&lt;/h3&gt;
+&lt;p&gt;主题迁移后，关于页、友联页和顶部导航不能只靠手动改配置文件。管理台增加了页面编辑、友链条目管理和导航项增删排序功能，也兼容 ShokaX 的子菜单结构。保存后会先生成备份，再写回主题配置或页面 Markdown。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/blog-dev-series/manager-pages-navigation.png&#34; alt=&#34;页面与导航管理&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;5-markdown-特效生成器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#5-markdown-特效生成器&#34;&gt;#&lt;/a&gt; 5. Markdown 特效生成器&lt;/h3&gt;
+&lt;p&gt;ShokaX 的一些文字特效和标签块需要记住特殊 Markdown 语法，长时间不用很容易写错。于是增加了一个小工具：输入文字，选择特效或标签块，右侧立即生成可复制的 Markdown，并在预览区域查看渲染效果。&lt;/p&gt;
+&lt;p&gt;这个功能没有试图替代 Markdown 编辑器，而是把“记忆语法”变成“选择模板”。模板仍然是纯文本，用户复制到任意编辑器后可以继续修改。&lt;/p&gt;
+&lt;h2 id=&#34;八-迁移过程中遇到的几个具体问题&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#八-迁移过程中遇到的几个具体问题&#34;&gt;#&lt;/a&gt; 八、迁移过程中遇到的几个具体问题&lt;/h2&gt;
+&lt;h3 id=&#34;1-预览按钮没有效果&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-预览按钮没有效果&#34;&gt;#&lt;/a&gt; 1. 预览按钮没有效果&lt;/h3&gt;
+&lt;p&gt;原因不是 Hexo 不能预览，而是前端按钮没有连接到后端启动接口。修复后，管理台负责启动和停止 &lt;code&gt;hexo s&lt;/code&gt;，浏览器仍然访问 Hexo 的标准端口。&lt;/p&gt;
+&lt;h3 id=&#34;2-release-无法完全自动化&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-release-无法完全自动化&#34;&gt;#&lt;/a&gt; 2. Release 无法完全自动化&lt;/h3&gt;
+&lt;p&gt;本机 Git 提交和推送不需要额外的网页操作，但发布 Release 需要 GitHub 权限。没有配置合适的令牌时，强行自动化反而会把凭据写进项目。因此最终采用“能自动推送就自动推送，没有权限就打开发布页”的两段式方案。&lt;/p&gt;
+&lt;h3 id=&#34;3-构建时报-shiki-语言错误&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-构建时报-shiki-语言错误&#34;&gt;#&lt;/a&gt; 3. 构建时报 Shiki 语言错误&lt;/h3&gt;
+&lt;p&gt;最后一次静态站点构建时遇到了：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;ShikiError: Language `Python` is not included in this bundle&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;检查文章后发现，代码块写成了大写的 &lt;code&gt;Python&lt;/code&gt;：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;```&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;Python&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当前构建器识别的是小写语言名，所以把相关代码块统一改成：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;```&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;python&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这件事提醒我，Markdown 看起来只是文本，但主题的代码高亮器会对语言标识进行严格匹配。遇到构建错误时，应该回到报错文件和行号，而不是先怀疑整个主题。&lt;/p&gt;
+&lt;h3 id=&#34;4-评论-搜索和页面显示是三条链路&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4-评论-搜索和页面显示是三条链路&#34;&gt;#&lt;/a&gt; 4. 评论、搜索和页面显示是三条链路&lt;/h3&gt;
+&lt;p&gt;Waline 数据库、评论组件、Algolia 索引和页面模板各自独立。评论能在后台看到，不代表文章页一定能渲染；文章已经发布，也不代表 Algolia 已经建立新索引。把这些链路分开验证，是这次迁移中比较重要的排查方法。&lt;/p&gt;
+&lt;h2 id=&#34;九-最后固定下来的发布流程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#九-最后固定下来的发布流程&#34;&gt;#&lt;/a&gt; 九、最后固定下来的发布流程&lt;/h2&gt;
+&lt;p&gt;经过多次调整，我现在更倾向于按下面的顺序发布：&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/blog-dev-series/publish-workflow.svg&#34; alt=&#34;从写作到部署的发布流程&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;创建或导入文章&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;设置分类、标签和封面&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;上传图片并复制直链&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;保存文章并检查资源路径&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;构建静态站点&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;启动本地预览&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;上传 Algolia 索引&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;检查首页、文章页、评论和搜索&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;执行 hexo deploy&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果只是修改文章文字，可以跳过图床步骤；如果只改导航或关于页，也应该至少重新构建并预览。流程不是越复杂越好，而是要让每一次发布都能知道自己检查过什么。&lt;/p&gt;
+&lt;h2 id=&#34;十-这次迁移带给我的启发&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#十-这次迁移带给我的启发&#34;&gt;#&lt;/a&gt; 十、这次迁移带给我的启发&lt;/h2&gt;
+&lt;p&gt;第一，主题迁移不是复制一个主题目录。真正需要迁移的是内容模型、资源路径、第三方服务和自己的使用习惯。&lt;/p&gt;
+&lt;p&gt;第二，第三方服务一定要考虑替代方案。LeanCloud 评论迁移到 Waline、Algolia 索引单独上传，都是在服务发生变化之前给自己留出可控的迁移路径。&lt;/p&gt;
+&lt;p&gt;第三，管理台的价值不在于界面看起来多复杂，而在于把容易忘记的顺序、备份和日志固定下来。对个人博客来说，本地优先、文件可读、出错可回退，比引入一套复杂数据库更合适。&lt;/p&gt;
+&lt;p&gt;最后，Hexo 让我重新认识了前端和后端之间的边界：Markdown 是内容，主题模板负责结构，构建器负责转换，浏览器负责运行，管理台则负责把这些动作组织起来。只有把每一层的职责分清楚，遇到问题时才不会再次陷入“改一处、坏三处”的循环。&lt;/p&gt;
+&lt;p&gt;这次迁移并没有让博客变成一个完全不需要维护的系统，但它让我更清楚地知道每个功能在哪里、出了问题应该先看什么，也让后续继续调整主题和管理工具变得更有依据。&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
