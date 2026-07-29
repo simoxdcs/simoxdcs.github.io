@@ -1,29 +1,29 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://localhost:4001</id>
+    <id>https://simoxdcs.github.io</id>
     <title>Ciallo～(∠・ω )⌒☆ • Posts by &#34;手办&#34; tag</title>
-    <link href="http://localhost:4001" />
+    <link href="https://simoxdcs.github.io" />
     <updated>2026-07-30T17:33:10.000Z</updated>
-    <category term="测试" />
-    <category term="欢迎" />
-    <category term="学习&amp;技术" />
+    <category term="手办" />
+    <category term="知识科普" />
     <category term="Hexo" />
     <category term="ShokaX" />
     <category term="前端开发" />
     <category term="博客管理" />
     <category term="Waline" />
     <category term="Algolia" />
+    <category term="学习&amp;技术" />
     <category term="博客故障排查" />
     <category term="JavaScript" />
     <category term="CSS" />
+    <category term="测试" />
     <category term="随笔" />
+    <category term="欢迎" />
     <category term="游记" />
-    <category term="手办" />
-    <category term="知识科普" />
     <entry>
-        <id>http://localhost:4001/2026/07/31/%E6%89%8B%E5%8A%9E%E8%AF%A6%E8%A7%A3/</id>
+        <id>https://simoxdcs.github.io/2026/07/31/%E6%89%8B%E5%8A%9E%E8%AF%A6%E8%A7%A3/</id>
         <title>手办详解</title>
-        <link rel="alternate" href="http://localhost:4001/2026/07/31/%E6%89%8B%E5%8A%9E%E8%AF%A6%E8%A7%A3/"/>
+        <link rel="alternate" href="https://simoxdcs.github.io/2026/07/31/%E6%89%8B%E5%8A%9E%E8%AF%A6%E8%A7%A3/"/>
         <content type="html">&lt;p&gt;本文来详细介绍一下各类手办的名称以及特点之类的，说起来很多人都以为手办都差不多，其实这之间的差别非常大，不同的分类之间千差万别，下面就给大家详细介绍一下。&lt;/p&gt;
 &lt;h2 id=&#34;一-先理解几个容易混淆的概念&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-先理解几个容易混淆的概念&#34;&gt;#&lt;/a&gt; 一、先理解几个容易混淆的概念&lt;/h2&gt;
 &lt;h3 id=&#34;1-pvc手办&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-pvc手办&#34;&gt;#&lt;/a&gt; 1. PVC手办&lt;/h3&gt;
@@ -1120,9 +1120,9 @@
         <updated>2026-07-30T17:33:10.000Z</updated>
     </entry>
     <entry>
-        <id>http://localhost:4001/2026/07/30/%E6%89%8B%E5%8A%9E%E8%AE%B0%E5%BD%95/</id>
+        <id>https://simoxdcs.github.io/2026/07/30/%E6%89%8B%E5%8A%9E%E8%AE%B0%E5%BD%95/</id>
         <title>手办记录</title>
-        <link rel="alternate" href="http://localhost:4001/2026/07/30/%E6%89%8B%E5%8A%9E%E8%AE%B0%E5%BD%95/"/>
+        <link rel="alternate" href="https://simoxdcs.github.io/2026/07/30/%E6%89%8B%E5%8A%9E%E8%AE%B0%E5%BD%95/"/>
         <content type="html">&lt;p&gt;今天突然想把从最开始到现在买的所有手办和相关的东西都列出来，算了一下也算是买了不少了，已经不想按照买的时间顺序来记录了，那就按照在平台购买的分类来分别记录一下吧，多图预警！！&lt;/p&gt;
 &lt;p&gt;对于手办，先要了解一下手办的分类，下面按材质、生产方式、完成度和玩法，对常见手办进行分类。需要先说明：“手办”在中文市场中是一个比较宽泛的称呼，既包括PVC比例成品、景品，也经常包括树脂雕像、可动模型甚至人偶。不同圈子对“GK”的理解也不完全相同。&lt;/p&gt;
 &lt;p&gt;文中的价格主要参考中国大陆市场常见售价，以人民币计，只能作为大致区间。作品热度、尺寸、厂商、授权、限量数量、运输和二手行情都会造成很大差异。&lt;/p&gt;

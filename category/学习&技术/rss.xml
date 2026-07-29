@@ -2,31 +2,31 @@
 <rss version="2.0">
     <channel>
         <title>Ciallo～(∠・ω )⌒☆ • Posts by &#34;学习&amp;技术&#34; category</title>
-        <link>http://localhost:4001</link>
+        <link>https://simoxdcs.github.io</link>
         <description>合于时而动，不合于时而止</description>
         <language>zh-CN</language>
         <pubDate>Thu, 23 Jul 2026 12:00:00 +0800</pubDate>
         <lastBuildDate>Thu, 23 Jul 2026 12:00:00 +0800</lastBuildDate>
-        <category>测试</category>
-        <category>欢迎</category>
-        <category>学习&amp;技术</category>
+        <category>手办</category>
+        <category>知识科普</category>
         <category>Hexo</category>
         <category>ShokaX</category>
         <category>前端开发</category>
         <category>博客管理</category>
         <category>Waline</category>
         <category>Algolia</category>
+        <category>学习&amp;技术</category>
         <category>博客故障排查</category>
         <category>JavaScript</category>
         <category>CSS</category>
+        <category>测试</category>
         <category>随笔</category>
+        <category>欢迎</category>
         <category>游记</category>
-        <category>手办</category>
-        <category>知识科普</category>
         <item>
-            <guid isPermalink="true">http://localhost:4001/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/</guid>
+            <guid isPermalink="true">https://simoxdcs.github.io/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/</guid>
             <title>从一张被裁坏的封面开始：给 Hexo 管理台加入文章封面焦点选择</title>
-            <link>http://localhost:4001/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/</link>
+            <link>https://simoxdcs.github.io/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/</link>
             <category>Hexo</category>
             <category>ShokaX</category>
             <category>前端开发</category>
@@ -112,9 +112,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://localhost:4001/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/</guid>
+            <guid isPermalink="true">https://simoxdcs.github.io/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/</guid>
             <title>从 Shoka 到 ShokaX：一次 Hexo 主题迁移与博客管理台开发记录</title>
-            <link>http://localhost:4001/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/</link>
+            <link>https://simoxdcs.github.io/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/</link>
             <category>Hexo</category>
             <category>ShokaX</category>
             <category>前端开发</category>
@@ -259,9 +259,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://localhost:4001/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/</guid>
+            <guid isPermalink="true">https://simoxdcs.github.io/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/</guid>
             <title>从页面卡在加载中到恢复构建：一次 Hexo 博客故障排查记录</title>
-            <link>http://localhost:4001/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/</link>
+            <link>https://simoxdcs.github.io/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/</link>
             <category>Hexo</category>
             <category>博客故障排查</category>
             <category>JavaScript</category>
@@ -359,9 +359,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://localhost:4001/2025/10/23/xuexi/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+            <guid isPermalink="true">https://simoxdcs.github.io/2025/10/23/xuexi/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
             <title>人工智能学习笔记</title>
-            <link>http://localhost:4001/2025/10/23/xuexi/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+            <link>https://simoxdcs.github.io/2025/10/23/xuexi/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
             <category>学习&amp;技术</category>
             <pubDate>Thu, 23 Oct 2025 00:30:42 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;在学习人工智能之前，首先，我们需要系统性的了解一下人工智能的分类以及各个部分的组成&lt;/p&gt;
@@ -905,9 +905,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://localhost:4001/2024/09/24/jiaocheng/%E5%A4%A9%E9%80%89%E5%A7%AC%E8%B0%83%E6%95%99%E8%AE%B0%E5%BD%95/</guid>
+            <guid isPermalink="true">https://simoxdcs.github.io/2024/09/24/jiaocheng/%E5%A4%A9%E9%80%89%E5%A7%AC%E8%B0%83%E6%95%99%E8%AE%B0%E5%BD%95/</guid>
             <title>折腾天选姬记录</title>
-            <link>http://localhost:4001/2024/09/24/jiaocheng/%E5%A4%A9%E9%80%89%E5%A7%AC%E8%B0%83%E6%95%99%E8%AE%B0%E5%BD%95/</link>
+            <link>https://simoxdcs.github.io/2024/09/24/jiaocheng/%E5%A4%A9%E9%80%89%E5%A7%AC%E8%B0%83%E6%95%99%E8%AE%B0%E5%BD%95/</link>
             <category>学习&amp;技术</category>
             <pubDate>Tue, 24 Sep 2024 06:00:47 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;今年八月底的时候国家搞了一个刺激消费的补贴，首先开始的是北京，之后又增加了好多城市，但是因为我有个同学在北京实习加上一开始也是按照教程领取的北京补贴，再就是我的天选1也已经用了将近五年了，于是就打算趁着这次补贴换一台新的电脑，在网上观察了很久看了很多的评测以及用户使用体验之后，在9月9号购买了天选5p的锐龙版4070，算下来政府补贴了1800多元，最后是7199的价格到手，已经算是很便宜了。当然中间因为一些原因，北京的补贴的收货地址不能到北京市以外了，只能先把收货地址填到我的那个在北京的同学那里，他签收之后再给我转寄过来。&lt;/p&gt;
@@ -1026,9 +1026,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://localhost:4001/2024/01/31/jiaocheng/%E6%97%B6%E9%9A%94n%E4%B9%85%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BF%BB%E6%96%B0%E8%AE%B0%E5%BD%95/</guid>
+            <guid isPermalink="true">https://simoxdcs.github.io/2024/01/31/jiaocheng/%E6%97%B6%E9%9A%94n%E4%B9%85%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BF%BB%E6%96%B0%E8%AE%B0%E5%BD%95/</guid>
             <title>时隔n久的博客翻新记录</title>
-            <link>http://localhost:4001/2024/01/31/jiaocheng/%E6%97%B6%E9%9A%94n%E4%B9%85%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BF%BB%E6%96%B0%E8%AE%B0%E5%BD%95/</link>
+            <link>https://simoxdcs.github.io/2024/01/31/jiaocheng/%E6%97%B6%E9%9A%94n%E4%B9%85%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BF%BB%E6%96%B0%E8%AE%B0%E5%BD%95/</link>
             <category>学习&amp;技术</category>
             <pubDate>Wed, 31 Jan 2024 19:37:49 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;翻了翻记录，从我第一次开始写这个博客已经过去了四年的时间了，从一开始啥也不会，看着视频一点一点搭起来这个博客，到后面可以自定义一些其他想要的功能，都是在不断成长的证明，那么就简单说一说这段时间的博客翻新过程吧。&lt;/p&gt;
@@ -1148,9 +1148,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://localhost:4001/2024/01/27/jiaocheng/G502%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/</guid>
+            <guid isPermalink="true">https://simoxdcs.github.io/2024/01/27/jiaocheng/G502%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/</guid>
             <title>G502折腾记录</title>
-            <link>http://localhost:4001/2024/01/27/jiaocheng/G502%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/</link>
+            <link>https://simoxdcs.github.io/2024/01/27/jiaocheng/G502%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/</link>
             <category>学习&amp;技术</category>
             <pubDate>Sat, 27 Jan 2024 17:35:29 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;鼠标型号是Logitech G502 LightSpeed,买这个鼠标之前一直用的是那种淘宝上20块的英菲克鼠标，更换的原因也很简单，有线鼠标在用的时候总是会因为不小心碰到线而导致断触一下，这就导致你在使用的过程中非常的不爽，因此开始寻找一个好用的无线鼠标，当时在酷安以及贴吧等地方看了不少评测，之后还是听了同学说罗技的鼠标挺好用的，就去看了看，当时一眼就看中了G502的外观，真的是很好看如下图所示：&lt;/p&gt;
@@ -1223,9 +1223,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://localhost:4001/2022/01/29/xuexi/c-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+            <guid isPermalink="true">https://simoxdcs.github.io/2022/01/29/xuexi/c-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
             <title>c++学习笔记</title>
-            <link>http://localhost:4001/2022/01/29/xuexi/c-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+            <link>https://simoxdcs.github.io/2022/01/29/xuexi/c-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
             <category>学习&amp;技术</category>
             <pubDate>Sat, 29 Jan 2022 12:03:38 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;下学期就要开始学面向对象的程序设计了，也就是相当于上上学期的程序设计的c++版本，所以还是要认真的对待一下这个，毕竟还是要自己好好的提升一下自己的程序能力啊。不能再继续摆了。。。开整&lt;/p&gt;
@@ -1440,9 +1440,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://localhost:4001/2020/12/14/xuexi/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</guid>
+            <guid isPermalink="true">https://simoxdcs.github.io/2020/12/14/xuexi/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</guid>
             <title>排序算法</title>
-            <link>http://localhost:4001/2020/12/14/xuexi/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</link>
+            <link>https://simoxdcs.github.io/2020/12/14/xuexi/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</link>
             <category>学习&amp;技术</category>
             <pubDate>Mon, 14 Dec 2020 15:25:26 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;排序&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#排序&#34;&gt;#&lt;/a&gt; 排序&lt;/h3&gt;
@@ -1620,9 +1620,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://localhost:4001/2020/12/06/xuexi/MarkDown/</guid>
+            <guid isPermalink="true">https://simoxdcs.github.io/2020/12/06/xuexi/MarkDown/</guid>
             <title>MarkDown</title>
-            <link>http://localhost:4001/2020/12/06/xuexi/MarkDown/</link>
+            <link>https://simoxdcs.github.io/2020/12/06/xuexi/MarkDown/</link>
             <category>学习&amp;技术</category>
             <pubDate>Sun, 06 Dec 2020 16:22:26 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;一级标题使用一个#&lt;/p&gt;
@@ -2292,9 +2292,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://localhost:4001/2020/11/18/xuexi/linux%E6%8D%A2%E6%BA%90/</guid>
+            <guid isPermalink="true">https://simoxdcs.github.io/2020/11/18/xuexi/linux%E6%8D%A2%E6%BA%90/</guid>
             <title>linux相关</title>
-            <link>http://localhost:4001/2020/11/18/xuexi/linux%E6%8D%A2%E6%BA%90/</link>
+            <link>https://simoxdcs.github.io/2020/11/18/xuexi/linux%E6%8D%A2%E6%BA%90/</link>
             <category>学习&amp;技术</category>
             <pubDate>Wed, 18 Nov 2020 14:20:02 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;##第一章&lt;/p&gt;
@@ -2358,9 +2358,9 @@ pacman -Sy package_name	与上面命令不同的是，该命令将在同步包�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://localhost:4001/2020/11/18/jiaocheng/%E6%95%99%E7%A8%8B/</guid>
+            <guid isPermalink="true">https://simoxdcs.github.io/2020/11/18/jiaocheng/%E6%95%99%E7%A8%8B/</guid>
             <title>博客教程</title>
-            <link>http://localhost:4001/2020/11/18/jiaocheng/%E6%95%99%E7%A8%8B/</link>
+            <link>https://simoxdcs.github.io/2020/11/18/jiaocheng/%E6%95%99%E7%A8%8B/</link>
             <category>学习&amp;技术</category>
             <pubDate>Wed, 18 Nov 2020 14:07:53 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;##第一章&lt;/p&gt;

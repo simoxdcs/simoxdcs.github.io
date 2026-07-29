@@ -1,29 +1,29 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://localhost:4001</id>
+    <id>https://simoxdcs.github.io</id>
     <title>Ciallo～(∠・ω )⌒☆ • Posts by &#34;css&#34; tag</title>
-    <link href="http://localhost:4001" />
+    <link href="https://simoxdcs.github.io" />
     <updated>2026-07-23T04:00:00.000Z</updated>
-    <category term="测试" />
-    <category term="欢迎" />
-    <category term="学习&amp;技术" />
+    <category term="手办" />
+    <category term="知识科普" />
     <category term="Hexo" />
     <category term="ShokaX" />
     <category term="前端开发" />
     <category term="博客管理" />
     <category term="Waline" />
     <category term="Algolia" />
+    <category term="学习&amp;技术" />
     <category term="博客故障排查" />
     <category term="JavaScript" />
     <category term="CSS" />
+    <category term="测试" />
     <category term="随笔" />
+    <category term="欢迎" />
     <category term="游记" />
-    <category term="手办" />
-    <category term="知识科普" />
     <entry>
-        <id>http://localhost:4001/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/</id>
+        <id>https://simoxdcs.github.io/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/</id>
         <title>从一张被裁坏的封面开始：给 Hexo 管理台加入文章封面焦点选择</title>
-        <link rel="alternate" href="http://localhost:4001/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/"/>
+        <link rel="alternate" href="https://simoxdcs.github.io/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/"/>
         <content type="html">&lt;p&gt;完成 ShokaX 迁移和博客管理台之后，我原本以为文章封面的工作流已经比较完整了：可以从素材库选择图片，可以把图片地址填入文章，也可以在管理台里直接预览。实际使用一段时间后，我才发现“图片能够作为封面显示”和“封面在首页看起来合适”其实是两回事。&lt;/p&gt;
 &lt;p&gt;问题出现在首页的文章列表。为了让每张文章卡片保持统一高度，主题会把不同尺寸的图片放进一个固定比例的区域，再裁掉超出范围的部分。如果主体刚好在图片中央，效果通常没有问题；但如果人物、文字或者截图中的重点位于边缘，首页最终留下来的可能只是一块背景，真正想展示的内容反而被裁掉了。&lt;/p&gt;
 &lt;p&gt;所以这次给管理台增加的功能并不是“再上传一张封面”，而是让每篇文章都可以记录自己的封面焦点。以后主题改变卡片比例时，浏览器仍然会尽量围绕这个焦点进行裁切。&lt;/p&gt;

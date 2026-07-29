@@ -1,29 +1,29 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://localhost:4001</id>
+    <id>https://simoxdcs.github.io</id>
     <title>Ciallo～(∠・ω )⌒☆ • Posts by &#34;algolia&#34; tag</title>
-    <link href="http://localhost:4001" />
+    <link href="https://simoxdcs.github.io" />
     <updated>2026-07-23T03:00:00.000Z</updated>
-    <category term="测试" />
-    <category term="欢迎" />
-    <category term="学习&amp;技术" />
+    <category term="手办" />
+    <category term="知识科普" />
     <category term="Hexo" />
     <category term="ShokaX" />
     <category term="前端开发" />
     <category term="博客管理" />
     <category term="Waline" />
     <category term="Algolia" />
+    <category term="学习&amp;技术" />
     <category term="博客故障排查" />
     <category term="JavaScript" />
     <category term="CSS" />
+    <category term="测试" />
     <category term="随笔" />
+    <category term="欢迎" />
     <category term="游记" />
-    <category term="手办" />
-    <category term="知识科普" />
     <entry>
-        <id>http://localhost:4001/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/</id>
+        <id>https://simoxdcs.github.io/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/</id>
         <title>从 Shoka 到 ShokaX：一次 Hexo 主题迁移与博客管理台开发记录</title>
-        <link rel="alternate" href="http://localhost:4001/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+        <link rel="alternate" href="https://simoxdcs.github.io/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
         <content type="html">&lt;p&gt;第一篇文章里记录的是“页面为什么卡在加载中”，这篇文章接着记录后面的事情：博客恢复构建之后，我为什么又决定从 Shoka 迁移到 ShokaX，以及一个原本只用来写文章的 Hexo 项目，最后是怎样逐渐长出一个本地管理台的。&lt;/p&gt;
 &lt;p&gt;这次迁移并不是单纯把主题文件夹换掉。旧博客里已经积累了文章、分类、标签、图床、评论、搜索和 Live2D 配置。如果只关注首页能不能打开，很容易在迁移之后才发现评论丢了、图片失效，或者原来的导航和页面无法继续编辑。因此我把这次工作拆成“主题迁移、第三方服务迁移、附加功能适配、管理台开发”四条线并行处理。&lt;/p&gt;
 &lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/blog-dev-series/theme-migration-flow.svg&#34; alt=&#34;从旧主题到管理台的迁移路线&#34; /&gt;&lt;/p&gt;
