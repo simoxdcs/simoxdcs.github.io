@@ -7,9 +7,6 @@
     <category term="手办" />
     <category term="测试" />
     <category term="知识科普" />
-    <category term="游记" />
-    <category term="随笔" />
-    <category term="欢迎" />
     <category term="学习&amp;技术" />
     <category term="Hexo" />
     <category term="博客故障排查" />
@@ -19,7 +16,10 @@
     <category term="博客管理" />
     <category term="Waline" />
     <category term="Algolia" />
+    <category term="欢迎" />
     <category term="CSS" />
+    <category term="随笔" />
+    <category term="游记" />
     <entry>
         <id>https://simoxdcs.github.io/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/</id>
         <title>从页面卡在加载中到恢复构建：一次 Hexo 博客故障排查记录</title>
