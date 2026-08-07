@@ -1,0 +1,576 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="Ciallo～(∠・ω )⌒☆" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="Ciallo～(∠・ω )⌒☆" type="application/atom+xml"><link rel="alternate" type="application/json" title="Ciallo～(∠・ω )⌒☆" href="https://simoxdcs.github.io/feed.json"/><link rel="preconnect" href="https://s4.zstatic.net"/><link rel="preconnect" href="https://at.alicdn.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CFredericka%20the%20Great:400,400italic,700,700italic%7CNoto%20Serif%20JP:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CInconsolata:400,400italic,700,700italic&display=swap&subset=latin,latin-ext" media="none" onload="this.media&#x3D;&#39;all&#39;"><link rel="modulepreload" href="/js/siteInit.js?v=20260730-home-url-fix"></link><link rel="modulepreload" href="/js/nyx-player-ZTJDYWR3.js"></link><link rel="modulepreload" href="/js/copy-tex-MYBRPUMA.js"></link><link rel="modulepreload" href="/js/post-3ZVOLPU5.js"></link><link rel="modulepreload" href="/js/chunk-LJAOJI5M.js"></link><link rel="modulepreload" href="/js/waline-NVSVNCZW.js"></link><link rel="modulepreload" href="/js/comments-UKWQ4PGU.js"></link><link rel="modulepreload" href="/js/chunk-EPRFQLOA.js"></link><link rel="modulepreload" href="/js/search-AO7WA7FR.js"></link><link rel="modulepreload" href="/js/chunk-ZR27JW3A.js"></link><link rel="modulepreload" href="/js/chunk-3PK7ALY6.js"></link><link rel="modulepreload" href="/js/index.esm-STK4JURV.js"></link><link rel="modulepreload" href="/js/chunk-3K7HWCTQ.js"></link><link rel="modulepreload" href="/js/chunk-6WWVXVKW.js"></link><link rel="modulepreload" href="/js/chunk-WIQECBEN.js"></link><link rel="stylesheet" href="/css/siteInit.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="stylesheet" href="/css/waline-2PCQXSKL.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="stylesheet" href="/css/comments-NVBMGFU5.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="preload" href="https://cdn.jsdelivr.net/gh/simoxdcs/csgo@v3.3/haokande/48.png" as="image" fetchpriority="high"><meta name="keywords" content="Hexo,前端开发,Markdown,"/><meta name="description" content="合于时而动，不合于时而止"/><link rel="canonical" href="https://simoxdcs.github.io/2026/08/06/jiaocheng/Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%88%9B%E4%BD%9C%E5%B7%A5%E4%BD%9C%E5%8C%BA%E4%B8%8E%E5%9B%BE%E5%BA%8A%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/"><link rel="stylesheet" href="/css/post.css?v=0.5.4"><link rel="stylesheet" href="/css/mermaid.css?v=0.5.4"><!-- 临时处理--><link rel="stylesheet" media="none" onload="this.media='all'" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css"><title>从“能管理文章”到“能直接写文章”：Hexo 管理台创作工作区与图床优化记录</title><!-- hexo injector head_end start -->
+<style id="legacy-footer-style">
+  #footer .site-runtime {
+    margin-top: .45rem;
+    color: var(--grey-5);
+    font-size: .875rem;
+    line-height: 1.8;
+  }
+
+  #footer .site-pixel-counter {
+    display: flex;
+    min-height: 5rem;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: .65rem;
+    overflow: hidden;
+  }
+
+  #footer .site-pixel-counter img {
+    display: block;
+    max-width: min(100%, 31rem);
+    height: auto;
+    image-rendering: pixelated;
+  }
+
+  @media (max-width: 480px) {
+    #footer .site-runtime {
+      font-size: .8125rem;
+    }
+
+    #footer .site-pixel-counter img {
+      max-width: 100%;
+    }
+  }
+</style><style id="post-cover-positions">.segments .cover a[href="/2026/07/30/%E6%89%8B%E5%8A%9E%E8%AE%B0%E5%BD%95/"] > img{object-position:58% 7%}.segments .cover a[href="/2026/07/31/%E6%89%8B%E5%8A%9E%E8%AF%A6%E8%A7%A3/"] > img{object-position:54% 45%}.segments .cover a[href="/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/"] > img{object-position:50% 15%}.segments .cover a[href="/2024/09/24/jiaocheng/%E5%A4%A9%E9%80%89%E5%A7%AC%E8%B0%83%E6%95%99%E8%AE%B0%E5%BD%95/"] > img{object-position:50% 17%}.segments .cover a[href="/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/"] > img{object-position:50% 4%}.segments .cover a[href="/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/"] > img{object-position:57% 21%}.segments .cover a[href="/2025/10/23/xuexi/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"] > img{object-position:52% 13%}.segments .cover a[href="/2026/08/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E9%97%B2%E9%B1%BC%E5%87%BA%E5%94%AE%E7%BB%8F%E5%8E%86/"] > img{object-position:49% 29%}.segments .cover a[href="/2026/08/06/jiaocheng/Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%88%9B%E4%BD%9C%E5%B7%A5%E4%BD%9C%E5%8C%BA%E4%B8%8E%E5%9B%BE%E5%BA%8A%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/"] > img{object-position:54% 15%}</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="pagefind_mount"></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">从“能管理文章”到“能直接写文章”：Hexo 管理台创作工作区与图床优化记录</h1><div class="meta"><span class="item" title="创建时间：2026-08-06 19:30:00"><span class="icon"><i class="ic i-calendar"></i></span><span class="text">发表于</span><time itemprop="dateCreated datePublished" datetime="2026-08-06T19:30:00+08:00">2026-08-06</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span class="text">本文字数</span><span>12k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span class="text">阅读时长</span><span>11 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Momingのsite</a></li></ul><ul class="right" id="rightNav"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><img src="https://cdn.jsdelivr.net/gh/simoxdcs/csgo@v3.3/haokande/48.png" loading="eager" decoding="async" fetchpriority="high" alt="Ciallo～(∠・ω )⌒☆"></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="article wrap"><div class="breadcrumb" itemListElement itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i><span><a href="/">首页</a></span><i class="ic i-angle-right"></i><span class="current" itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem"><a href="/categories/xuexi/" itemprop="item" rel="index" title="分类于学习&amp;技术"><span itemprop="name">学习&技术<meta itemprop="position" content="0"/></span></a></span></div><article class="post block" itemscope="itemscope" itemtype="http://schema.org/Article" data-pagefind-body="data-pagefind-body" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://simoxdcs.github.io/2026/08/06/jiaocheng/Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%88%9B%E4%BD%9C%E5%B7%A5%E4%BD%9C%E5%8C%BA%E4%B8%8E%E5%9B%BE%E5%BA%8A%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/"/><span hidden="hidden" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="image" content="/assets/avatar.jpg"/><meta itemprop="name" content="试末"/><meta itemprop="description" content=", 合于时而动，不合于时而止"/></span><span hidden="hidden" itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="Ciallo～(∠・ω )⌒☆"/></span><div class="body md" itemprop="articleBody"><p>完成 ShokaX 迁移和管理台的第一版之后，管理文章这件事已经比以前集中许多：可以新建和导入 Markdown，可以填写分类、标签、封面与日期，也可以从素材库复制图片地址。不过实际用它写过一篇稍长的文章后，我很快发现“能够修改文章文件”和“适合直接创作文章”仍然是两件事。</p>
+<p>第一版编辑区更像一个附带在文章参数下面的文本框。写几行内容没有问题，但正文变长以后，预览只能看到开头一小部分，编辑器和预览区都不容易滚动；插入图片仍然要手工写 <code>![说明](地址)</code>；ShokaX 的彩虹文字、提示块和标签等语法也需要靠记忆。即使管理台已经具备文章保存能力，我真正写文章时还是会回到其他 Markdown 编辑器。</p>
+<p>图床功能也存在另一类问题。图片已经能够上传、提交和推送，但 jsDelivr 直链依赖 GitHub Release 版本。如果管理台只读取本地标签，远端已经发布到 <code>v3.3</code>，本地却仍停留在 <code>v1.7</code>，新生成的直链就可能指向不包含当前图片的旧版本。更隐蔽的情况是：一次操作中 <code>git commit</code> 已经成功，<code>git push</code> 却因为网络失败。此时工作区是干净的，旧逻辑会认为“没有图片需要推送”，反而不允许再次点击按钮。</p>
+<p>因此这次更新没有继续往表单里堆字段，而是集中处理两条完整工作流：一条是从“填写文章参数”走到“能够在管理台里完成正文创作”；另一条是从“把图片放进仓库”走到“稳定生成可访问的版本化直链”。</p>
+<p><img loading="lazy" src="/images/blog-dev-series/manager-writing-focus.png" alt="管理台的沉浸写作工作区" /></p>
+<h2 id="一-这次更新具体增加了什么"><a class="anchor" href="#一-这次更新具体增加了什么">#</a> 一、这次更新具体增加了什么</h2>
+<p>文章创作部分增加了以下能力：</p>
+<ul>
+<li>Markdown 编辑、Aether 正文预览和文章保存被整合到同一个创作工作区；</li>
+<li>工具栏可以插入标题、粗体、斜体、引用、列表、任务列表、代码块、链接、图片、表格和分隔线；</li>
+<li>图片可以从博客本地素材、GitHub 图床或外部 URL 中选择，不再手工拼接 Markdown；</li>
+<li>ShokaX 文字特效可以直接应用到当前选区；</li>
+<li>编辑区提供字数、行数、光标行列和常用快捷键；</li>
+<li>支持仅编辑、左右分栏和仅预览三种视图；</li>
+<li>支持沉浸写作模式，以及可关闭的双向同步滚动。</li>
+</ul>
+<p>构建与远端任务部分增加了统一的进度信息：</p>
+<ul>
+<li>Hexo 静态构建；</li>
+<li>Algolia 索引上传；</li>
+<li><code>hexo d</code> 远端部署；</li>
+<li>GitHub 图床提交与推送；</li>
+<li>GitHub Release 发布。</li>
+</ul>
+<p>图床部分则补上了几个原来容易被忽略的状态：</p>
+<ul>
+<li>同时读取本地 Git 标签和 GitHub 远端 Release；</li>
+<li>按版本语义排序，而不是按普通字符串排序；</li>
+<li>保存当前直链版本，并提供“使用最新 Release”按钮；</li>
+<li>拒绝保存实际不存在的 Release 版本；</li>
+<li>检测已经提交但尚未推送的本地提交，允许直接重新推送；</li>
+<li>图片缩略图始终读取本地文件，切换文件夹时不再重复访问远端；</li>
+<li>只有首次进入、主动刷新或 Release 发布完成后才重新同步版本。</li>
+</ul>
+<p>这些功能看起来分散在文章、任务和图床三个页面里，但它们解决的是同一个问题：管理台不能只显示“当前文件是什么”，还要理解“用户正在完成哪一步”。</p>
+<h2 id="二-文章创作工作区应该怎样使用"><a class="anchor" href="#二-文章创作工作区应该怎样使用">#</a> 二、文章创作工作区应该怎样使用</h2>
+<p>进入管理台的“文章”页面后，可以选择已有文章、创建空白文章，或者导入现成的 <code>.md</code> 文件。文章标题、状态、日期、分类、标签、封面和首页封面焦点仍然位于上方；参数确认后，正文工作区才是主要操作区域。</p>
+<h3 id="1-三种编辑视图"><a class="anchor" href="#1-三种编辑视图">#</a> 1. 三种编辑视图</h3>
+<p>工具栏右侧提供三种视图：</p>
+<ul>
+<li>“编辑”只显示 Markdown 文本，适合屏幕较窄或集中输入；</li>
+<li>“分栏”同时显示编辑区和正文预览，是默认模式；</li>
+<li>“预览”隐藏源码，只检查最终排版。</li>
+</ul>
+<p>普通模式下，正文区域的高度会根据浏览器视口增加，不再只占表单下方的一小块。需要长时间写作时，可以点击“沉浸写作”，编辑器会覆盖管理台的普通布局，只保留标题提示、Markdown 工具栏、保存按钮、编辑与预览区域以及底部状态栏。</p>
+<p>沉浸模式中可以使用以下操作：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>Ctrl + S    保存当前文章</span></span>
+<span class="line"><span>Ctrl + B    加粗选中文字</span></span>
+<span class="line"><span>Ctrl + I    将选中文字设为斜体</span></span>
+<span class="line"><span>Ctrl + K    插入链接</span></span>
+<span class="line"><span>Esc         退出沉浸写作</span></span></code></pre>
+<p>保存按钮在普通表单顶部和沉浸工具栏中各保留了一处，但它们最终走的是同一套文章保存接口，不会产生两种不同的数据格式。</p>
+<h3 id="2-工具栏不是富文本编辑器"><a class="anchor" href="#2-工具栏不是富文本编辑器">#</a> 2. 工具栏不是富文本编辑器</h3>
+<p>这次没有把正文改成类似 Word 的 <code>contenteditable</code> 富文本区域。Hexo 的真实数据源仍然是 Markdown，因此工具栏做的事情只是帮助生成文本语法。例如选中“需要强调的内容”后点击粗体，正文会变成：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-markdown"><span class="line"><span style="color:#999999;--shiki-light-font-weight:bold;--shiki-dark:#666666;--shiki-dark-font-weight:bold">**</span><span style="color:#393A34;--shiki-light-font-weight:bold;--shiki-dark:#DBD7CAEE;--shiki-dark-font-weight:bold">需要强调的内容</span><span style="color:#999999;--shiki-light-font-weight:bold;--shiki-dark:#666666;--shiki-dark-font-weight:bold">**</span></span></code></pre>
+<p>插入任务列表时会写入：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-markdown"><span class="line"><span style="color:#A65E2B;--shiki-dark:#D4976C">-</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE"> </span><span style="color:#2993a3;--shiki-dark:#5eaab5">[</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE"> </span><span style="color:#2993a3;--shiki-dark:#5eaab5">]</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE"> 待完成事项</span></span>
+<span class="line"><span style="color:#A65E2B;--shiki-dark:#D4976C">-</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#2993a3;--shiki-dark:#5eaab5">[</span><span style="color:#B56959;--shiki-dark:#C98A7D">x</span><span style="color:#2993a3;--shiki-dark:#5eaab5">]</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE"> 已完成事项</span></span></code></pre>
+<p>表格按钮会生成一个可以继续编辑的基础表格：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-markdown"><span class="line"><span style="color:#999999;--shiki-dark:#666666">|</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE"> 项目 </span><span style="color:#999999;--shiki-dark:#666666">|</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE"> 说明 </span><span style="color:#999999;--shiki-dark:#666666">|</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#666666">|</span><span style="color:#999999;--shiki-dark:#666666"> ---</span><span style="color:#999999;--shiki-dark:#666666"> |</span><span style="color:#999999;--shiki-dark:#666666"> ---</span><span style="color:#999999;--shiki-dark:#666666"> |</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#666666">|</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE"> 内容 </span><span style="color:#999999;--shiki-dark:#666666">|</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE"> 在这里填写 </span><span style="color:#999999;--shiki-dark:#666666">|</span></span></code></pre>
+<p>这种做法不如纯富文本编辑器直观，但有一个重要优点：离开管理台之后，文章仍然是普通的 Markdown 文件，可以继续使用 VS Code、Typora 或其他编辑器修改，也不会被某种私有 JSON 结构绑定。</p>
+<h2 id="三-为什么预览必须使用-aether而不是另装一个-markdown-库"><a class="anchor" href="#三-为什么预览必须使用-aether而不是另装一个-markdown-库">#</a> 三、为什么预览必须使用 Aether，而不是另装一个 Markdown 库</h2>
+<p>最开始实现实时预览时，一个看起来很直接的方案是在浏览器端加入 <code>marked</code> 或其他 Markdown 渲染库。这样输入文字后可以立即得到 HTML，甚至不需要请求服务端。</p>
+<p>这个方案对普通 Markdown 有效，却不能保证与博客实际显示一致。ShokaX 当前使用 <code>hexo-renderer-aether</code>，其中包含任务列表、容器、文字注音、黑幕、标签和主题扩展语法。浏览器里的另一套渲染器即使能够显示标题和列表，也可能把下面的语法当成普通文本：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-markdown"><span class="line"><span style="color:#2993a3;--shiki-dark:#5eaab5">[</span><span style="color:#B56959;--shiki-dark:#C98A7D">警告</span><span style="color:#2993a3;--shiki-dark:#5eaab5">]</span><span style="color:#2993a3;--shiki-dark:#5eaab5">&#123;</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE">.label .warning</span><span style="color:#2993a3;--shiki-dark:#5eaab5">&#125;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#DBD7CAEE">::: info</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#DBD7CAEE">这是一段提示内容。</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#DBD7CAEE">:::</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#2993a3;--shiki-dark:#5eaab5">&#123;</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE">汉字^han zi</span><span style="color:#2993a3;--shiki-dark:#5eaab5">&#125;</span></span></code></pre>
+<p>因此正文预览没有自行模拟 Aether，而是由管理台的本地 Node 服务加载博客已经安装的 <code>hexo-renderer-aether</code>。浏览器只负责提交 Markdown，服务端返回经过同一渲染器生成的 HTML。</p>
+<p><img loading="lazy" src="/images/blog-dev-series/manager-writing-preview-flow.svg" alt="文章实时预览的数据流" /></p>
+<p>核心接口是：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>POST /api/markdown/render</span></span>
+<span class="line"><span>Content-Type: application/json</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>&#123;</span></span>
+<span class="line"><span>  "markdown": "## 标题\n\n正文"</span></span>
+<span class="line"><span>&#125;</span></span></code></pre>
+<p>服务端对正文长度设置了 2 MB 上限，再交给 Aether 渲染：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-javascript"><span class="line"><span style="color:#AB5959;--shiki-dark:#CB7676">async</span><span style="color:#AB5959;--shiki-dark:#CB7676"> function</span><span style="color:#59873A;--shiki-dark:#80A665"> renderDocument</span><span style="color:#2993a3;--shiki-dark:#5eaab5">(</span><span style="color:#B07D48;--shiki-dark:#BD976A">input</span><span style="color:#2993a3;--shiki-dark:#5eaab5">)</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#2993a3;--shiki-dark:#5eaab5">&#123;</span></span>
+<span class="line"><span style="color:#AB5959;--shiki-dark:#CB7676">  const</span><span style="color:#B07D48;--shiki-dark:#BD976A"> markdown</span><span style="color:#999999;--shiki-dark:#666666"> =</span><span style="color:#59873A;--shiki-dark:#80A665"> String</span><span style="color:#1e754f;--shiki-dark:#4d9375">(</span><span style="color:#B07D48;--shiki-dark:#BD976A">input</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#B07D48;--shiki-dark:#BD976A">markdown</span><span style="color:#AB5959;--shiki-dark:#CB7676"> ??</span><span style="color:#B5695977;--shiki-dark:#C98A7D77"> ''</span><span style="color:#1e754f;--shiki-dark:#4d9375">)</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#4D9375">  if</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#1e754f;--shiki-dark:#4d9375">(</span><span style="color:#B07D48;--shiki-dark:#BD976A">markdown</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#998418;--shiki-dark:#B8A965">length</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#999999;--shiki-dark:#666666">></span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 2</span><span style="color:#AB5959;--shiki-dark:#CB7676"> *</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 1024</span><span style="color:#AB5959;--shiki-dark:#CB7676"> *</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 1024</span><span style="color:#1e754f;--shiki-dark:#4d9375">)</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#1e754f;--shiki-dark:#4d9375">&#123;</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#4D9375">    throw</span><span style="color:#AB5959;--shiki-dark:#CB7676"> new</span><span style="color:#59873A;--shiki-dark:#80A665"> AppError</span><span style="color:#a65e2b;--shiki-dark:#d4976c">(</span><span style="color:#2F798A;--shiki-dark:#4C9A91">413</span><span style="color:#999999;--shiki-dark:#666666">,</span><span style="color:#B5695977;--shiki-dark:#C98A7D77"> '</span><span style="color:#B56959;--shiki-dark:#C98A7D">MARKDOWN_TOO_LONG</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">'</span><span style="color:#999999;--shiki-dark:#666666">,</span><span style="color:#B5695977;--shiki-dark:#C98A7D77"> '</span><span style="color:#B56959;--shiki-dark:#C98A7D">Markdown 正文不能超过 2 MB。</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">'</span><span style="color:#a65e2b;--shiki-dark:#d4976c">)</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#666666">  </span><span style="color:#1e754f;--shiki-dark:#4d9375">&#125;</span></span>
+<span class="line"><span style="color:#AB5959;--shiki-dark:#CB7676">  const</span><span style="color:#B07D48;--shiki-dark:#BD976A"> html</span><span style="color:#999999;--shiki-dark:#666666"> =</span><span style="color:#59873A;--shiki-dark:#80A665"> assertSafePreviewHtml</span><span style="color:#1e754f;--shiki-dark:#4d9375">(</span><span style="color:#1E754F;--shiki-dark:#4D9375">await</span><span style="color:#59873A;--shiki-dark:#80A665"> renderer</span><span style="color:#a65e2b;--shiki-dark:#d4976c">(</span><span style="color:#a13865;--shiki-dark:#d9739f">&#123;</span><span style="color:#998418;--shiki-dark:#B8A965"> text</span><span style="color:#999999;--shiki-dark:#666666">:</span><span style="color:#B07D48;--shiki-dark:#BD976A"> markdown</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#a13865;--shiki-dark:#d9739f">&#125;</span><span style="color:#a65e2b;--shiki-dark:#d4976c">)</span><span style="color:#1e754f;--shiki-dark:#4d9375">)</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#4D9375">  return</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#1e754f;--shiki-dark:#4d9375">&#123;</span><span style="color:#B07D48;--shiki-dark:#BD976A"> html</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#1e754f;--shiki-dark:#4d9375">&#125;</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#2993a3;--shiki-dark:#5eaab5">&#125;</span></span></code></pre>
+<p>返回结果不会直接塞进管理台页面本身，而是写入带有 <code>sandbox</code> 的 <code>iframe srcdoc</code>。这样正文样式可以加载 ShokaX 生成后的文章 CSS，同时又不会让预览内容轻易影响管理台界面。</p>
+<p>预览之前还会检查危险标签、事件属性和 <code>javascript:</code> 地址。这里的目的不是把管理台当成面向公网的多人内容平台，而是避免误粘贴的 HTML 脚本在本地预览时直接运行。</p>
+<h2 id="四-实时预览还需要处理请求顺序和本地图片"><a class="anchor" href="#四-实时预览还需要处理请求顺序和本地图片">#</a> 四、实时预览还需要处理请求顺序和本地图片</h2>
+<p>如果每输入一个字符就立即请求一次渲染接口，长文章输入时会产生大量重复工作。因此编辑器使用 320 ms 防抖：用户暂时停止输入后才开始渲染。</p>
+<p>只做防抖还不够。假设第一次请求的正文很长，渲染比较慢；第二次请求虽然稍晚发出，却先返回。如果不记录请求顺序，旧结果最后到达时会覆盖新结果，预览看起来就像“退回了上一次输入”。因此每次请求都会增加序号，只接受当前最新序号对应的响应：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-javascript"><span class="line"><span style="color:#AB5959;--shiki-dark:#CB7676">const</span><span style="color:#B07D48;--shiki-dark:#BD976A"> request</span><span style="color:#999999;--shiki-dark:#666666"> =</span><span style="color:#AB5959;--shiki-dark:#CB7676"> ++</span><span style="color:#B07D48;--shiki-dark:#BD976A">state</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#B07D48;--shiki-dark:#BD976A">postPreviewRequest</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#AB5959;--shiki-dark:#CB7676">const</span><span style="color:#B07D48;--shiki-dark:#BD976A"> result</span><span style="color:#999999;--shiki-dark:#666666"> =</span><span style="color:#1E754F;--shiki-dark:#4D9375"> await</span><span style="color:#59873A;--shiki-dark:#80A665"> api</span><span style="color:#2993a3;--shiki-dark:#5eaab5">(</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">'</span><span style="color:#B56959;--shiki-dark:#C98A7D">/api/markdown/render</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">'</span><span style="color:#999999;--shiki-dark:#666666">,</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#1e754f;--shiki-dark:#4d9375">&#123;</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#B8A965">  method</span><span style="color:#999999;--shiki-dark:#666666">:</span><span style="color:#B5695977;--shiki-dark:#C98A7D77"> '</span><span style="color:#B56959;--shiki-dark:#C98A7D">POST</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">'</span><span style="color:#999999;--shiki-dark:#666666">,</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#B8A965">  json</span><span style="color:#999999;--shiki-dark:#666666">:</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#a65e2b;--shiki-dark:#d4976c">&#123;</span><span style="color:#B07D48;--shiki-dark:#BD976A"> markdown</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#a65e2b;--shiki-dark:#d4976c">&#125;</span></span>
+<span class="line"><span style="color:#1e754f;--shiki-dark:#4d9375">&#125;</span><span style="color:#2993a3;--shiki-dark:#5eaab5">)</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#4D9375">if</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#2993a3;--shiki-dark:#5eaab5">(</span><span style="color:#B07D48;--shiki-dark:#BD976A">request</span><span style="color:#AB5959;--shiki-dark:#CB7676"> !==</span><span style="color:#B07D48;--shiki-dark:#BD976A"> state</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#B07D48;--shiki-dark:#BD976A">postPreviewRequest</span><span style="color:#2993a3;--shiki-dark:#5eaab5">)</span><span style="color:#1E754F;--shiki-dark:#4D9375"> return</span><span style="color:#999999;--shiki-dark:#666666">;</span></span></code></pre>
+<p>图片路径也不能原样处理。文章里常见的本地图片写法是：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-markdown"><span class="line"><span style="color:#999999;--shiki-dark:#666666">!</span><span style="color:#2993a3;--shiki-dark:#5eaab5">[</span><span style="color:#B56959;--shiki-dark:#C98A7D">管理台截图</span><span style="color:#2993a3;--shiki-dark:#5eaab5">]</span><span style="color:#2993a3;--shiki-dark:#5eaab5">(</span><span style="color:#393A3490;--shiki-light-text-decoration:underline;--shiki-dark:#DEDCD590;--shiki-dark-text-decoration:underline">/images/blog-dev-series/manager-dashboard.png</span><span style="color:#2993a3;--shiki-dark:#5eaab5">)</span></span></code></pre>
+<p>博客运行在 <code>http://localhost:4000/</code> 时，这个地址由 Hexo 提供；管理台却运行在 <code>http://127.0.0.1:4179/</code>。如果预览 iframe 直接请求 <code>/images/...</code>，浏览器会把它发给管理台服务，必须经过受限的本地资源接口才能找到文件。</p>
+<p>所以预览在写入 iframe 前会遍历图片节点：</p>
+<ul>
+<li><code>images/</code>、<code>covers/</code> 和 <code>_data/assets/</code> 转换为管理台素材接口；</li>
+<li>已生成站点中的其他静态资源转换为 <code>/blog-preview-assets/</code>；</li>
+<li><code>https://</code>、<code>data:</code>、<code>blob:</code> 和已有 <code>/api/</code> 地址保持不变。</li>
+</ul>
+<p>这样本地素材、图床直链和外部图片可以同时出现在预览中，而不需要改变文章保存下来的原始 Markdown。</p>
+<h2 id="五-插入图片不再手工拼接语法"><a class="anchor" href="#五-插入图片不再手工拼接语法">#</a> 五、插入图片不再手工拼接语法</h2>
+<p>以前写文章插图需要先复制地址，再回到正文中输入：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-markdown"><span class="line"><span style="color:#999999;--shiki-dark:#666666">!</span><span style="color:#2993a3;--shiki-dark:#5eaab5">[</span><span style="color:#B56959;--shiki-dark:#C98A7D">图片说明</span><span style="color:#2993a3;--shiki-dark:#5eaab5">]</span><span style="color:#2993a3;--shiki-dark:#5eaab5">(</span><span style="color:#393A3490;--shiki-light-text-decoration:underline;--shiki-dark:#DEDCD590;--shiki-dark-text-decoration:underline">https://cdn.jsdelivr.net/gh/.../00.png</span><span style="color:#2993a3;--shiki-dark:#5eaab5">)</span></span></code></pre>
+<p>现在点击工具栏的图片按钮后，可以在三个来源之间切换：</p>
+<ol>
+<li>博客本地素材：来自 <code>source/images</code>、<code>source/covers</code> 和 <code>source/_data/assets</code>。</li>
+<li>GitHub 图床：按现有文件夹浏览本地图床仓库，并使用当前保存的 Release 版本生成直链。</li>
+<li>外部 URL：直接填写已经存在的网络图片地址。</li>
+</ol>
+<p>选择图片后，只需要补充替代文本，管理台会把完整 Markdown 插入到当前光标处。替代文本不是可有可无的装饰，它在图片无法加载和读屏软件访问时仍然能够说明内容，因此选择器把它保留为单独字段。</p>
+<p>如果在图床页看到某张图片，也仍然可以复制完整 jsDelivr 直链。两种入口使用的是同一个“当前直链版本”，避免文章编辑器生成 <code>v3.3</code>，图床详情却仍然显示 <code>v1.7</code>。</p>
+<h2 id="六-shokax-特效从记住语法变成选择效果"><a class="anchor" href="#六-shokax-特效从记住语法变成选择效果">#</a> 六、ShokaX 特效从“记住语法”变成“选择效果”</h2>
+<p>ShokaX 的文字特效并不复杂，但不常用时很容易记错类名。例如模糊文字使用的是：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-markdown"><span class="line"><span style="color:#393A34;--shiki-dark:#DBD7CAEE">!!文字!!</span><span style="color:#2993a3;--shiki-dark:#5eaab5">&#123;</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE">.bulr</span><span style="color:#2993a3;--shiki-dark:#5eaab5">&#125;</span></span></code></pre>
+<p>这里的 <code>bulr</code> 是当前渲染器实际使用的写法。如果凭印象改成 <code>blur</code>，语法看起来更像英文单词，却不一定能得到主题效果。</p>
+<p>因此工具栏中的星光按钮会打开特效选择器。选中正文中的一段文字后，可以选择：</p>
+<ul>
+<li>荧光高亮、黑幕、模糊和彩虹文字；</li>
+<li>实线、波浪和点状下划线；</li>
+<li>上标、下标、文字注音和着重号；</li>
+<li>按键样式、行内标签和提示块。</li>
+</ul>
+<p>例如选择“警告标签”会生成：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-markdown"><span class="line"><span style="color:#2993a3;--shiki-dark:#5eaab5">[</span><span style="color:#B56959;--shiki-dark:#C98A7D">注意版本号</span><span style="color:#2993a3;--shiki-dark:#5eaab5">]</span><span style="color:#2993a3;--shiki-dark:#5eaab5">&#123;</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE">.label .warning</span><span style="color:#2993a3;--shiki-dark:#5eaab5">&#125;</span></span></code></pre>
+<p>选择“危险提示块”会生成：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-markdown"><span class="line"><span style="color:#393A34;--shiki-dark:#DBD7CAEE">::: danger</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#DBD7CAEE">不要把访问密钥写进文章或提交到 Git。</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#DBD7CAEE">:::</span></span></code></pre>
+<p>特效生成器和正文预览使用同一个 Aether 服务。也就是说，选择器中看到的效果、正文右侧看到的效果和博客构建后的效果尽量来自同一条渲染链，而不是分别维护三套近似 CSS。</p>
+<h2 id="七-沉浸写作并不只是把元素放大"><a class="anchor" href="#七-沉浸写作并不只是把元素放大">#</a> 七、沉浸写作并不只是把元素放大</h2>
+<p>第一版扩大编辑器时，我最先想到的是增加 <code>textarea</code> 的最小高度。这可以减少局促感，但文章参数、侧边栏和顶部工具仍然占据大量空间。真正进入长文写作后，最常使用的只有编辑、预览和保存，因此最终采用了单独的焦点状态：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-css"><span class="line"><span style="color:#1E754F;--shiki-dark:#4D9375">body</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#B07D48;--shiki-dark:#BD976A">composer-focus-active</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#2993a3;--shiki-dark:#5eaab5">&#123;</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#B8A965">  overflow</span><span style="color:#999999;--shiki-dark:#666666">:</span><span style="color:#A65E2B;--shiki-dark:#C99076"> hidden</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#2993a3;--shiki-dark:#5eaab5">&#125;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#B07D48;--shiki-dark:#BD976A">post-composer</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#B07D48;--shiki-dark:#BD976A">focus-mode</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#2993a3;--shiki-dark:#5eaab5">&#123;</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#B8A965">  position</span><span style="color:#999999;--shiki-dark:#666666">:</span><span style="color:#A65E2B;--shiki-dark:#C99076"> fixed</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#B8A965">  z-index</span><span style="color:#999999;--shiki-dark:#666666">:</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 40</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#B8A965">  inset</span><span style="color:#999999;--shiki-dark:#666666">:</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 10</span><span style="color:#AB5959;--shiki-dark:#CB7676">px</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#B8A965">  display</span><span style="color:#999999;--shiki-dark:#666666">:</span><span style="color:#A65E2B;--shiki-dark:#C99076"> flex</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#B8A965">  flex-direction</span><span style="color:#999999;--shiki-dark:#666666">:</span><span style="color:#A65E2B;--shiki-dark:#C99076"> column</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#B8A965">  overflow</span><span style="color:#999999;--shiki-dark:#666666">:</span><span style="color:#A65E2B;--shiki-dark:#C99076"> hidden</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#2993a3;--shiki-dark:#5eaab5">&#125;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#B07D48;--shiki-dark:#BD976A">post-composer</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#B07D48;--shiki-dark:#BD976A">focus-mode</span><span style="color:#999999;--shiki-dark:#666666"> .</span><span style="color:#B07D48;--shiki-dark:#BD976A">composer-workspace</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#2993a3;--shiki-dark:#5eaab5">&#123;</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#B8A965">  min-height</span><span style="color:#999999;--shiki-dark:#666666">:</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 0</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#B8A965">  flex</span><span style="color:#999999;--shiki-dark:#666666">:</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 1</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#2993a3;--shiki-dark:#5eaab5">&#125;</span></span></code></pre>
+<p>这里的 <code>min-height: 0</code> 很容易被忽略。在 Flex 或 Grid 布局里，子元素默认可能坚持自己的内容高度，导致真正应该滚动的编辑区把整个页面撑开。明确允许工作区收缩之后，左右两栏才能在固定视口内分别滚动。</p>
+<p>桌面端使用左右分栏；屏幕较窄时会改为上下布局。移动端的沉浸模式使用 <code>inset: 0</code>，避免四周留白进一步压缩可用空间。</p>
+<h2 id="八-同步滚动为什么使用比例而不是像素"><a class="anchor" href="#八-同步滚动为什么使用比例而不是像素">#</a> 八、同步滚动为什么使用比例而不是像素</h2>
+<p>编辑区左边是 Markdown 源码，右边是渲染后的 HTML。两边的高度通常不相等：一个二十行的代码块在源码里和高亮后的页面中高度不同；图片加载后也会改变预览高度。因此不能简单执行：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-javascript"><span class="line"><span style="color:#B07D48;--shiki-dark:#BD976A">preview</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#B07D48;--shiki-dark:#BD976A">scrollTop</span><span style="color:#999999;--shiki-dark:#666666"> =</span><span style="color:#B07D48;--shiki-dark:#BD976A"> editor</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#B07D48;--shiki-dark:#BD976A">scrollTop</span><span style="color:#999999;--shiki-dark:#666666">;</span></span></code></pre>
+<p>更合理的方法是同步阅读进度。先计算当前区域能够滚动的最大距离，再得到 <code>0</code> 到 <code>1</code> 之间的比例：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-javascript"><span class="line"><span style="color:#AB5959;--shiki-dark:#CB7676">function</span><span style="color:#59873A;--shiki-dark:#80A665"> scrollRatio</span><span style="color:#2993a3;--shiki-dark:#5eaab5">(</span><span style="color:#B07D48;--shiki-dark:#BD976A">element</span><span style="color:#2993a3;--shiki-dark:#5eaab5">)</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#2993a3;--shiki-dark:#5eaab5">&#123;</span></span>
+<span class="line"><span style="color:#AB5959;--shiki-dark:#CB7676">  const</span><span style="color:#B07D48;--shiki-dark:#BD976A"> maximum</span><span style="color:#999999;--shiki-dark:#666666"> =</span><span style="color:#B07D48;--shiki-dark:#BD976A"> Math</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#59873A;--shiki-dark:#80A665">max</span><span style="color:#1e754f;--shiki-dark:#4d9375">(</span><span style="color:#2F798A;--shiki-dark:#4C9A91">0</span><span style="color:#999999;--shiki-dark:#666666">,</span><span style="color:#B07D48;--shiki-dark:#BD976A"> element</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#B07D48;--shiki-dark:#BD976A">scrollHeight</span><span style="color:#AB5959;--shiki-dark:#CB7676"> -</span><span style="color:#B07D48;--shiki-dark:#BD976A"> element</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#B07D48;--shiki-dark:#BD976A">clientHeight</span><span style="color:#1e754f;--shiki-dark:#4d9375">)</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#4D9375">  return</span><span style="color:#B07D48;--shiki-dark:#BD976A"> maximum</span><span style="color:#AB5959;--shiki-dark:#CB7676"> ?</span><span style="color:#B07D48;--shiki-dark:#BD976A"> element</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#B07D48;--shiki-dark:#BD976A">scrollTop</span><span style="color:#AB5959;--shiki-dark:#CB7676"> /</span><span style="color:#B07D48;--shiki-dark:#BD976A"> maximum</span><span style="color:#AB5959;--shiki-dark:#CB7676"> :</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 0</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#2993a3;--shiki-dark:#5eaab5">&#125;</span></span></code></pre>
+<p>当编辑区滚动到 60% 时，预览区也滚动到自己的 60%：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-javascript"><span class="line"><span style="color:#AB5959;--shiki-dark:#CB7676">const</span><span style="color:#B07D48;--shiki-dark:#BD976A"> maximum</span><span style="color:#999999;--shiki-dark:#666666"> =</span><span style="color:#B07D48;--shiki-dark:#BD976A"> preview</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#B07D48;--shiki-dark:#BD976A">scrollHeight</span><span style="color:#AB5959;--shiki-dark:#CB7676"> -</span><span style="color:#B07D48;--shiki-dark:#BD976A"> preview</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#B07D48;--shiki-dark:#BD976A">clientHeight</span><span style="color:#999999;--shiki-dark:#666666">;</span></span>
+<span class="line"><span style="color:#B07D48;--shiki-dark:#BD976A">preview</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#B07D48;--shiki-dark:#BD976A">scrollTop</span><span style="color:#999999;--shiki-dark:#666666"> =</span><span style="color:#B07D48;--shiki-dark:#BD976A"> maximum</span><span style="color:#AB5959;--shiki-dark:#CB7676"> *</span><span style="color:#59873A;--shiki-dark:#80A665"> scrollRatio</span><span style="color:#2993a3;--shiki-dark:#5eaab5">(</span><span style="color:#B07D48;--shiki-dark:#BD976A">editor</span><span style="color:#2993a3;--shiki-dark:#5eaab5">)</span><span style="color:#999999;--shiki-dark:#666666">;</span></span></code></pre>
+<p>这不能保证每一个 Markdown 行号都和某个 HTML 节点精确对齐，但对长文章来说，比复制像素位置稳定得多，也不需要为每个段落建立额外映射。</p>
+<p>双向同步还会产生循环：编辑器滚动引起预览滚动，预览的 <code>scroll</code> 事件又反过来修改编辑器。为此状态中增加了 <code>scrollSyncLock</code>，记录当前滚动来自哪一侧，并在下一帧解除锁定。</p>
+<p>同步滚动默认开启，但可以随时关闭。关闭后，左右区域各自保留位置，适合一边修改前面的定义，一边对照后面的总结。重新渲染预览时还会先记录原来的滚动比例，新的 iframe 内容载入后再恢复，避免每输入一句话预览就跳回文章顶部。</p>
+<h2 id="九-进度条不是单纯按时间从-0-走到-100"><a class="anchor" href="#九-进度条不是单纯按时间从-0-走到-100">#</a> 九、进度条不是单纯按时间从 0 走到 100</h2>
+<p>构建、Algolia、部署和 Git 推送原来只有日志。日志能够说明细节，但用户需要一直盯着终端才能判断任务处于启动、生成文件、上传还是等待远端确认阶段。</p>
+<p>这次给主要任务增加了统一进度对象：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-javascript"><span class="line"><span style="color:#2993a3;--shiki-dark:#5eaab5">&#123;</span></span>
+<span class="line"><span style="color:#59873A;--shiki-dark:#80A665">  value</span><span style="color:#999999;--shiki-dark:#666666">:</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 68</span><span style="color:#999999;--shiki-dark:#666666">,</span></span>
+<span class="line"><span style="color:#59873A;--shiki-dark:#80A665">  phase</span><span style="color:#999999;--shiki-dark:#666666">:</span><span style="color:#B5695977;--shiki-dark:#C98A7D77"> '</span><span style="color:#B56959;--shiki-dark:#C98A7D">创建部署提交</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">'</span><span style="color:#999999;--shiki-dark:#666666">,</span></span>
+<span class="line"><span style="color:#59873A;--shiki-dark:#80A665">  detail</span><span style="color:#999999;--shiki-dark:#666666">:</span><span style="color:#B5695977;--shiki-dark:#C98A7D77"> '</span><span style="color:#B56959;--shiki-dark:#C98A7D">Site updated: 2026-08-06 18:20:00</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">'</span><span style="color:#999999;--shiki-dark:#666666">,</span></span>
+<span class="line"><span style="color:#59873A;--shiki-dark:#80A665">  estimated</span><span style="color:#999999;--shiki-dark:#666666">:</span><span style="color:#1E754F;--shiki-dark:#4D9375"> true</span></span>
+<span class="line"><span style="color:#2993a3;--shiki-dark:#5eaab5">&#125;</span></span></code></pre>
+<p>部分阶段可以从真实日志中提取。例如 Hexo 输出 <code>Generated:</code> 时累计生成项，Git 输出 <code>Writing objects: 46%</code> 时可以换算上传阶段的进度。对于暂时没有明确百分比的阶段，则根据预计时长缓慢接近上限，但不会在子进程结束前自行显示 100%。</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-javascript"><span class="line"><span style="color:#AB5959;--shiki-dark:#CB7676">const</span><span style="color:#B07D48;--shiki-dark:#BD976A"> target</span><span style="color:#999999;--shiki-dark:#666666"> =</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 4</span><span style="color:#AB5959;--shiki-dark:#CB7676"> +</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#2993a3;--shiki-dark:#5eaab5">(</span><span style="color:#B07D48;--shiki-dark:#BD976A">cap</span><span style="color:#AB5959;--shiki-dark:#CB7676"> -</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 4</span><span style="color:#2993a3;--shiki-dark:#5eaab5">)</span><span style="color:#AB5959;--shiki-dark:#CB7676"> *</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#2993a3;--shiki-dark:#5eaab5">(</span><span style="color:#2F798A;--shiki-dark:#4C9A91">1</span><span style="color:#AB5959;--shiki-dark:#CB7676"> -</span><span style="color:#B07D48;--shiki-dark:#BD976A"> Math</span><span style="color:#999999;--shiki-dark:#666666">.</span><span style="color:#59873A;--shiki-dark:#80A665">exp</span><span style="color:#1e754f;--shiki-dark:#4d9375">(</span><span style="color:#AB5959;--shiki-dark:#CB7676">-</span><span style="color:#B07D48;--shiki-dark:#BD976A">elapsed</span><span style="color:#AB5959;--shiki-dark:#CB7676"> /</span><span style="color:#B07D48;--shiki-dark:#BD976A"> expectedMs</span><span style="color:#1e754f;--shiki-dark:#4d9375">)</span><span style="color:#2993a3;--shiki-dark:#5eaab5">)</span><span style="color:#999999;--shiki-dark:#666666">;</span></span></code></pre>
+<p>任务成功时才设置为 100%；失败时保留停止阶段，并提示查看日志。它仍然是“阶段化的估算进度”，不是对 Hexo 和 Git 内部工作的精确计量，但至少不会出现任务尚未完成、界面却先显示 100% 的情况。</p>
+<h2 id="十-release-版本不能只看本地标签"><a class="anchor" href="#十-release-版本不能只看本地标签">#</a> 十、Release 版本不能只看本地标签</h2>
+<p>GitHub 图床的直链格式为：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>https://cdn.jsdelivr.net/gh/simoxdcs/csgo@v3.3/图片路径</span></span></code></pre>
+<p>其中 <code>v3.3</code> 必须对应实际存在的 GitHub Release 或标签，而且该版本指向的提交必须已经包含目标图片。旧逻辑只执行本地 <code>git tag</code>，这会产生两个问题：</p>
+<ol>
+<li>在 GitHub 网页发布 Release 后，本地仓库不一定已经执行 <code>git fetch --tags</code>。</li>
+<li>管理台重启后，没有独立字段记录“当前生成直链应该使用哪个版本”。</li>
+</ol>
+<p>新逻辑会合并两类数据：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-shell"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">git</span><span style="color:#B56959;--shiki-dark:#C98A7D"> tag</span><span style="color:#A65E2B;--shiki-dark:#C99076"> --sort=-v:refname</span></span>
+<span class="line"><span style="color:#59873A;--shiki-dark:#80A665">git</span><span style="color:#B56959;--shiki-dark:#C98A7D"> ls-remote</span><span style="color:#A65E2B;--shiki-dark:#C99076"> --tags</span><span style="color:#A65E2B;--shiki-dark:#C99076"> --refs</span><span style="color:#B56959;--shiki-dark:#C98A7D"> origin</span></span></code></pre>
+<p>版本排序不能直接使用字符串比较，否则 <code>v2.10</code> 可能被排在 <code>v2.9</code> 前面或后面，结果取决于字符串规则而不是版本含义。因此版本号先拆成主版本、次版本、修订号和预发布部分，再按语义排序：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>v3.0</span></span>
+<span class="line"><span>v3.0-beta.1</span></span>
+<span class="line"><span>v2.10</span></span>
+<span class="line"><span>v2.9</span></span></code></pre>
+<p>管理台右上角的“直链版本”输入框会显示当前保存值和最新 Release。可以从候选列表中选择，也可以点击圆形勾选按钮直接使用最新版本。手工输入后会经过短暂防抖自动保存，旁边仍保留显式保存按钮，方便确认状态。</p>
+<p><img loading="lazy" src="/images/blog-dev-series/manager-image-host-release.png" alt="GitHub 图床中的 Release 版本与本地图片预览" /></p>
+<p>保存的位置没有放进博客主题配置，也没有另外创建数据库，而是写入图床仓库自己的本地 Git 配置：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-shell"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">git</span><span style="color:#B56959;--shiki-dark:#C98A7D"> config</span><span style="color:#A65E2B;--shiki-dark:#C99076"> --local</span><span style="color:#B56959;--shiki-dark:#C98A7D"> shokax.image-version</span><span style="color:#B56959;--shiki-dark:#C98A7D"> v3.3</span></span></code></pre>
+<p>对应的 <code>.git/config</code> 中会出现类似内容：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>[shokax]</span></span>
+<span class="line"><span>    image-version = v3.3</span></span></code></pre>
+<p>这个配置只属于本地仓库，不会随着普通 <code>git push</code> 上传，也不会污染博客的 <code>_config.yml</code>。管理台下次启动时可以重新读取它。</p>
+<p>输入任意字符串并不能绕过校验。如果本地标签和远端标签中都没有 <code>v9.9</code>，保存接口会拒绝该值。否则界面虽然能够生成形式正确的 URL，jsDelivr 最终却只会返回找不到文件。</p>
+<h2 id="十一-为什么推送失败后工作区反而看起来没有变化"><a class="anchor" href="#十一-为什么推送失败后工作区反而看起来没有变化">#</a> 十一、为什么推送失败后工作区反而看起来“没有变化”</h2>
+<p>一次完整的图床推送包含三个阶段：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-shell"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">git</span><span style="color:#B56959;--shiki-dark:#C98A7D"> add</span><span style="color:#B56959;--shiki-dark:#C98A7D"> 图片文件</span></span>
+<span class="line"><span style="color:#59873A;--shiki-dark:#80A665">git</span><span style="color:#B56959;--shiki-dark:#C98A7D"> commit</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -m</span><span style="color:#B5695977;--shiki-dark:#C98A7D77"> "</span><span style="color:#B56959;--shiki-dark:#C98A7D">add files</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">"</span></span>
+<span class="line"><span style="color:#59873A;--shiki-dark:#80A665">git</span><span style="color:#B56959;--shiki-dark:#C98A7D"> push</span><span style="color:#A65E2B;--shiki-dark:#C99076"> --progress</span></span></code></pre>
+<p>如果前两步成功、第三步失败，图片已经进入本地提交。此时执行 <code>git status --short</code> 通常没有输出，因为工作区和暂存区都很干净。旧按钮只根据“是否存在文件变化”决定能否点击，因此这次失败会让用户陷入一个矛盾状态：本地确实有尚未到达 GitHub 的内容，界面却说没有可以推送的图片。</p>
+<p>解决方法不是强行再创建一次提交，而是增加另一种状态：当前分支领先上游多少个提交。</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-shell"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">git</span><span style="color:#B56959;--shiki-dark:#C98A7D"> rev-list</span><span style="color:#A65E2B;--shiki-dark:#C99076"> --count</span><span style="color:#B56959;--shiki-dark:#C98A7D"> @&#123;upstream&#125;..HEAD</span></span></code></pre>
+<p>如果结果大于 <code>0</code>，管理台会把按钮文字改为“重新推送”。重试时跳过 <code>git add</code> 和 <code>git commit</code>，直接执行 <code>git push --progress</code>。</p>
+<p><img loading="lazy" src="/images/blog-dev-series/image-host-push-retry-flow.svg" alt="图床推送失败后的重新推送流程" /></p>
+<p>这一区分可以避免两个问题：</p>
+<ul>
+<li>不会为了重试而产生重复或空提交；</li>
+<li>即使关闭并重新打开管理台，只要本地提交仍然领先远端，按钮依然能够恢复为“重新推送”。</li>
+</ul>
+<p>正常提交时，管理台也不会直接执行不加限制的 <code>git add *</code>。它先用空字符分隔的 Porcelain 状态读取改动，再只挑选 PNG、JPG、GIF、WebP、AVIF 等图片路径，以字面路径模式分批暂存。这样可以避免文件名中的特殊字符被 Git 当成路径通配符，也不会顺手提交仓库里无关的表格或说明文件。</p>
+<h2 id="十二-图床图片本地预览与远端版本校验应该分开"><a class="anchor" href="#十二-图床图片本地预览与远端版本校验应该分开">#</a> 十二、图床图片本地预览与远端版本校验应该分开</h2>
+<p>最后一个性能问题并不来自图片本身。管理台的缩略图接口一直读取本地文件：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>GET /api/image-host/file?path=...</span></span></code></pre>
+<p>真正拖慢文件夹切换的是版本检查。旧流程每次打开一个图片目录，都会在同一个 <code>/api/image-host</code> 请求中执行：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-shell"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">git</span><span style="color:#B56959;--shiki-dark:#C98A7D"> ls-remote</span><span style="color:#A65E2B;--shiki-dark:#C99076"> --tags</span><span style="color:#A65E2B;--shiki-dark:#C99076"> --refs</span><span style="color:#B56959;--shiki-dark:#C98A7D"> origin</span></span></code></pre>
+<p>这条命令需要等待 GitHub 网络响应。当前网络环境下，一次查询可能需要 5 到 10 秒。即使用户只是从“根目录”切换到 <code>jiaocheng/2</code>，也会重新等待远端标签，导致本地图片看起来像是在从网络缓慢下载。</p>
+<p>优化后的职责如下：</p>
+<ul>
+<li>文件夹树、图片列表、缩略图、文件大小和修改时间始终从本地图床仓库读取；</li>
+<li>首次进入图床页时获取一次本地与远端版本；</li>
+<li>后续切换文件夹复用进程内的版本缓存；</li>
+<li>点击“刷新图床”时显式携带 <code>refresh=1</code>，重新执行远端查询；</li>
+<li>管理台成功发布 Release 后清空缓存，再同步最新标签；</li>
+<li>页面标题明确显示“本地图片预览”，避免把缩略图来源和 jsDelivr 直链来源混淆。</li>
+</ul>
+<p><img loading="lazy" src="/images/blog-dev-series/image-host-version-cache-flow.svg" alt="图床版本校验与本地缓存流程" /></p>
+<p>本次测试中得到的时间大致如下：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th style="text-align:right">用时</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>首次远端版本核对</td>
+<td style="text-align:right">约 6027 ms</td>
+</tr>
+<tr>
+<td>缓存后的本地目录读取</td>
+<td style="text-align:right">约 147 ms</td>
+</tr>
+<tr>
+<td>点击刷新后的远端核对</td>
+<td style="text-align:right">约 4650 ms</td>
+</tr>
+</tbody>
+</table>
+<p>这里没有把远端检查完全删除，因为直链版本仍然需要知道 GitHub 上实际存在什么；优化只是让低频网络校验不再阻塞高频本地浏览。</p>
+<p>这种缓存也有明确边界：如果在管理台之外通过 GitHub 网页新建了 Release，当前页面不会凭空知道远端已经变化。此时需要点击“刷新图床”。相比每切换一次目录都等待数秒，这种显式刷新更符合图床版本的变化频率。</p>
+<h2 id="十三-从管理台发布-release-后会发生什么"><a class="anchor" href="#十三-从管理台发布-release-后会发生什么">#</a> 十三、从管理台发布 Release 后会发生什么</h2>
+<p>如果本机已经安装 GitHub CLI 并完成登录，填写版本后可以直接从管理台发布：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-shell"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">gh</span><span style="color:#B56959;--shiki-dark:#C98A7D"> release</span><span style="color:#B56959;--shiki-dark:#C98A7D"> create</span><span style="color:#B56959;--shiki-dark:#C98A7D"> v3.4</span><span style="color:#A65E2B;--shiki-dark:#C99076"> \</span></span>
+<span class="line"><span style="color:#A65E2B;--shiki-dark:#C99076">  --repo</span><span style="color:#B56959;--shiki-dark:#C98A7D"> simoxdcs/csgo</span><span style="color:#A65E2B;--shiki-dark:#C99076"> \</span></span>
+<span class="line"><span style="color:#A65E2B;--shiki-dark:#C99076">  --title</span><span style="color:#B56959;--shiki-dark:#C98A7D"> v3.4</span><span style="color:#A65E2B;--shiki-dark:#C99076"> \</span></span>
+<span class="line"><span style="color:#A65E2B;--shiki-dark:#C99076">  --notes</span><span style="color:#B5695977;--shiki-dark:#C98A7D77"> "</span><span style="color:#B56959;--shiki-dark:#C98A7D">Image release v3.4</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">"</span><span style="color:#A65E2B;--shiki-dark:#C99076"> \</span></span>
+<span class="line"><span style="color:#A65E2B;--shiki-dark:#C99076">  --target</span><span style="color:#B56959;--shiki-dark:#C98A7D"> master</span></span></code></pre>
+<p>发布成功后，管理台会执行标签同步、清除旧版本缓存，并把新版本保存为当前直链版本。以后在文章编辑器中选择图床图片时，就会自动生成带 <code>v3.4</code> 的地址。</p>
+<p>如果 GitHub CLI 未安装或没有登录，按钮不会假装可以自动发布，而是改为“打开 GitHub 发布页”。在网页中完成 Release 后回到管理台，点击刷新，再选择最新版本即可。</p>
+<p>无论采用哪一种方式，推荐顺序都是：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>添加本地图片</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>提交并推送到 GitHub</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>确认推送成功</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>发布新的 Release</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>刷新并保存直链版本</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>把图片插入文章</span></span></code></pre>
+<p>不要在推送完成之前先发布 Release。Release 指向的是某一个提交，如果目标图片尚未进入该提交，即使版本号看起来是最新的，直链仍然无法读取图片。</p>
+<h2 id="十四-测试时重点验证了哪些边界"><a class="anchor" href="#十四-测试时重点验证了哪些边界">#</a> 十四、测试时重点验证了哪些边界</h2>
+<p>这次更新的验证没有只停留在按钮是否出现。管理台测试最终共 42 项通过，主要覆盖以下场景：</p>
+<ul>
+<li>Aether 能够渲染完整 Markdown、任务列表、图片和主题特效；</li>
+<li>预览会拒绝脚本标签、事件属性和危险 URL；</li>
+<li>图床目录会阻止 <code>..</code> 路径穿越和 <code>.git</code> 元数据访问；</li>
+<li>自动编号能够延续 <code>00、01、08</code>，得到 <code>09</code>；</li>
+<li>Git 状态解析只提取真实图片变更，并能处理重命名的两端路径；</li>
+<li>远端版本可以识别 <code>v2.10</code> 高于 <code>v2.9</code>；</li>
+<li>不存在的 Release 不能保存为当前版本；</li>
+<li>本地提交领先远端时，即使工作区没有改动，也可以重新推送；</li>
+<li>普通目录浏览复用版本缓存，显式刷新才获取新标签；</li>
+<li>沉浸模式、同步开关、图片选择器和特效选择器所需的前端结构均存在。</li>
+</ul>
+<p>浏览器中还分别测试了同步开启和关闭的情况。同步开启时，左右两栏滚动到相近章节；关闭后，编辑区可以停在前面的内容，预览区继续查看后面的章节，互不抢夺位置。控制台没有出现新的 JavaScript 错误。</p>
+<p>最后再次执行 Hexo 静态构建，确认新增文章编辑功能、管理台资源和流程图不会影响站点生成。管理台始终只监听 <code>127.0.0.1</code>，不会因为增加预览与文件操作接口而开放给局域网或公网。</p>
+<h2 id="十五-这次更新带来的几个启发"><a class="anchor" href="#十五-这次更新带来的几个启发">#</a> 十五、这次更新带来的几个启发</h2>
+<p>第一，文件状态和任务状态不是同一个概念。<code>git status</code> 能回答“文件有没有改动”，却不能回答“有没有已经提交但尚未推送的内容”。当一个功能跨越多个步骤时，界面需要保存或重新推导中间状态，而不是只看起点和终点。</p>
+<p>第二，预览准确性比预览速度更重要，但准确性不代表每个按键都必须同步请求。复用真实渲染器、防抖、请求序号和 iframe 隔离组合在一起，才能同时解决“像博客”“不闪回旧内容”和“不会拖慢输入”三个问题。</p>
+<p>第三，本地优先不是完全拒绝网络。图床文件适合本地读取，Release 是否存在必须向远端确认。更合理的做法是根据数据变化频率决定什么时候访问网络：图片目录会被频繁切换，因此应该本地读取；Release 变化较少，因此可以首次同步并显式刷新。</p>
+<p>第四，可视化工具不应该替换可读的数据格式。工具栏、特效选择器、图片选择器和封面焦点看起来都是图形界面，但最后写入的仍然是 Markdown、YAML、Git 提交和一条本地 Git 配置。即使以后不再使用这套管理台，文章和图床仓库仍然可以用原来的命令继续维护。</p>
+<p>从最初只能编辑 Front Matter 的文章表单，到现在可以在沉浸模式中完成正文、预览 ShokaX 效果、选择图片并保存，再到图床能够识别 Release、重试失败推送和快速浏览本地素材，这次更新真正补齐的不是某一个按钮，而是两条原本中途会断开的工作流。</p>
+<p>管理台仍然不是一个面向所有博客的完整 CMS，它依赖当前 Hexo 和 ShokaX 项目的目录、渲染器与图床习惯。但对个人博客来说，这种边界反而比较清楚：界面负责减少重复操作，本地服务负责校验和组织流程，Markdown 与 Git 继续作为最终事实来源。</p>
+<div class="tags"><a href="/tags/Hexo/" rel="tag"><i class="ic i-tag"></i>Hexo</a><a href="/tags/ShokaX/" rel="tag"><i class="ic i-tag"></i>ShokaX</a><a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag"><i class="ic i-tag"></i>前端开发</a><a href="/tags/%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/" rel="tag"><i class="ic i-tag"></i>博客管理</a><a href="/tags/Markdown/" rel="tag"><i class="ic i-tag"></i>Markdown</a><a href="/tags/GitHub/" rel="tag"><i class="ic i-tag"></i>GitHub</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-eye"></i></span><span class="text">总访问量：</span><span class="waline-pageview-count" id="twikoo_visitors" data-path="/2026/08/06/jiaocheng/Hexo管理台创作工作区与图床优化记录/">加载中...</span></span><span class="item"><span class="icon"><i class="ic i-calendar-check"></i></span><span class="text">更新于 </span><time title="修改时间：2026-08-06 17:43:56" itemprop="dateModified" datetime="2026-08-06T17:43:56+08:00">2026-08-06</time></span></div><div class="reward"><button><i class="ic i-heartbeat"></i>赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img loading="lazy" src="/assets/wechatpay.png" alt="试末 微信支付"/><p>微信支付</p></div><div><img loading="lazy" src="/assets/alipay.jpg" alt="试末 支付宝"/><p>支付宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者：</strong>试末<i class="ic i-at"><em>@</em></i>Ciallo～(∠・ω )⌒☆</li><li class="link"><strong>本文链接：</strong><a href="https://simoxdcs.github.io/2026/08/06/jiaocheng/Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%88%9B%E4%BD%9C%E5%B7%A5%E4%BD%9C%E5%8C%BA%E4%B8%8E%E5%9B%BE%E5%BA%8A%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/" title="从“能管理文章”到“能直接写文章”：Hexo 管理台创作工作区与图床优化记录">https://simoxdcs.github.io/2026/08/06/jiaocheng/Hexo管理台创作工作区与图床优化记录/</a></li><li class="license"><strong>版权声明：</strong>本站所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/2026/08/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E9%97%B2%E9%B1%BC%E5%87%BA%E5%94%AE%E7%BB%8F%E5%8E%86/" rel="prev" itemprop="url" data-background-image="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;simoxdcs&#x2F;csgo@v3.2&#x2F;haokande&#x2F;22.jpeg" title="记录一次闲鱼出售经历"><span class="type">上一篇</span><span class="category"><i class="ic i-flag"></i>生活の随笔</span><h3>记录一次闲鱼出售经历</h3></a></div><div class="item right"></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E8%BF%99%E6%AC%A1%E6%9B%B4%E6%96%B0%E5%85%B7%E4%BD%93%E5%A2%9E%E5%8A%A0%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text"> 一、这次更新具体增加了什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%96%87%E7%AB%A0%E5%88%9B%E4%BD%9C%E5%B7%A5%E4%BD%9C%E5%8C%BA%E5%BA%94%E8%AF%A5%E6%80%8E%E6%A0%B7%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text"> 二、文章创作工作区应该怎样使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%89%E7%A7%8D%E7%BC%96%E8%BE%91%E8%A7%86%E5%9B%BE"><span class="toc-number">2.1.</span> <span class="toc-text"> 1. 三种编辑视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B7%A5%E5%85%B7%E6%A0%8F%E4%B8%8D%E6%98%AF%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">2.2.</span> <span class="toc-text"> 2. 工具栏不是富文本编辑器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%A2%84%E8%A7%88%E5%BF%85%E9%A1%BB%E4%BD%BF%E7%94%A8-aether%E8%80%8C%E4%B8%8D%E6%98%AF%E5%8F%A6%E8%A3%85%E4%B8%80%E4%B8%AA-markdown-%E5%BA%93"><span class="toc-number">3.</span> <span class="toc-text"> 三、为什么预览必须使用 Aether，而不是另装一个 Markdown 库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%AE%9E%E6%97%B6%E9%A2%84%E8%A7%88%E8%BF%98%E9%9C%80%E8%A6%81%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82%E9%A1%BA%E5%BA%8F%E5%92%8C%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87"><span class="toc-number">4.</span> <span class="toc-text"> 四、实时预览还需要处理请求顺序和本地图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E4%B8%8D%E5%86%8D%E6%89%8B%E5%B7%A5%E6%8B%BC%E6%8E%A5%E8%AF%AD%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text"> 五、插入图片不再手工拼接语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-shokax-%E7%89%B9%E6%95%88%E4%BB%8E%E8%AE%B0%E4%BD%8F%E8%AF%AD%E6%B3%95%E5%8F%98%E6%88%90%E9%80%89%E6%8B%A9%E6%95%88%E6%9E%9C"><span class="toc-number">6.</span> <span class="toc-text"> 六、ShokaX 特效从“记住语法”变成“选择效果”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E6%B2%89%E6%B5%B8%E5%86%99%E4%BD%9C%E5%B9%B6%E4%B8%8D%E5%8F%AA%E6%98%AF%E6%8A%8A%E5%85%83%E7%B4%A0%E6%94%BE%E5%A4%A7"><span class="toc-number">7.</span> <span class="toc-text"> 七、沉浸写作并不只是把元素放大</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E5%90%8C%E6%AD%A5%E6%BB%9A%E5%8A%A8%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E6%AF%94%E4%BE%8B%E8%80%8C%E4%B8%8D%E6%98%AF%E5%83%8F%E7%B4%A0"><span class="toc-number">8.</span> <span class="toc-text"> 八、同步滚动为什么使用比例而不是像素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D-%E8%BF%9B%E5%BA%A6%E6%9D%A1%E4%B8%8D%E6%98%AF%E5%8D%95%E7%BA%AF%E6%8C%89%E6%97%B6%E9%97%B4%E4%BB%8E-0-%E8%B5%B0%E5%88%B0-100"><span class="toc-number">9.</span> <span class="toc-text"> 九、进度条不是单纯按时间从 0 走到 100</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81-release-%E7%89%88%E6%9C%AC%E4%B8%8D%E8%83%BD%E5%8F%AA%E7%9C%8B%E6%9C%AC%E5%9C%B0%E6%A0%87%E7%AD%BE"><span class="toc-number">10.</span> <span class="toc-text"> 十、Release 版本不能只看本地标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A8%E9%80%81%E5%A4%B1%E8%B4%A5%E5%90%8E%E5%B7%A5%E4%BD%9C%E5%8C%BA%E5%8F%8D%E8%80%8C%E7%9C%8B%E8%B5%B7%E6%9D%A5%E6%B2%A1%E6%9C%89%E5%8F%98%E5%8C%96"><span class="toc-number">11.</span> <span class="toc-text"> 十一、为什么推送失败后工作区反而看起来“没有变化”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C-%E5%9B%BE%E5%BA%8A%E5%9B%BE%E7%89%87%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88%E4%B8%8E%E8%BF%9C%E7%AB%AF%E7%89%88%E6%9C%AC%E6%A0%A1%E9%AA%8C%E5%BA%94%E8%AF%A5%E5%88%86%E5%BC%80"><span class="toc-number">12.</span> <span class="toc-text"> 十二、图床图片本地预览与远端版本校验应该分开</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%89-%E4%BB%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8F%91%E5%B8%83-release-%E5%90%8E%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88"><span class="toc-number">13.</span> <span class="toc-text"> 十三、从管理台发布 Release 后会发生什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B-%E6%B5%8B%E8%AF%95%E6%97%B6%E9%87%8D%E7%82%B9%E9%AA%8C%E8%AF%81%E4%BA%86%E5%93%AA%E4%BA%9B%E8%BE%B9%E7%95%8C"><span class="toc-number">14.</span> <span class="toc-text"> 十四、测试时重点验证了哪些边界</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%94-%E8%BF%99%E6%AC%A1%E6%9B%B4%E6%96%B0%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%87%A0%E4%B8%AA%E5%90%AF%E5%8F%91"><span class="toc-number">15.</span> <span class="toc-text"> 十五、这次更新带来的几个启发</span></a></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li ><a href="/2020/11/18/jiaocheng/%E6%95%99%E7%A8%8B/" rel="bookmark" title="博客教程">博客教程</a></li><li ><a href="/2020/11/18/xuexi/linux%E6%8D%A2%E6%BA%90/" rel="bookmark" title="linux相关">linux相关</a></li><li ><a href="/2020/12/06/xuexi/MarkDown/" rel="bookmark" title="MarkDown">MarkDown</a></li><li ><a href="/2020/12/14/xuexi/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="bookmark" title="排序算法">排序算法</a></li><li ><a href="/2022/01/29/xuexi/c-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="bookmark" title="c++学习笔记">c++学习笔记</a></li><li ><a href="/2024/01/27/jiaocheng/G502%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/" rel="bookmark" title="G502折腾记录">G502折腾记录</a></li><li ><a href="/2024/01/31/jiaocheng/%E6%97%B6%E9%9A%94n%E4%B9%85%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BF%BB%E6%96%B0%E8%AE%B0%E5%BD%95/" rel="bookmark" title="时隔n久的博客翻新记录">时隔n久的博客翻新记录</a></li><li ><a href="/2024/09/24/jiaocheng/%E5%A4%A9%E9%80%89%E5%A7%AC%E8%B0%83%E6%95%99%E8%AE%B0%E5%BD%95/" rel="bookmark" title="折腾天选姬记录">折腾天选姬记录</a></li><li ><a href="/2025/10/23/xuexi/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="bookmark" title="人工智能学习笔记">人工智能学习笔记</a></li><li ><a href="/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/" rel="bookmark" title="从页面卡在加载中到恢复构建：一次 Hexo 博客故障排查记录">从页面卡在加载中到恢复构建：一次 Hexo 博客故障排查记录</a></li><li ><a href="/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/" rel="bookmark" title="从 Shoka 到 ShokaX：一次 Hexo 主题迁移与博客管理台开发记录">从 Shoka 到 ShokaX：一次 Hexo 主题迁移与博客管理台开发记录</a></li><li ><a href="/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/" rel="bookmark" title="从一张被裁坏的封面开始：给 Hexo 管理台加入文章封面焦点选择">从一张被裁坏的封面开始：给 Hexo 管理台加入文章封面焦点选择</a></li><li  class="active"><a href="/2026/08/06/jiaocheng/Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%88%9B%E4%BD%9C%E5%B7%A5%E4%BD%9C%E5%8C%BA%E4%B8%8E%E5%9B%BE%E5%BA%8A%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/" rel="bookmark" title="从“能管理文章”到“能直接写文章”：Hexo 管理台创作工作区与图床优化记录">从“能管理文章”到“能直接写文章”：Hexo 管理台创作工作区与图床优化记录</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" loading="lazy" decoding="async" itemprop="image" alt="试末" src="/assets/avatar.jpg"/><p class="name" itemprop="name">试末</p><div class="description" itemprop="description">合于时而动，不合于时而止</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">40</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">4</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">19</span><span class="name">标签</span></a></div></nav><div class="social"><a target="_blank" rel="noopener" href="https://github.com/simoxdcs" class="item github" title="https:&#x2F;&#x2F;github.com&#x2F;simoxdcs"><i class="ic i-github"></i></a><a target="_blank" rel="noopener" href="https://twitter.com/sikutimo?s=09" class="item twitter" title="https:&#x2F;&#x2F;twitter.com&#x2F;sikutimo?s&#x3D;09"><i class="ic i-twitter"></i></a><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/8646e25fb2bbbf1388cb6e40936cee5d" class="item zhihu" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;8646e25fb2bbbf1388cb6e40936cee5d"><i class="ic i-zhihu"></i></a><a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=536728338" class="item music" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;536728338"><i class="ic i-cloud-music"></i></a><a target="_blank" rel="noopener" href="https://weibo.com/u/7101341111" class="item weibo" title="https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;7101341111"><i class="ic i-weibo"></i></a><a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCm0Vhzr3Mx0BYy5wLN4U5CQ" class="item youtube" title="https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCm0Vhzr3Mx0BYy5wLN4U5CQ"><i class="ic i-youtube"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item dropdown"><a href="#" onclick="return false;"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/2026/08/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E9%97%B2%E9%B1%BC%E5%87%BA%E5%94%AE%E7%BB%8F%E5%8E%86/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div><div id="player"></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/youji/" title="分类于快乐の游记">快乐の游记</a></div><span><a href="/2020/12/17/youji/%E8%A5%BF%E7%94%B5%E6%A0%A1%E5%8F%B2%E9%A6%86%E6%B8%B8%E8%AE%B0/">西电校史馆游记</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2026/07/30/%E6%89%8B%E5%8A%9E%E8%AE%B0%E5%BD%95/">手办记录</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2020/11/20/suibi/%E9%9A%8F%E7%AC%94%E4%B9%8B%E4%BA%8C/">随笔之二</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/xuexi/" title="分类于学习&amp;技术">学习&技术</a></div><span><a href="/2020/11/18/jiaocheng/%E6%95%99%E7%A8%8B/">博客教程</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2020/12/08/suibi/%E9%9A%8F%E7%AC%94%E4%B9%8B%E5%9B%9B/">随笔之四</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2020/12/31/suibi/%E9%9A%8F%E7%AC%94%E4%B9%8B%E4%B8%83/">随笔之七</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2020/12/25/suibi/%E9%9A%8F%E7%AC%94%E4%B9%8B%E4%BA%94/">随笔之五</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2020/11/18/suibi/%E9%9A%8F%E7%AC%94%E4%B9%8B%E4%B8%80/">随笔之一</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2020/10/23/suibi/emmm/">emmmmm</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/xuexi/" title="分类于学习&amp;技术">学习&技术</a></div><span><a href="/2020/12/14/xuexi/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a></span></li></ul></div><div class="rpost pjax"><h2>最新评论</h2><ul class="leancloud-recent-comment" id="new-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2020 -<span itemprop="copyrightYear">2026</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">试末 @ Momingのsite</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">184k 字</span><span class="post-meta-divider"> | </span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长">2:47</span></div><div class="powered-by">基于 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & Theme.<a target="_blank" rel="noopener" href="https://github.com/theme-shoka-x/hexo-theme-shokaX/">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
+    ispost: true,
+    path: `2026/08/06/jiaocheng/Hexo管理台创作工作区与图床优化记录/`,
+    favicon: {
+        show: `（●´3｀●）やれやれだぜ`,
+        hide: `(´Д｀)大変だ！`
+    },
+    search: {
+        placeholder: "文章搜索",
+        empty: "关于 「 ${query} 」，什么也没搜到",
+        stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    nocopy: "false",
+    copyright: `复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。`,
+    copy_tex: false,
+    katex: false,
+    mermaid: false,
+    audio: undefined,
+    nocopy: false,
+    outime: true,
+    template: `<div class="note warning"><p><span class="label warning">文章时效性提示</span><br>这是一篇发布于 {{publish}} 天前，最后一次更新在 {{updated}} 天前的文章，部分信息可能已经发生改变，请注意甄别。</p></div>`,
+    quiz: {
+        choice: `单选题`,
+        multiple: `多选题`,
+        true_false: `判断题`,
+        essay: `问答题`,
+        gap_fill: `填空题`,
+        mistake: `错题备注`
+    }
+};
+</script><script src="/js/siteInit.js?v=20260730-home-url-fix" type="module" fetchpriority="high" defer></script><!-- hexo injector body_end start -->
+<script id="legacy-footer-script">
+  (() => {
+    const startTime = Date.parse('2020-10-24T10:52:50+08:00');
+    const second = 1000;
+    const minute = second * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+    const year = day * 365;
+
+    const initLegacyFooter = () => {
+      const status = document.querySelector('#footer .status');
+      if (!status || document.getElementById('site-runtime')) return;
+
+      const powered = status.querySelector('.powered-by');
+      const runtime = document.createElement('div');
+      runtime.id = 'site-runtime';
+      runtime.className = 'site-runtime';
+      runtime.setAttribute('aria-label', '本站运行时间');
+      runtime.innerHTML = '<span class="site-runtime-text"></span>';
+
+      if (powered) status.insertBefore(runtime, powered);
+      else status.appendChild(runtime);
+
+      const counter = document.createElement('div');
+      counter.className = 'site-pixel-counter';
+
+      const counterImage = document.createElement('img');
+      counterImage.src = 'https://count.getloli.com/@simoxdcs?name=simoxdcs&theme=rule34&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto';
+      counterImage.alt = 'Moming 网站访问计数像素人物';
+      counterImage.loading = 'eager';
+      counterImage.decoding = 'async';
+      counterImage.referrerPolicy = 'no-referrer';
+      counter.appendChild(counterImage);
+
+      if (powered) powered.insertAdjacentElement('afterend', counter);
+      else status.appendChild(counter);
+
+      const text = runtime.querySelector('.site-runtime-text');
+      const updateRuntime = () => {
+        let diff = Math.max(0, Date.now() - startTime);
+        const years = Math.floor(diff / year);
+        diff -= years * year;
+        const days = Math.floor(diff / day);
+        diff -= days * day;
+        const hours = Math.floor(diff / hour);
+        diff -= hours * hour;
+        const minutes = Math.floor(diff / minute);
+        diff -= minutes * minute;
+        const seconds = Math.floor(diff / second);
+
+        text.textContent = '本站在风雨中运行了' + years + ' 年 ' + days + ' 天 ' + hours + ' 小时 ' + minutes + ' 分钟 ' + seconds + ' 秒';
+      };
+
+      updateRuntime();
+      const timer = window.setInterval(updateRuntime, second);
+      window.addEventListener('pagehide', () => window.clearInterval(timer), { once: true });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLegacyFooter, { once: true });
+    } else {
+      initLegacyFooter();
+    }
+  })();
+</script><script>
+  (() => {
+    // Keep the theme's own startup path unblocked.  Adding ?no-live2d=1 is a
+    // convenient diagnostic escape hatch if a model breaks in the future.
+    if (new URLSearchParams(window.location.search).has('no-live2d')) return;
+
+    const loadLive2D = () => {
+      if (document.querySelector('script[data-live2d-widget]')) return;
+      const script = document.createElement('script');
+      script.src = '/live2d-widget/autoload.js';
+      script.async = true;
+      script.dataset.live2dWidget = 'true';
+      document.body.appendChild(script);
+    };
+
+    if (document.readyState === 'complete') loadLive2D();
+    else window.addEventListener('load', loadLive2D, { once: true });
+  })();
+  </script><!-- hexo injector body_end end -->
+<script id="waline-recent-comments-fix">
+  (() => {
+    if (window.__walineRecentCommentsFix) return;
+    window.__walineRecentCommentsFix = true;
+
+    const serverURL = "https://commit-ywg7.vercel.app";
+    const lang = "zh-CN";
+    const boundLists = new WeakSet();
+
+    const htmlToText = (html) => {
+      const documentNode = new DOMParser().parseFromString(html || '', 'text/html');
+      return (documentNode.body.textContent || '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    };
+
+    const truncate = (text, length = 50) => {
+      const characters = Array.from(text);
+      return characters.length > length
+        ? characters.slice(0, length).join('') + '...'
+        : text;
+    };
+
+    const formatTime = (time) => {
+      const date = new Date(time);
+      const elapsed = Date.now() - date.getTime();
+
+      if (elapsed < 60 * 60 * 1000) {
+        return Math.max(0, Math.floor(elapsed / 60000)) + ' 分钟前';
+      }
+      if (elapsed < 24 * 60 * 60 * 1000) {
+        return Math.floor(elapsed / 3600000) + ' 小时前';
+      }
+      if (elapsed < 30 * 24 * 60 * 60 * 1000) {
+        return Math.floor(elapsed / 86400000) + ' 天前';
+      }
+      return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    };
+
+    const createItem = (comment) => {
+      const item = document.createElement('li');
+      const link = document.createElement('a');
+      const meta = document.createElement('span');
+      const content = document.createElement('span');
+      const path = String(comment.url || '/');
+      const plainText = htmlToText(comment.orig || comment.comment || '');
+
+      item.className = 'item';
+      link.href = (path.startsWith('/') ? path : '/' + path) + '#' + comment.objectId;
+      meta.className = 'breadcrumb';
+      meta.textContent = (comment.nick || '匿名') + ' @ ' + formatTime(comment.time);
+      content.textContent = truncate(plainText);
+
+      content.appendChild(document.createElement('br'));
+      link.appendChild(meta);
+      link.appendChild(content);
+      item.appendChild(link);
+      return item;
+    };
+
+    const bindList = (list) => {
+      if (boundLists.has(list) || !serverURL) return;
+      boundLists.add(list);
+
+      let comments = null;
+      let renderTimer = 0;
+      const observer = new MutationObserver(() => {
+        if (!comments) return;
+        window.clearTimeout(renderTimer);
+        renderTimer = window.setTimeout(render, 0);
+      });
+
+      const render = () => {
+        if (!comments || !list.isConnected) return;
+        observer.disconnect();
+        const fragment = document.createDocumentFragment();
+        comments.forEach((comment) => fragment.appendChild(createItem(comment)));
+        list.replaceChildren(fragment);
+        observer.observe(list, { childList: true });
+      };
+
+      observer.observe(list, { childList: true });
+
+      fetch(
+        serverURL + '/api/comment?type=recent&count=10&lang=' + encodeURIComponent(lang),
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          comments = Array.isArray(response.data) ? response.data : [];
+          render();
+        })
+        .catch(() => {
+          // Leave ShokaX's original list available if the extra formatting
+          // request fails; the normal comment component is unaffected.
+        });
+    };
+
+    const bindLists = () => {
+      document.querySelectorAll('#new-comment').forEach(bindList);
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bindLists, { once: true });
+    } else {
+      bindLists();
+    }
+
+    new MutationObserver(bindLists).observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+    });
+  })();
+</script></body></html>

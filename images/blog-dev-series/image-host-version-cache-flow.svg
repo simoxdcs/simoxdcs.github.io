@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="740" viewBox="0 0 1400 740">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f5f9f7"/><stop offset="1" stop-color="#e2eee9"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#244a41" flood-opacity=".12"/></filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="11" refY="4" orient="auto"><path d="M0,0 L12,4 L0,8 Z" fill="#4f8075"/></marker>
+  </defs>
+  <rect width="1400" height="740" fill="url(#bg)"/>
+  <g font-family="Microsoft YaHei, sans-serif">
+    <text x="70" y="72" font-size="34" font-weight="700" fill="#173b34">Release 版本校验与本地目录缓存</text>
+    <text x="72" y="108" font-size="17" fill="#5b756e">远端负责确认版本是否存在，本地负责高频浏览图片；两种工作不再绑定到同一次请求</text>
+    <g filter="url(#shadow)">
+      <rect x="80" y="190" width="250" height="150" rx="18" fill="#242a28"/>
+      <rect x="420" y="150" width="310" height="230" rx="18" fill="#fff" stroke="#bcd8cf" stroke-width="2"/>
+      <rect x="820" y="150" width="500" height="230" rx="18" fill="#fff" stroke="#bcd8cf" stroke-width="2"/>
+      <rect x="210" y="500" width="980" height="120" rx="20" fill="#167c68"/>
+    </g>
+    <text x="205" y="235" text-anchor="middle" font-size="23" font-weight="700" fill="#fff">首次进入或显式刷新</text>
+    <text x="205" y="280" text-anchor="middle" font-size="16" fill="#d4e6e0">刷新按钮 / Release 完成</text>
+    <text x="205" y="314" text-anchor="middle" font-size="16" fill="#d4e6e0">触发一次远端同步</text>
+    <text x="575" y="200" text-anchor="middle" font-size="23" font-weight="700" fill="#173b34">读取并合并版本</text>
+    <text x="465" y="250" font-size="16" fill="#506b64">git tag</text>
+    <text x="465" y="286" font-size="16" fill="#506b64">git ls-remote --tags origin</text>
+    <text x="465" y="322" font-size="16" fill="#506b64">语义化排序：v2.10 &gt; v2.9</text>
+    <text x="1070" y="200" text-anchor="middle" font-size="23" font-weight="700" fill="#173b34">保存可复用状态</text>
+    <text x="865" y="250" font-size="16" fill="#506b64">进程缓存：版本列表、最新版本、远端状态</text>
+    <text x="865" y="286" font-size="16" fill="#506b64">Git 本地配置：shokax.image-version=v3.3</text>
+    <text x="865" y="322" font-size="16" fill="#506b64">不存在的 Release 不允许成为直链版本</text>
+    <path d="M330 265 H420" stroke="#4f8075" stroke-width="5" marker-end="url(#arrow)"/>
+    <path d="M730 265 H820" stroke="#4f8075" stroke-width="5" marker-end="url(#arrow)"/>
+    <path d="M1070 380 V500" stroke="#4f8075" stroke-width="5" marker-end="url(#arrow)"/>
+    <text x="700" y="548" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">之后切换文件夹只读取本地目录和本地图片文件，不再重复等待 GitHub</text>
+    <text x="700" y="585" text-anchor="middle" font-size="17" fill="#d9f1ea">需要确认新 Release 时再点击“刷新图床”，主动失效缓存并重新查询</text>
+  </g>
+</svg>

@@ -21,6 +21,8 @@
     <category term="随笔" />
     <category term="游记" />
     <category term="随便写写" />
+    <category term="Markdown" />
+    <category term="GitHub" />
     <entry>
         <id>https://simoxdcs.github.io/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/</id>
         <title>从 Shoka 到 ShokaX：一次 Hexo 主题迁移与博客管理台开发记录</title>
