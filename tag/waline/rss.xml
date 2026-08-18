@@ -26,6 +26,11 @@
         <category>随便写写</category>
         <category>Markdown</category>
         <category>GitHub</category>
+        <category>鼠标</category>
+        <category>Razer</category>
+        <category>Windows</category>
+        <category>故障排查</category>
+        <category>Wallpaper Engine</category>
         <item>
             <guid isPermalink="true">https://simoxdcs.github.io/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/</guid>
             <title>从 Shoka 到 ShokaX：一次 Hexo 主题迁移与博客管理台开发记录</title>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="700" viewBox="0 0 1400 700">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f6f9f7"/><stop offset="1" stop-color="#e5efeb"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#244a41" flood-opacity=".12"/></filter>
+  </defs>
+  <rect width="1400" height="700" fill="url(#bg)"/>
+  <g font-family="Microsoft YaHei, sans-serif">
+    <text x="70" y="72" font-size="34" font-weight="700" fill="#173b34">开机后的灯光控制时间线</text>
+    <text x="72" y="108" font-size="17" fill="#5b756e">Wallpaper Engine 进程虽然较早启动，但 LED 插件与 Chroma SDK 在一分钟后才真正取得访问权</text>
+    <line x1="120" y1="370" x2="1280" y2="370" stroke="#86a59d" stroke-width="6"/>
+    <g filter="url(#shadow)">
+      <rect x="65" y="170" width="220" height="130" rx="16" fill="#fff" stroke="#bcd8cf" stroke-width="2"/>
+      <rect x="310" y="420" width="220" height="130" rx="16" fill="#fff" stroke="#bcd8cf" stroke-width="2"/>
+      <rect x="555" y="170" width="220" height="130" rx="16" fill="#fff" stroke="#bcd8cf" stroke-width="2"/>
+      <rect x="800" y="420" width="220" height="130" rx="16" fill="#fff" stroke="#d9b76c" stroke-width="2"/>
+      <rect x="1045" y="150" width="290" height="170" rx="16" fill="#167c68"/>
+    </g>
+    <g fill="#167c68">
+      <circle cx="175" cy="370" r="13"/><circle cx="420" cy="370" r="13"/><circle cx="665" cy="370" r="13"/><circle cx="910" cy="370" r="13"/><circle cx="1190" cy="370" r="13"/>
+    </g>
+    <g text-anchor="middle">
+      <text x="175" y="212" font-size="21" font-weight="700" fill="#173b34">19:23:41</text><text x="175" y="249" font-size="16" fill="#506b64">Windows 启动</text><text x="175" y="278" font-size="15" fill="#5b756e">灯光暂时正常</text>
+      <text x="420" y="462" font-size="21" font-weight="700" fill="#173b34">19:23:53</text><text x="420" y="499" font-size="16" fill="#506b64">wallpaper32 启动</text><text x="420" y="528" font-size="15" fill="#5b756e">尚未接管 LED</text>
+      <text x="665" y="212" font-size="21" font-weight="700" fill="#173b34">19:24:09</text><text x="665" y="249" font-size="16" fill="#506b64">Synapse 启动</text><text x="665" y="278" font-size="15" fill="#5b756e">应用鼠标配置</text>
+      <text x="910" y="462" font-size="21" font-weight="700" fill="#8a5a16">19:25:02</text><text x="910" y="499" font-size="16" fill="#6f6048">加载 Chroma SDK</text><text x="910" y="528" font-size="15" fill="#6f6048">LED 插件开始工作</text>
+      <text x="1190" y="195" font-size="22" font-weight="700" fill="#fff">19:25:05</text><text x="1190" y="237" font-size="17" fill="#e4f5f0">Wallpaper Engine</text><text x="1190" y="268" font-size="17" fill="#e4f5f0">获得灯光访问权</text><text x="1190" y="299" font-size="15" fill="#c7e7df">异常从此开始</text>
+    </g>
+    <text x="700" y="635" text-anchor="middle" font-size="18" fill="#506b64">从开机到异常出现约 84 秒，正好覆盖第三方灯效插件的延迟初始化过程</text>
+  </g>
+</svg>

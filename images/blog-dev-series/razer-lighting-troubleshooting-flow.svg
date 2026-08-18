@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="860" viewBox="0 0 1400 860">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f4f8f6"/><stop offset="1" stop-color="#e5efeb"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#244a41" flood-opacity=".13"/></filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="11" refY="4" orient="auto"><path d="M0,0 L12,4 L0,8 Z" fill="#4f8075"/></marker>
+  </defs>
+  <rect width="1400" height="860" fill="url(#bg)"/>
+  <g font-family="Microsoft YaHei, sans-serif">
+    <text x="70" y="72" font-size="34" font-weight="700" fill="#173b34">雷蛇鼠标 2.4G 闪白灯的排查路径</text>
+    <text x="72" y="108" font-size="17" fill="#5b756e">先区分输入链路是否中断，再判断是驱动、固件、无线环境还是灯效控制权冲突</text>
+    <g filter="url(#shadow)">
+      <rect x="80" y="170" width="290" height="150" rx="18" fill="#242a28"/>
+      <rect x="505" y="170" width="390" height="150" rx="18" fill="#fff" stroke="#bcd8cf" stroke-width="2"/>
+      <rect x="1030" y="150" width="290" height="190" rx="18" fill="#fff" stroke="#bcd8cf" stroke-width="2"/>
+      <rect x="190" y="485" width="390" height="165" rx="18" fill="#fff" stroke="#d9b76c" stroke-width="2"/>
+      <rect x="820" y="465" width="390" height="205" rx="18" fill="#fff" stroke="#63a898" stroke-width="3"/>
+    </g>
+    <text x="225" y="218" text-anchor="middle" font-size="24" font-weight="700" fill="#fff">现象</text>
+    <text x="225" y="260" text-anchor="middle" font-size="17" fill="#d4e6e0">2.4G 模式频繁闪白灯</text>
+    <text x="225" y="293" text-anchor="middle" font-size="17" fill="#d4e6e0">蓝牙模式正常</text>
+    <text x="700" y="218" text-anchor="middle" font-size="24" font-weight="700" fill="#173b34">闪灯时输入是否中断？</text>
+    <text x="700" y="262" text-anchor="middle" font-size="17" fill="#506b64">观察光标、按键和滚轮</text>
+    <text x="700" y="295" text-anchor="middle" font-size="17" fill="#506b64">不要只根据灯光判断掉线</text>
+    <text x="1175" y="203" text-anchor="middle" font-size="23" font-weight="700" fill="#173b34">同时卡顿或失效</text>
+    <text x="1175" y="246" text-anchor="middle" font-size="16" fill="#506b64">固件与接收器</text>
+    <text x="1175" y="278" text-anchor="middle" font-size="16" fill="#506b64">USB 供电与节能</text>
+    <text x="1175" y="310" text-anchor="middle" font-size="16" fill="#506b64">2.4GHz 干扰</text>
+    <text x="385" y="533" text-anchor="middle" font-size="23" font-weight="700" fill="#8a5a16">输入正常但灯光异常</text>
+    <text x="385" y="577" text-anchor="middle" font-size="16" fill="#6f6048">按启动时间对齐灯效日志</text>
+    <text x="385" y="610" text-anchor="middle" font-size="16" fill="#6f6048">检查 Chroma SDK 客户端</text>
+    <text x="1015" y="513" text-anchor="middle" font-size="24" font-weight="700" fill="#176b59">最终定位</text>
+    <text x="1015" y="558" text-anchor="middle" font-size="17" fill="#3f675f">Wallpaper Engine LED 插件</text>
+    <text x="1015" y="592" text-anchor="middle" font-size="17" fill="#3f675f">与 Synapse 争抢灯光控制权</text>
+    <text x="1015" y="633" text-anchor="middle" font-size="16" fill="#5b756e">关闭 Chroma 集成后恢复正常</text>
+    <path d="M370 245 H505" stroke="#4f8075" stroke-width="5" marker-end="url(#arrow)"/>
+    <path d="M895 230 H1030" stroke="#4f8075" stroke-width="5" marker-end="url(#arrow)"/>
+    <path d="M620 320 L480 485" stroke="#b07b2e" stroke-width="5" marker-end="url(#arrow)"/>
+    <path d="M580 567 H820" stroke="#4f8075" stroke-width="5" marker-end="url(#arrow)"/>
+    <text x="960" y="207" font-size="17" fill="#3d7569">会</text>
+    <text x="535" y="398" font-size="17" fill="#8a5a16">不会</text>
+    <rect x="265" y="745" width="870" height="58" rx="29" fill="#167c68"/>
+    <text x="700" y="783" text-anchor="middle" font-size="19" font-weight="700" fill="#fff">异常发生的时间，比“看起来像什么问题”更接近真正的控制来源</text>
+  </g>
+</svg>

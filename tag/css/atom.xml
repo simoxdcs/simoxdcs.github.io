@@ -23,6 +23,11 @@
     <category term="随便写写" />
     <category term="Markdown" />
     <category term="GitHub" />
+    <category term="鼠标" />
+    <category term="Razer" />
+    <category term="Windows" />
+    <category term="故障排查" />
+    <category term="Wallpaper Engine" />
     <entry>
         <id>https://simoxdcs.github.io/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/</id>
         <title>从一张被裁坏的封面开始：给 Hexo 管理台加入文章封面焦点选择</title>

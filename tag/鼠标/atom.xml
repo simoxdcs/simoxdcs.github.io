@@ -1,0 +1,227 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://simoxdcs.github.io</id>
+    <title>Ciallo～(∠・ω )⌒☆ • Posts by &#34;鼠标&#34; tag</title>
+    <link href="https://simoxdcs.github.io" />
+    <updated>2026-08-18T12:30:00.000Z</updated>
+    <category term="手办" />
+    <category term="知识科普" />
+    <category term="测试" />
+    <category term="学习&amp;技术" />
+    <category term="欢迎" />
+    <category term="Hexo" />
+    <category term="ShokaX" />
+    <category term="前端开发" />
+    <category term="博客管理" />
+    <category term="Waline" />
+    <category term="Algolia" />
+    <category term="博客故障排查" />
+    <category term="JavaScript" />
+    <category term="CSS" />
+    <category term="随笔" />
+    <category term="游记" />
+    <category term="随便写写" />
+    <category term="Markdown" />
+    <category term="GitHub" />
+    <category term="鼠标" />
+    <category term="Razer" />
+    <category term="Windows" />
+    <category term="故障排查" />
+    <category term="Wallpaper Engine" />
+    <entry>
+        <id>https://simoxdcs.github.io/2026/08/18/jiaocheng/%E9%9B%B7%E8%9B%87%E5%B7%B4%E5%A1%9E%E5%88%A9%E6%96%AF%E8%9B%87V3%E7%81%AF%E5%85%89%E9%97%AA%E7%83%81%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95/</id>
+        <title>雷蛇巴塞利斯蛇 V3 灯光闪烁排查记录</title>
+        <link rel="alternate" href="https://simoxdcs.github.io/2026/08/18/jiaocheng/%E9%9B%B7%E8%9B%87%E5%B7%B4%E5%A1%9E%E5%88%A9%E6%96%AF%E8%9B%87V3%E7%81%AF%E5%85%89%E9%97%AA%E7%83%81%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95/"/>
+        <content type="html">&lt;p&gt;最近更换了一只雷蛇巴塞利斯蛇 V3 Pro，刚开始使用时遇到了一个很奇怪的问题：鼠标通过 2.4G 接收器连接电脑时，灯光会在白色和原本设置的颜色之间频繁闪烁；把连接方式切换成蓝牙之后，闪烁却完全消失。&lt;/p&gt;
+&lt;p&gt;因为异常只出现在 2.4G 模式，我最先怀疑的是接收器、无线干扰、固件或者驱动。白灯也很像鼠标短暂断开之后恢复板载灯效，再被 Synapse 重新下发颜色。按照这个思路检查下去，日志里确实能找到设备注销、重新注册和“设备未连接”错误，看起来似乎很快就找到了原因。&lt;/p&gt;
+&lt;p&gt;但最后真正解决问题的并不是重装驱动，也不是更换 USB 接口，而是关闭 Wallpaper Engine 的 Razer Chroma 灯光集成。回头复盘整个过程后，我发现这次最值得记录的地方并不是某个设置藏在哪里，而是一个故障假设怎样被新证据推翻，又怎样通过开机时间线定位到真正的灯效控制来源。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/blog-dev-series/razer-lighting-troubleshooting-flow.svg&#34; alt=&#34;雷蛇鼠标闪白灯的排查路径&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;一-先把现象描述完整&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-先把现象描述完整&#34;&gt;#&lt;/a&gt; 一、先把现象描述完整&lt;/h2&gt;
+&lt;p&gt;刚开始掌握的信息只有两条：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 2.4G 接收器时，灯光频繁闪成白色，然后恢复原本颜色；&lt;/li&gt;
+&lt;li&gt;切换到蓝牙后，灯光正常。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;只根据这两条现象，很容易得出“2.4G 连接不稳定”的结论。因为蓝牙和 2.4G 使用不同的设备路径，接收器、USB 接口和 2.4GHz 干扰都只会直接影响前者。&lt;/p&gt;
+&lt;p&gt;但“闪白灯”不是一个足够精确的故障描述。真正需要继续确认的是：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;灯光闪烁时&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;光标是否卡住？&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;按键是否短暂失效？&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;滚轮输入是否中断？&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;设备连接提示音是否响起？&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果输入也中断，优先考虑连接链路；如果只有灯光发生变化，优先考虑灯效配置和软件控制权。这个区别后来成为整次排查的转折点。&lt;/p&gt;
+&lt;h2 id=&#34;二-第一轮排查为什么先怀疑驱动和无线链路&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-第一轮排查为什么先怀疑驱动和无线链路&#34;&gt;#&lt;/a&gt; 二、第一轮排查为什么先怀疑驱动和无线链路&lt;/h2&gt;
+&lt;p&gt;为了判断是否为驱动问题，我先检查了当前安装的雷蛇组件。本机使用的是 Razer Synapse 4 和 Razer Chroma &lt;code&gt;4.0.698&lt;/code&gt;，Chroma SDK、Synapse 后台与相关服务都处于运行状态。&lt;/p&gt;
+&lt;p&gt;Windows 中可以使用 PowerShell 查看雷蛇相关服务：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#998418;--shiki-dark:#B8A965&#34;&gt;Get-CimInstance&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt; Win32_Service &lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;|&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#998418;--shiki-dark:#B8A965&#34;&gt;  Where-Object&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;    $&lt;/span&gt;&lt;span style=&#34;color:#998418;--shiki-dark:#B8A965&#34;&gt;_&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;.Name&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; -match&lt;/span&gt;&lt;span style=&#34;color:#B5695977;--shiki-dark:#C98A7D77&#34;&gt; &#39;&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt;Razer&lt;/span&gt;&lt;span style=&#34;color:#B5695977;--shiki-dark:#C98A7D77&#34;&gt;&#39;&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; -or&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt; $&lt;/span&gt;&lt;span style=&#34;color:#998418;--shiki-dark:#B8A965&#34;&gt;_&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;.DisplayName&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; -match&lt;/span&gt;&lt;span style=&#34;color:#B5695977;--shiki-dark:#C98A7D77&#34;&gt; &#39;&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt;Razer&lt;/span&gt;&lt;span style=&#34;color:#B5695977;--shiki-dark:#C98A7D77&#34;&gt;&#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; |&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#998418;--shiki-dark:#B8A965&#34;&gt;  Select-Object&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt; Name&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt; DisplayName&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt; State&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt; StartMode&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;接着检查设备管理器中的鼠标、接收器和 HID 设备。2.4G 模式对应的主要产品 ID 为 &lt;code&gt;PID_00AB&lt;/code&gt;，蓝牙模式则是另一条 &lt;code&gt;PID_00AC&lt;/code&gt; 路径。当前启用的 2.4G 鼠标、USB 复合设备和控制设备状态都是 &lt;code&gt;OK&lt;/code&gt;，没有设备管理器错误码。&lt;/p&gt;
+&lt;p&gt;驱动结构也没有表现出明显异常：USB 和大部分 HID 基础功能仍由微软驱动提供，雷蛇驱动主要负责鼠标扩展功能和灯光控制。这种组合本身是正常的，并不能因为设备列表里同时出现 Microsoft 与 Razer 就判断驱动冲突。&lt;/p&gt;
+&lt;p&gt;我还检查了近期 Windows 系统日志，没有发现同一时间反复出现的 USB 控制器复位、端口供电失败或 HID 安装错误。到这一步，只能说明“没有明显的 Windows 驱动故障”，还不能证明无线链路一定正常。&lt;/p&gt;
+&lt;h2 id=&#34;三-synapse-日志一度把方向带到了设备重连&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-synapse-日志一度把方向带到了设备重连&#34;&gt;#&lt;/a&gt; 三、Synapse 日志一度把方向带到了设备重连&lt;/h2&gt;
+&lt;p&gt;雷蛇日志中确实出现过下面这类记录：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;device.unregister&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;device.register&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;removeUsbDevice&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;addUsbDevice&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;driver ready&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2.4G 对应设备上还出现过错误码 &lt;code&gt;1167&lt;/code&gt;，Windows 中通常表示设备当前没有连接。灯光驱动也多次注销旧句柄，再为鼠标注册新句柄。&lt;/p&gt;
+&lt;p&gt;如果只看这些日志，一个合理的解释是：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;2.4G 链路短暂中断&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;        ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;鼠标回到板载默认白色灯效&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;        ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;接收器重新识别鼠标&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;        ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;Synapse 再次下发配置颜色&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个假设并不是凭空猜测。雷蛇当时提供的 Basilisk V3 Pro 官方固件 &lt;code&gt;v2.01.01_r1&lt;/code&gt; 更新说明中，明确提到改善无线断开与重新连接问题。官方固件页面如下：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://mysupport.razer.com/app/answers/detail/a_id/6405/~/razer-basilisk-v3-pro-firmware-updater-%7C-rz01-04620&#34;&gt;Razer Basilisk V3 Pro Firmware Updater&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;因此第一轮建议包括检查鼠标与接收器固件、使用接收器延长底座、尝试 USB 2.0 接口，以及避开 USB 3.x 设备附近可能存在的 2.4GHz 干扰。&lt;/p&gt;
+&lt;p&gt;这里还有一个容易误判的细节：Synapse 日志中的内部固件字段显示为 &lt;code&gt;2.50.3.0&lt;/code&gt;，但它与官方下载包的 &lt;code&gt;v2.01.01_r1&lt;/code&gt; 不是同一套编号，不能直接拿两个字符串比较新旧。最稳妥的方式仍然是让官方固件更新器实际检测设备。&lt;/p&gt;
+&lt;h2 id=&#34;四-实时观察没有复现说明日志不等于当前故障&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#四-实时观察没有复现说明日志不等于当前故障&#34;&gt;#&lt;/a&gt; 四、实时观察没有复现，说明日志不等于当前故障&lt;/h2&gt;
+&lt;p&gt;为了把历史日志和当前闪灯对应起来，我在 2.4G 模式下做了一段实时观察，让鼠标保持正常移动并监控新的设备和灯光日志。&lt;/p&gt;
+&lt;p&gt;观察期间没有出现新的重连记录。这说明日志里虽然存在过注销和注册，却不一定对应眼前每一次白灯闪烁。设备日志可能记录了之前主动切换蓝牙、重启服务或接收器重新插拔产生的事件。&lt;/p&gt;
+&lt;p&gt;这是排查中第一个需要修正的地方：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;日志中存在某类错误，只能证明它发生过；只有错误时间与当前现象一致，才能把它当成当前问题的直接原因。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果当时直接根据 &lt;code&gt;1167&lt;/code&gt; 重装驱动或申请换新，可能碰巧暂时改变现象，却没有真正解释为什么蓝牙正常，也没有解释为什么闪烁具有明显的启动延迟。&lt;/p&gt;
+&lt;h2 id=&#34;五-两个新现象改变了排查方向&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#五-两个新现象改变了排查方向&#34;&gt;#&lt;/a&gt; 五、两个新现象改变了排查方向&lt;/h2&gt;
+&lt;p&gt;随后又确认了两个非常重要的现象：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;闪白灯时，光标、按键和滚轮完全正常，没有任何卡顿。&lt;/li&gt;
+&lt;li&gt;电脑刚刚重启完成的一段时间内灯光正常，过一会儿才突然开始闪烁。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;第一条说明鼠标输入链路没有跟随灯光一起中断。即使底层日志里曾经出现设备重新注册，也不能再把“每次白灯”简单等同于“每次掉线”。&lt;/p&gt;
+&lt;p&gt;第二条则把问题从设备层转向了启动顺序。如果硬件接收器一上电就存在干扰，通常开机后应当立即出现；如果总是在某个软件或服务启动之后才出现，更像是灯光控制权被重新接管。&lt;/p&gt;
+&lt;p&gt;此时排查重点变成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;哪些软件能够调用 Razer Chroma SDK；&lt;/li&gt;
+&lt;li&gt;它们分别在开机后什么时候启动；&lt;/li&gt;
+&lt;li&gt;哪一个进程在异常开始前后获得了灯光访问权；&lt;/li&gt;
+&lt;li&gt;Synapse 的灯效配置是否在同一时间被重新应用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;六-按开机时间对齐进程与日志&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#六-按开机时间对齐进程与日志&#34;&gt;#&lt;/a&gt; 六、按开机时间对齐进程与日志&lt;/h2&gt;
+&lt;p&gt;单纯查看“哪些进程正在运行”还不够，因为 Wallpaper Engine、Synapse 和 Chroma 服务本来就会长期驻留。真正有区分度的是它们的启动和初始化时间。&lt;/p&gt;
+&lt;p&gt;本次开机的关键时间线如下：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;时间&lt;/th&gt;
+&lt;th&gt;发生的事情&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;19:23:41&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Windows 启动完成，鼠标灯光暂时正常&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;19:23:53&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Wallpaper Engine 与 &lt;code&gt;wallpaper32.exe&lt;/code&gt; 启动&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;19:24:09&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Razer Synapse 开始启动&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;19:24:16&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Synapse 接管并应用鼠标灯光&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;19:25:02&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Wallpaper Engine 延迟加载 Razer Chroma SDK&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;19:25:03&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Wallpaper Engine 注册为 Chroma 应用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;19:25:05&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Wallpaper Engine 获得灯光访问权，异常阶段开始&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;/images/blog-dev-series/razer-lighting-boot-timeline.svg&#34; alt=&#34;开机后的灯光控制时间线&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;从 Windows 启动到异常开始大约经过了 84 秒。这个延迟与“刚重启时正常，过一会儿开始闪”完全对应。&lt;/p&gt;
+&lt;p&gt;在同一时间，Synapse 灯光日志也记录了配置文件 &lt;code&gt;GRAPHITE-Default&lt;/code&gt; 中的动态灯效变化，出现了绿色 &lt;code&gt;#00ff00&lt;/code&gt;、蓝色 &lt;code&gt;#0000ff&lt;/code&gt; 和 &lt;code&gt;Tidal&lt;/code&gt;（潮汐）效果。之后又发生多次 &lt;code&gt;appsChange&lt;/code&gt; 和灯效重新应用。&lt;/p&gt;
+&lt;p&gt;这里还发现了一个名为 &lt;code&gt;RzSmartlightingDeviceManager&lt;/code&gt; 的进程。名字看起来很像另一个会争抢灯光的软件，但进一步确认后，它只是 Razer Chroma SDK 自带的设备管理组件，不应把它当成第三方根因。&lt;/p&gt;
+&lt;p&gt;真正值得关注的是 &lt;code&gt;wallpaper32.exe&lt;/code&gt;：它在 &lt;code&gt;19:25:02&lt;/code&gt; 加载 Chroma SDK，并在 &lt;code&gt;19:25:05&lt;/code&gt; 获得访问权，和异常出现的时间点重合。&lt;/p&gt;
+&lt;h2 id=&#34;七-wallpaper-engine-为什么会控制鼠标灯光&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#七-wallpaper-engine-为什么会控制鼠标灯光&#34;&gt;#&lt;/a&gt; 七、Wallpaper Engine 为什么会控制鼠标灯光&lt;/h2&gt;
+&lt;p&gt;Wallpaper Engine 不只负责显示动态壁纸，它还提供硬件 LED 插件，可以把壁纸的颜色或效果同步到 Corsair 与 Razer 等设备。&lt;/p&gt;
+&lt;p&gt;其本地语言资源中直接写明了相关选项：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;Controls LED effects from Corsair and Razer devices.&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;Enable Chroma SDK integration&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;本地配置中还能看到：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;plugindelay = 0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这表示插件没有额外延迟，但 Wallpaper Engine 自身、插件宿主和 Chroma SDK 的初始化仍然需要时间。因此进程在 &lt;code&gt;19:23:53&lt;/code&gt; 已经存在，并不代表它当时就开始控制鼠标；真正的控制发生在一分钟之后。&lt;/p&gt;
+&lt;p&gt;当 Wallpaper Engine 与 Synapse 同时向同一个 2.4G/USB Chroma 设备发送效果时，鼠标灯光会在不同状态之间反复切换，看起来就像白色短暂闪过。输入事件仍然通过 HID 正常传输，所以光标不会卡住。&lt;/p&gt;
+&lt;p&gt;蓝牙模式没有复现，也能得到解释。蓝牙使用独立的 BLE 设备路径 &lt;code&gt;PID_00AC&lt;/code&gt;，而 Wallpaper Engine 的 Chroma 插件主要接管的是 2.4G/USB 路径 &lt;code&gt;PID_00AB&lt;/code&gt;。因此“蓝牙正常”并不只能证明 2.4G 无线链路有问题，也可能说明第三方灯效软件只控制了 USB 侧的设备实例。&lt;/p&gt;
+&lt;h2 id=&#34;八-最终解决方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#八-最终解决方法&#34;&gt;#&lt;/a&gt; 八、最终解决方法&lt;/h2&gt;
+&lt;p&gt;在 Wallpaper Engine 中进入：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;设置&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  → 插件&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    → LED 插件&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;      → 配置&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;关闭 LED 效果或 Razer Chroma SDK 集成。不同版本和语言下名称可能略有差别，重点是关闭 Wallpaper Engine 对雷蛇设备的灯光控制，而不是关闭整个动态壁纸程序。&lt;/p&gt;
+&lt;p&gt;修改后继续保持 Wallpaper Engine 运行，并让鼠标在 2.4G 模式下使用一段时间。实际验证中，白灯闪烁随即消失，原本由 Synapse 设置的灯效可以稳定显示，说明根因已经确认。&lt;/p&gt;
+&lt;p&gt;也可以在 Synapse 的 &lt;code&gt;Chroma Apps&lt;/code&gt; 或 &lt;code&gt;Chroma Connect&lt;/code&gt; 中禁止 Wallpaper Engine 控制设备。两种方式的目标相同：只允许一套软件持有鼠标灯光控制权。&lt;/p&gt;
+&lt;p&gt;这次没有必要卸载 Synapse、删除设备驱动或禁用 Wallpaper Engine 服务。先关闭范围最小的 LED 插件，既能验证假设，也不会影响鼠标按键配置和动态壁纸本身。&lt;/p&gt;
+&lt;h2 id=&#34;九-如果关闭插件后仍然闪烁可以怎样继续排查&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#九-如果关闭插件后仍然闪烁可以怎样继续排查&#34;&gt;#&lt;/a&gt; 九、如果关闭插件后仍然闪烁，可以怎样继续排查&lt;/h2&gt;
+&lt;p&gt;这次问题已经通过修改 Wallpaper Engine 设置解决，但相同现象不一定都由同一原因引起。如果其他设备仍然闪白灯，可以按下面的顺序继续隔离。&lt;/p&gt;
+&lt;h3 id=&#34;1-先判断是否真的掉线&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-先判断是否真的掉线&#34;&gt;#&lt;/a&gt; 1. 先判断是否真的掉线&lt;/h3&gt;
+&lt;p&gt;观察闪灯时光标和按键是否失效，并检查 Windows 是否播放 USB 断开提示音。输入同时中断时，优先检查接收器、固件和无线环境；只有灯光变化时，优先检查灯效软件。&lt;/p&gt;
+&lt;h3 id=&#34;2-完全退出灯效软件做-ab-测试&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-完全退出灯效软件做-ab-测试&#34;&gt;#&lt;/a&gt; 2. 完全退出灯效软件做 A/B 测试&lt;/h3&gt;
+&lt;p&gt;分别测试以下状态，每次保持 5 到 15 分钟：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;Synapse + Wallpaper Engine LED&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;Synapse + 关闭 Wallpaper Engine LED&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;完全退出 Synapse + 保留板载灯效&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;另一台电脑只连接 2.4G 接收器&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;一次只改变一个变量。否则同时重装 Synapse、更新固件、换 USB 口和关闭壁纸插件，即使问题消失，也无法知道真正起作用的是哪一步。&lt;/p&gt;
+&lt;h3 id=&#34;3-输入也中断时再处理固件与干扰&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-输入也中断时再处理固件与干扰&#34;&gt;#&lt;/a&gt; 3. 输入也中断时再处理固件与干扰&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;使用官方更新器检查鼠标和接收器固件；&lt;/li&gt;
+&lt;li&gt;使用随附的接收器延长底座，把接收器放到鼠标附近；&lt;/li&gt;
+&lt;li&gt;临时更换 USB 2.0 接口；&lt;/li&gt;
+&lt;li&gt;远离 USB 3.x 移动硬盘、无线网卡和高负载线材；&lt;/li&gt;
+&lt;li&gt;在另一台电脑上复现，区分电脑环境与鼠标硬件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果换电脑后仍然伴随输入中断，就更适合考虑接收器或鼠标硬件问题，并在退换期内及时处理。&lt;/p&gt;
+&lt;h2 id=&#34;十-这次排查中容易踩的几个坑&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#十-这次排查中容易踩的几个坑&#34;&gt;#&lt;/a&gt; 十、这次排查中容易踩的几个坑&lt;/h2&gt;
+&lt;h3 id=&#34;1-不要把白灯自动等同于重新连接&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-不要把白灯自动等同于重新连接&#34;&gt;#&lt;/a&gt; 1. 不要把白灯自动等同于重新连接&lt;/h3&gt;
+&lt;p&gt;白色可能是板载默认灯效，也可能是两个灯效客户端切换时产生的中间状态。只有光标、按键和设备日志同时出现中断，才能更有把握地判断为掉线。&lt;/p&gt;
+&lt;h3 id=&#34;2-不要看到历史错误就停止排查&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-不要看到历史错误就停止排查&#34;&gt;#&lt;/a&gt; 2. 不要看到历史错误就停止排查&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;device.unregister&lt;/code&gt; 和错误 &lt;code&gt;1167&lt;/code&gt; 是真实记录，但它们没有在实时观察中随每次闪烁出现。历史日志可以提供方向，不能替代时间对应关系。&lt;/p&gt;
+&lt;h3 id=&#34;3-进程启动时间不等于插件生效时间&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-进程启动时间不等于插件生效时间&#34;&gt;#&lt;/a&gt; 3. 进程启动时间不等于插件生效时间&lt;/h3&gt;
+&lt;p&gt;Wallpaper Engine 在 &lt;code&gt;19:23:53&lt;/code&gt; 已经运行，真正加载 Chroma SDK 却是在 &lt;code&gt;19:25:02&lt;/code&gt;。如果只看任务管理器中的进程列表，很难解释为什么开机后一段时间才出现异常。&lt;/p&gt;
+&lt;h3 id=&#34;4-名字像驱动的进程不一定是根因&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4-名字像驱动的进程不一定是根因&#34;&gt;#&lt;/a&gt; 4. 名字像驱动的进程不一定是根因&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;RzSmartlightingDeviceManager&lt;/code&gt; 确实参与灯光管理，但它属于雷蛇自己的 Chroma SDK。判断第三方冲突时，需要继续寻找哪个外部应用通过 SDK 获得访问权，而不是只凭进程名称下结论。&lt;/p&gt;
+&lt;h2 id=&#34;十一-这次问题带来的启发&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#十一-这次问题带来的启发&#34;&gt;#&lt;/a&gt; 十一、这次问题带来的启发&lt;/h2&gt;
+&lt;p&gt;这次排查最开始的方向并不荒谬。2.4G 模式异常、蓝牙正常、日志中还有设备未连接和重新注册，固件与无线链路确实应该被纳入怀疑范围。但一个好的故障结论不能只解释部分证据。&lt;/p&gt;
+&lt;p&gt;当确认闪灯时输入完全正常之后，“频繁掉线”已经无法解释全部现象；当确认刚开机正常、约一分钟后才异常之后，软件延迟启动就比硬件干扰更符合现象；最后再把启动时间、Chroma SDK 日志和 Wallpaper Engine 访问权对齐，才得到了能够被修改设置直接验证的结论。&lt;/p&gt;
+&lt;p&gt;整个过程可以总结成下面几步：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;先分层描述现象&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;        ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;提出当前最合理的假设&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;        ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;用实时证据验证，而不是只看历史日志&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;        ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;新证据与假设冲突时及时改方向&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;        ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;一次只关闭一个组件进行 A/B 测试&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;        ↓&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;修改后持续观察，确认问题不再出现&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对这类同时涉及硬件、驱动和常驻软件的问题来说，重装往往不是最好的第一步。时间线和控制权比“哪个软件看起来最可疑”更可靠。最终只关闭一个 LED 插件就解决了问题，也说明范围越小、可验证性越强的修改，越适合作为故障排查的收尾。&lt;/p&gt;
+</content>
+        <category term="鼠标" />
+        <category term="Razer" />
+        <category term="Windows" />
+        <category term="故障排查" />
+        <category term="Wallpaper Engine" />
+        <updated>2026-08-18T12:30:00.000Z</updated>
+    </entry>
+</feed>

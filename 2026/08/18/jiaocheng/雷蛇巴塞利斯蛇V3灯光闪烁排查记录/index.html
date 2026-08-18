@@ -1,0 +1,445 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="Ciallo～(∠・ω )⌒☆" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="Ciallo～(∠・ω )⌒☆" type="application/atom+xml"><link rel="alternate" type="application/json" title="Ciallo～(∠・ω )⌒☆" href="https://simoxdcs.github.io/feed.json"/><link rel="preconnect" href="https://s4.zstatic.net"/><link rel="preconnect" href="https://at.alicdn.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CFredericka%20the%20Great:400,400italic,700,700italic%7CNoto%20Serif%20JP:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CInconsolata:400,400italic,700,700italic&display=swap&subset=latin,latin-ext" media="none" onload="this.media&#x3D;&#39;all&#39;"><link rel="modulepreload" href="/js/siteInit.js?v=20260730-home-url-fix"></link><link rel="modulepreload" href="/js/nyx-player-ZTJDYWR3.js"></link><link rel="modulepreload" href="/js/copy-tex-MYBRPUMA.js"></link><link rel="modulepreload" href="/js/post-3ZVOLPU5.js"></link><link rel="modulepreload" href="/js/chunk-LJAOJI5M.js"></link><link rel="modulepreload" href="/js/waline-NVSVNCZW.js"></link><link rel="modulepreload" href="/js/comments-UKWQ4PGU.js"></link><link rel="modulepreload" href="/js/chunk-EPRFQLOA.js"></link><link rel="modulepreload" href="/js/search-AO7WA7FR.js"></link><link rel="modulepreload" href="/js/chunk-ZR27JW3A.js"></link><link rel="modulepreload" href="/js/chunk-3PK7ALY6.js"></link><link rel="modulepreload" href="/js/index.esm-STK4JURV.js"></link><link rel="modulepreload" href="/js/chunk-3K7HWCTQ.js"></link><link rel="modulepreload" href="/js/chunk-6WWVXVKW.js"></link><link rel="modulepreload" href="/js/chunk-WIQECBEN.js"></link><link rel="stylesheet" href="/css/siteInit.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="stylesheet" href="/css/waline-2PCQXSKL.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="stylesheet" href="/css/comments-NVBMGFU5.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="preload" href="https://cdn.jsdelivr.net/gh/simoxdcs/csgo@v3.4/haokande/29.png" as="image" fetchpriority="high"><meta name="keywords" content="鼠标,Windows,Wallpaper Engine"/><meta name="description" content="合于时而动，不合于时而止"/><link rel="canonical" href="https://simoxdcs.github.io/2026/08/18/jiaocheng/%E9%9B%B7%E8%9B%87%E5%B7%B4%E5%A1%9E%E5%88%A9%E6%96%AF%E8%9B%87V3%E7%81%AF%E5%85%89%E9%97%AA%E7%83%81%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95/"><link rel="stylesheet" href="/css/post.css?v=0.5.4"><link rel="stylesheet" href="/css/mermaid.css?v=0.5.4"><!-- 临时处理--><link rel="stylesheet" media="none" onload="this.media='all'" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css"><title>雷蛇巴塞利斯蛇 V3 灯光闪烁排查记录</title><!-- hexo injector head_end start -->
+<style id="legacy-footer-style">
+  #footer .site-runtime {
+    margin-top: .45rem;
+    color: var(--grey-5);
+    font-size: .875rem;
+    line-height: 1.8;
+  }
+
+  #footer .site-pixel-counter {
+    display: flex;
+    min-height: 5rem;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: .65rem;
+    overflow: hidden;
+  }
+
+  #footer .site-pixel-counter img {
+    display: block;
+    max-width: min(100%, 31rem);
+    height: auto;
+    image-rendering: pixelated;
+  }
+
+  @media (max-width: 480px) {
+    #footer .site-runtime {
+      font-size: .8125rem;
+    }
+
+    #footer .site-pixel-counter img {
+      max-width: 100%;
+    }
+  }
+</style><style id="post-cover-positions">.segments .cover a[href="/2026/07/30/%E6%89%8B%E5%8A%9E%E8%AE%B0%E5%BD%95/"] > img{object-position:58% 7%}.segments .cover a[href="/2026/07/31/%E6%89%8B%E5%8A%9E%E8%AF%A6%E8%A7%A3/"] > img{object-position:54% 45%}.segments .cover a[href="/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/"] > img{object-position:50% 15%}.segments .cover a[href="/2024/09/24/jiaocheng/%E5%A4%A9%E9%80%89%E5%A7%AC%E8%B0%83%E6%95%99%E8%AE%B0%E5%BD%95/"] > img{object-position:50% 17%}.segments .cover a[href="/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/"] > img{object-position:50% 4%}.segments .cover a[href="/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/"] > img{object-position:57% 21%}.segments .cover a[href="/2025/10/23/xuexi/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"] > img{object-position:52% 13%}.segments .cover a[href="/2026/08/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E9%97%B2%E9%B1%BC%E5%87%BA%E5%94%AE%E7%BB%8F%E5%8E%86/"] > img{object-position:49% 29%}.segments .cover a[href="/2026/08/06/jiaocheng/Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%88%9B%E4%BD%9C%E5%B7%A5%E4%BD%9C%E5%8C%BA%E4%B8%8E%E5%9B%BE%E5%BA%8A%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/"] > img{object-position:54% 21%}.segments .cover a[href="/2026/08/10/%E9%9A%8F%E7%AC%94%E4%B9%8B%E5%8D%81%E5%85%AB/"] > img{object-position:72% 64%}.segments .cover a[href="/2026/08/18/jiaocheng/%E9%9B%B7%E8%9B%87%E5%B7%B4%E5%A1%9E%E5%88%A9%E6%96%AF%E8%9B%87V3%E7%81%AF%E5%85%89%E9%97%AA%E7%83%81%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95/"] > img{object-position:49% 41%}</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="pagefind_mount"></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">雷蛇巴塞利斯蛇 V3 灯光闪烁排查记录</h1><div class="meta"><span class="item" title="创建时间：2026-08-18 20:30:00"><span class="icon"><i class="ic i-calendar"></i></span><span class="text">发表于</span><time itemprop="dateCreated datePublished" datetime="2026-08-18T20:30:00+08:00">2026-08-18</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span class="text">本文字数</span><span>6.7k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span class="text">阅读时长</span><span>6 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Momingのsite</a></li></ul><ul class="right" id="rightNav"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><img src="https://cdn.jsdelivr.net/gh/simoxdcs/csgo@v3.4/haokande/29.png" loading="eager" decoding="async" fetchpriority="high" alt="Ciallo～(∠・ω )⌒☆"></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="article wrap"><div class="breadcrumb" itemListElement itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i><span><a href="/">首页</a></span><i class="ic i-angle-right"></i><span class="current" itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem"><a href="/categories/xuexi/" itemprop="item" rel="index" title="分类于学习&amp;技术"><span itemprop="name">学习&技术<meta itemprop="position" content="0"/></span></a></span></div><article class="post block" itemscope="itemscope" itemtype="http://schema.org/Article" data-pagefind-body="data-pagefind-body" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://simoxdcs.github.io/2026/08/18/jiaocheng/%E9%9B%B7%E8%9B%87%E5%B7%B4%E5%A1%9E%E5%88%A9%E6%96%AF%E8%9B%87V3%E7%81%AF%E5%85%89%E9%97%AA%E7%83%81%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95/"/><span hidden="hidden" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="image" content="/assets/avatar.jpg"/><meta itemprop="name" content="试末"/><meta itemprop="description" content=", 合于时而动，不合于时而止"/></span><span hidden="hidden" itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="Ciallo～(∠・ω )⌒☆"/></span><div class="body md" itemprop="articleBody"><p>最近更换了一只雷蛇巴塞利斯蛇 V3 Pro，刚开始使用时遇到了一个很奇怪的问题：鼠标通过 2.4G 接收器连接电脑时，灯光会在白色和原本设置的颜色之间频繁闪烁；把连接方式切换成蓝牙之后，闪烁却完全消失。</p>
+<p>因为异常只出现在 2.4G 模式，我最先怀疑的是接收器、无线干扰、固件或者驱动。白灯也很像鼠标短暂断开之后恢复板载灯效，再被 Synapse 重新下发颜色。按照这个思路检查下去，日志里确实能找到设备注销、重新注册和“设备未连接”错误，看起来似乎很快就找到了原因。</p>
+<p>但最后真正解决问题的并不是重装驱动，也不是更换 USB 接口，而是关闭 Wallpaper Engine 的 Razer Chroma 灯光集成。回头复盘整个过程后，我发现这次最值得记录的地方并不是某个设置藏在哪里，而是一个故障假设怎样被新证据推翻，又怎样通过开机时间线定位到真正的灯效控制来源。</p>
+<p><img loading="lazy" src="/images/blog-dev-series/razer-lighting-troubleshooting-flow.svg" alt="雷蛇鼠标闪白灯的排查路径" /></p>
+<h2 id="一-先把现象描述完整"><a class="anchor" href="#一-先把现象描述完整">#</a> 一、先把现象描述完整</h2>
+<p>刚开始掌握的信息只有两条：</p>
+<ul>
+<li>使用 2.4G 接收器时，灯光频繁闪成白色，然后恢复原本颜色；</li>
+<li>切换到蓝牙后，灯光正常。</li>
+</ul>
+<p>只根据这两条现象，很容易得出“2.4G 连接不稳定”的结论。因为蓝牙和 2.4G 使用不同的设备路径，接收器、USB 接口和 2.4GHz 干扰都只会直接影响前者。</p>
+<p>但“闪白灯”不是一个足够精确的故障描述。真正需要继续确认的是：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>灯光闪烁时</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>光标是否卡住？</span></span>
+<span class="line"><span>按键是否短暂失效？</span></span>
+<span class="line"><span>滚轮输入是否中断？</span></span>
+<span class="line"><span>设备连接提示音是否响起？</span></span></code></pre>
+<p>如果输入也中断，优先考虑连接链路；如果只有灯光发生变化，优先考虑灯效配置和软件控制权。这个区别后来成为整次排查的转折点。</p>
+<h2 id="二-第一轮排查为什么先怀疑驱动和无线链路"><a class="anchor" href="#二-第一轮排查为什么先怀疑驱动和无线链路">#</a> 二、第一轮排查为什么先怀疑驱动和无线链路</h2>
+<p>为了判断是否为驱动问题，我先检查了当前安装的雷蛇组件。本机使用的是 Razer Synapse 4 和 Razer Chroma <code>4.0.698</code>，Chroma SDK、Synapse 后台与相关服务都处于运行状态。</p>
+<p>Windows 中可以使用 PowerShell 查看雷蛇相关服务：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-powershell"><span class="line"><span style="color:#998418;--shiki-dark:#B8A965">Get-CimInstance</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE"> Win32_Service </span><span style="color:#AB5959;--shiki-dark:#CB7676">|</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#B8A965">  Where-Object</span><span style="color:#999999;--shiki-dark:#666666"> </span><span style="color:#2993a3;--shiki-dark:#5eaab5">&#123;</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#666666">    $</span><span style="color:#998418;--shiki-dark:#B8A965">_</span><span style="color:#B07D48;--shiki-dark:#BD976A">.Name</span><span style="color:#AB5959;--shiki-dark:#CB7676"> -match</span><span style="color:#B5695977;--shiki-dark:#C98A7D77"> '</span><span style="color:#B56959;--shiki-dark:#C98A7D">Razer</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">'</span><span style="color:#AB5959;--shiki-dark:#CB7676"> -or</span><span style="color:#999999;--shiki-dark:#666666"> $</span><span style="color:#998418;--shiki-dark:#B8A965">_</span><span style="color:#B07D48;--shiki-dark:#BD976A">.DisplayName</span><span style="color:#AB5959;--shiki-dark:#CB7676"> -match</span><span style="color:#B5695977;--shiki-dark:#C98A7D77"> '</span><span style="color:#B56959;--shiki-dark:#C98A7D">Razer</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">'</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#666666">  </span><span style="color:#2993a3;--shiki-dark:#5eaab5">&#125;</span><span style="color:#AB5959;--shiki-dark:#CB7676"> |</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#B8A965">  Select-Object</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE"> Name</span><span style="color:#AB5959;--shiki-dark:#CB7676">,</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE"> DisplayName</span><span style="color:#AB5959;--shiki-dark:#CB7676">,</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE"> State</span><span style="color:#AB5959;--shiki-dark:#CB7676">,</span><span style="color:#393A34;--shiki-dark:#DBD7CAEE"> StartMode</span></span></code></pre>
+<p>接着检查设备管理器中的鼠标、接收器和 HID 设备。2.4G 模式对应的主要产品 ID 为 <code>PID_00AB</code>，蓝牙模式则是另一条 <code>PID_00AC</code> 路径。当前启用的 2.4G 鼠标、USB 复合设备和控制设备状态都是 <code>OK</code>，没有设备管理器错误码。</p>
+<p>驱动结构也没有表现出明显异常：USB 和大部分 HID 基础功能仍由微软驱动提供，雷蛇驱动主要负责鼠标扩展功能和灯光控制。这种组合本身是正常的，并不能因为设备列表里同时出现 Microsoft 与 Razer 就判断驱动冲突。</p>
+<p>我还检查了近期 Windows 系统日志，没有发现同一时间反复出现的 USB 控制器复位、端口供电失败或 HID 安装错误。到这一步，只能说明“没有明显的 Windows 驱动故障”，还不能证明无线链路一定正常。</p>
+<h2 id="三-synapse-日志一度把方向带到了设备重连"><a class="anchor" href="#三-synapse-日志一度把方向带到了设备重连">#</a> 三、Synapse 日志一度把方向带到了设备重连</h2>
+<p>雷蛇日志中确实出现过下面这类记录：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>device.unregister</span></span>
+<span class="line"><span>device.register</span></span>
+<span class="line"><span>removeUsbDevice</span></span>
+<span class="line"><span>addUsbDevice</span></span>
+<span class="line"><span>driver ready</span></span></code></pre>
+<p>2.4G 对应设备上还出现过错误码 <code>1167</code>，Windows 中通常表示设备当前没有连接。灯光驱动也多次注销旧句柄，再为鼠标注册新句柄。</p>
+<p>如果只看这些日志，一个合理的解释是：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>2.4G 链路短暂中断</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>鼠标回到板载默认白色灯效</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>接收器重新识别鼠标</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>Synapse 再次下发配置颜色</span></span></code></pre>
+<p>这个假设并不是凭空猜测。雷蛇当时提供的 Basilisk V3 Pro 官方固件 <code>v2.01.01_r1</code> 更新说明中，明确提到改善无线断开与重新连接问题。官方固件页面如下：</p>
+<p><a target="_blank" rel="noopener" href="https://mysupport.razer.com/app/answers/detail/a_id/6405/~/razer-basilisk-v3-pro-firmware-updater-%7C-rz01-04620">Razer Basilisk V3 Pro Firmware Updater</a></p>
+<p>因此第一轮建议包括检查鼠标与接收器固件、使用接收器延长底座、尝试 USB 2.0 接口，以及避开 USB 3.x 设备附近可能存在的 2.4GHz 干扰。</p>
+<p>这里还有一个容易误判的细节：Synapse 日志中的内部固件字段显示为 <code>2.50.3.0</code>，但它与官方下载包的 <code>v2.01.01_r1</code> 不是同一套编号，不能直接拿两个字符串比较新旧。最稳妥的方式仍然是让官方固件更新器实际检测设备。</p>
+<h2 id="四-实时观察没有复现说明日志不等于当前故障"><a class="anchor" href="#四-实时观察没有复现说明日志不等于当前故障">#</a> 四、实时观察没有复现，说明日志不等于当前故障</h2>
+<p>为了把历史日志和当前闪灯对应起来，我在 2.4G 模式下做了一段实时观察，让鼠标保持正常移动并监控新的设备和灯光日志。</p>
+<p>观察期间没有出现新的重连记录。这说明日志里虽然存在过注销和注册，却不一定对应眼前每一次白灯闪烁。设备日志可能记录了之前主动切换蓝牙、重启服务或接收器重新插拔产生的事件。</p>
+<p>这是排查中第一个需要修正的地方：</p>
+<blockquote>
+<p>日志中存在某类错误，只能证明它发生过；只有错误时间与当前现象一致，才能把它当成当前问题的直接原因。</p>
+</blockquote>
+<p>如果当时直接根据 <code>1167</code> 重装驱动或申请换新，可能碰巧暂时改变现象，却没有真正解释为什么蓝牙正常，也没有解释为什么闪烁具有明显的启动延迟。</p>
+<h2 id="五-两个新现象改变了排查方向"><a class="anchor" href="#五-两个新现象改变了排查方向">#</a> 五、两个新现象改变了排查方向</h2>
+<p>随后又确认了两个非常重要的现象：</p>
+<ol>
+<li>闪白灯时，光标、按键和滚轮完全正常，没有任何卡顿。</li>
+<li>电脑刚刚重启完成的一段时间内灯光正常，过一会儿才突然开始闪烁。</li>
+</ol>
+<p>第一条说明鼠标输入链路没有跟随灯光一起中断。即使底层日志里曾经出现设备重新注册，也不能再把“每次白灯”简单等同于“每次掉线”。</p>
+<p>第二条则把问题从设备层转向了启动顺序。如果硬件接收器一上电就存在干扰，通常开机后应当立即出现；如果总是在某个软件或服务启动之后才出现，更像是灯光控制权被重新接管。</p>
+<p>此时排查重点变成：</p>
+<ul>
+<li>哪些软件能够调用 Razer Chroma SDK；</li>
+<li>它们分别在开机后什么时候启动；</li>
+<li>哪一个进程在异常开始前后获得了灯光访问权；</li>
+<li>Synapse 的灯效配置是否在同一时间被重新应用。</li>
+</ul>
+<h2 id="六-按开机时间对齐进程与日志"><a class="anchor" href="#六-按开机时间对齐进程与日志">#</a> 六、按开机时间对齐进程与日志</h2>
+<p>单纯查看“哪些进程正在运行”还不够，因为 Wallpaper Engine、Synapse 和 Chroma 服务本来就会长期驻留。真正有区分度的是它们的启动和初始化时间。</p>
+<p>本次开机的关键时间线如下：</p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>发生的事情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>19:23:41</code></td>
+<td>Windows 启动完成，鼠标灯光暂时正常</td>
+</tr>
+<tr>
+<td><code>19:23:53</code></td>
+<td>Wallpaper Engine 与 <code>wallpaper32.exe</code> 启动</td>
+</tr>
+<tr>
+<td><code>19:24:09</code></td>
+<td>Razer Synapse 开始启动</td>
+</tr>
+<tr>
+<td><code>19:24:16</code></td>
+<td>Synapse 接管并应用鼠标灯光</td>
+</tr>
+<tr>
+<td><code>19:25:02</code></td>
+<td>Wallpaper Engine 延迟加载 Razer Chroma SDK</td>
+</tr>
+<tr>
+<td><code>19:25:03</code></td>
+<td>Wallpaper Engine 注册为 Chroma 应用</td>
+</tr>
+<tr>
+<td><code>19:25:05</code></td>
+<td>Wallpaper Engine 获得灯光访问权，异常阶段开始</td>
+</tr>
+</tbody>
+</table>
+<p><img loading="lazy" src="/images/blog-dev-series/razer-lighting-boot-timeline.svg" alt="开机后的灯光控制时间线" /></p>
+<p>从 Windows 启动到异常开始大约经过了 84 秒。这个延迟与“刚重启时正常，过一会儿开始闪”完全对应。</p>
+<p>在同一时间，Synapse 灯光日志也记录了配置文件 <code>GRAPHITE-Default</code> 中的动态灯效变化，出现了绿色 <code>#00ff00</code>、蓝色 <code>#0000ff</code> 和 <code>Tidal</code>（潮汐）效果。之后又发生多次 <code>appsChange</code> 和灯效重新应用。</p>
+<p>这里还发现了一个名为 <code>RzSmartlightingDeviceManager</code> 的进程。名字看起来很像另一个会争抢灯光的软件，但进一步确认后，它只是 Razer Chroma SDK 自带的设备管理组件，不应把它当成第三方根因。</p>
+<p>真正值得关注的是 <code>wallpaper32.exe</code>：它在 <code>19:25:02</code> 加载 Chroma SDK，并在 <code>19:25:05</code> 获得访问权，和异常出现的时间点重合。</p>
+<h2 id="七-wallpaper-engine-为什么会控制鼠标灯光"><a class="anchor" href="#七-wallpaper-engine-为什么会控制鼠标灯光">#</a> 七、Wallpaper Engine 为什么会控制鼠标灯光</h2>
+<p>Wallpaper Engine 不只负责显示动态壁纸，它还提供硬件 LED 插件，可以把壁纸的颜色或效果同步到 Corsair 与 Razer 等设备。</p>
+<p>其本地语言资源中直接写明了相关选项：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>Controls LED effects from Corsair and Razer devices.</span></span>
+<span class="line"><span>Enable Chroma SDK integration</span></span></code></pre>
+<p>本地配置中还能看到：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>plugindelay = 0</span></span></code></pre>
+<p>这表示插件没有额外延迟，但 Wallpaper Engine 自身、插件宿主和 Chroma SDK 的初始化仍然需要时间。因此进程在 <code>19:23:53</code> 已经存在，并不代表它当时就开始控制鼠标；真正的控制发生在一分钟之后。</p>
+<p>当 Wallpaper Engine 与 Synapse 同时向同一个 2.4G/USB Chroma 设备发送效果时，鼠标灯光会在不同状态之间反复切换，看起来就像白色短暂闪过。输入事件仍然通过 HID 正常传输，所以光标不会卡住。</p>
+<p>蓝牙模式没有复现，也能得到解释。蓝牙使用独立的 BLE 设备路径 <code>PID_00AC</code>，而 Wallpaper Engine 的 Chroma 插件主要接管的是 2.4G/USB 路径 <code>PID_00AB</code>。因此“蓝牙正常”并不只能证明 2.4G 无线链路有问题，也可能说明第三方灯效软件只控制了 USB 侧的设备实例。</p>
+<h2 id="八-最终解决方法"><a class="anchor" href="#八-最终解决方法">#</a> 八、最终解决方法</h2>
+<p>在 Wallpaper Engine 中进入：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>设置</span></span>
+<span class="line"><span>  → 插件</span></span>
+<span class="line"><span>    → LED 插件</span></span>
+<span class="line"><span>      → 配置</span></span></code></pre>
+<p>关闭 LED 效果或 Razer Chroma SDK 集成。不同版本和语言下名称可能略有差别，重点是关闭 Wallpaper Engine 对雷蛇设备的灯光控制，而不是关闭整个动态壁纸程序。</p>
+<p>修改后继续保持 Wallpaper Engine 运行，并让鼠标在 2.4G 模式下使用一段时间。实际验证中，白灯闪烁随即消失，原本由 Synapse 设置的灯效可以稳定显示，说明根因已经确认。</p>
+<p>也可以在 Synapse 的 <code>Chroma Apps</code> 或 <code>Chroma Connect</code> 中禁止 Wallpaper Engine 控制设备。两种方式的目标相同：只允许一套软件持有鼠标灯光控制权。</p>
+<p>这次没有必要卸载 Synapse、删除设备驱动或禁用 Wallpaper Engine 服务。先关闭范围最小的 LED 插件，既能验证假设，也不会影响鼠标按键配置和动态壁纸本身。</p>
+<h2 id="九-如果关闭插件后仍然闪烁可以怎样继续排查"><a class="anchor" href="#九-如果关闭插件后仍然闪烁可以怎样继续排查">#</a> 九、如果关闭插件后仍然闪烁，可以怎样继续排查</h2>
+<p>这次问题已经通过修改 Wallpaper Engine 设置解决，但相同现象不一定都由同一原因引起。如果其他设备仍然闪白灯，可以按下面的顺序继续隔离。</p>
+<h3 id="1-先判断是否真的掉线"><a class="anchor" href="#1-先判断是否真的掉线">#</a> 1. 先判断是否真的掉线</h3>
+<p>观察闪灯时光标和按键是否失效，并检查 Windows 是否播放 USB 断开提示音。输入同时中断时，优先检查接收器、固件和无线环境；只有灯光变化时，优先检查灯效软件。</p>
+<h3 id="2-完全退出灯效软件做-ab-测试"><a class="anchor" href="#2-完全退出灯效软件做-ab-测试">#</a> 2. 完全退出灯效软件做 A/B 测试</h3>
+<p>分别测试以下状态，每次保持 5 到 15 分钟：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>Synapse + Wallpaper Engine LED</span></span>
+<span class="line"><span>Synapse + 关闭 Wallpaper Engine LED</span></span>
+<span class="line"><span>完全退出 Synapse + 保留板载灯效</span></span>
+<span class="line"><span>另一台电脑只连接 2.4G 接收器</span></span></code></pre>
+<p>一次只改变一个变量。否则同时重装 Synapse、更新固件、换 USB 口和关闭壁纸插件，即使问题消失，也无法知道真正起作用的是哪一步。</p>
+<h3 id="3-输入也中断时再处理固件与干扰"><a class="anchor" href="#3-输入也中断时再处理固件与干扰">#</a> 3. 输入也中断时再处理固件与干扰</h3>
+<ul>
+<li>使用官方更新器检查鼠标和接收器固件；</li>
+<li>使用随附的接收器延长底座，把接收器放到鼠标附近；</li>
+<li>临时更换 USB 2.0 接口；</li>
+<li>远离 USB 3.x 移动硬盘、无线网卡和高负载线材；</li>
+<li>在另一台电脑上复现，区分电脑环境与鼠标硬件。</li>
+</ul>
+<p>如果换电脑后仍然伴随输入中断，就更适合考虑接收器或鼠标硬件问题，并在退换期内及时处理。</p>
+<h2 id="十-这次排查中容易踩的几个坑"><a class="anchor" href="#十-这次排查中容易踩的几个坑">#</a> 十、这次排查中容易踩的几个坑</h2>
+<h3 id="1-不要把白灯自动等同于重新连接"><a class="anchor" href="#1-不要把白灯自动等同于重新连接">#</a> 1. 不要把白灯自动等同于重新连接</h3>
+<p>白色可能是板载默认灯效，也可能是两个灯效客户端切换时产生的中间状态。只有光标、按键和设备日志同时出现中断，才能更有把握地判断为掉线。</p>
+<h3 id="2-不要看到历史错误就停止排查"><a class="anchor" href="#2-不要看到历史错误就停止排查">#</a> 2. 不要看到历史错误就停止排查</h3>
+<p><code>device.unregister</code> 和错误 <code>1167</code> 是真实记录，但它们没有在实时观察中随每次闪烁出现。历史日志可以提供方向，不能替代时间对应关系。</p>
+<h3 id="3-进程启动时间不等于插件生效时间"><a class="anchor" href="#3-进程启动时间不等于插件生效时间">#</a> 3. 进程启动时间不等于插件生效时间</h3>
+<p>Wallpaper Engine 在 <code>19:23:53</code> 已经运行，真正加载 Chroma SDK 却是在 <code>19:25:02</code>。如果只看任务管理器中的进程列表，很难解释为什么开机后一段时间才出现异常。</p>
+<h3 id="4-名字像驱动的进程不一定是根因"><a class="anchor" href="#4-名字像驱动的进程不一定是根因">#</a> 4. 名字像驱动的进程不一定是根因</h3>
+<p><code>RzSmartlightingDeviceManager</code> 确实参与灯光管理，但它属于雷蛇自己的 Chroma SDK。判断第三方冲突时，需要继续寻找哪个外部应用通过 SDK 获得访问权，而不是只凭进程名称下结论。</p>
+<h2 id="十一-这次问题带来的启发"><a class="anchor" href="#十一-这次问题带来的启发">#</a> 十一、这次问题带来的启发</h2>
+<p>这次排查最开始的方向并不荒谬。2.4G 模式异常、蓝牙正常、日志中还有设备未连接和重新注册，固件与无线链路确实应该被纳入怀疑范围。但一个好的故障结论不能只解释部分证据。</p>
+<p>当确认闪灯时输入完全正常之后，“频繁掉线”已经无法解释全部现象；当确认刚开机正常、约一分钟后才异常之后，软件延迟启动就比硬件干扰更符合现象；最后再把启动时间、Chroma SDK 日志和 Wallpaper Engine 访问权对齐，才得到了能够被修改设置直接验证的结论。</p>
+<p>整个过程可以总结成下面几步：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>先分层描述现象</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>提出当前最合理的假设</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>用实时证据验证，而不是只看历史日志</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>新证据与假设冲突时及时改方向</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>一次只关闭一个组件进行 A/B 测试</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>修改后持续观察，确认问题不再出现</span></span></code></pre>
+<p>对这类同时涉及硬件、驱动和常驻软件的问题来说，重装往往不是最好的第一步。时间线和控制权比“哪个软件看起来最可疑”更可靠。最终只关闭一个 LED 插件就解决了问题，也说明范围越小、可验证性越强的修改，越适合作为故障排查的收尾。</p>
+<div class="tags"><a href="/tags/%E9%BC%A0%E6%A0%87/" rel="tag"><i class="ic i-tag"></i>鼠标</a><a href="/tags/Razer/" rel="tag"><i class="ic i-tag"></i>Razer</a><a href="/tags/Windows/" rel="tag"><i class="ic i-tag"></i>Windows</a><a href="/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/" rel="tag"><i class="ic i-tag"></i>故障排查</a><a href="/tags/Wallpaper-Engine/" rel="tag"><i class="ic i-tag"></i>Wallpaper Engine</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-eye"></i></span><span class="text">总访问量：</span><span class="waline-pageview-count" id="twikoo_visitors" data-path="/2026/08/18/jiaocheng/雷蛇巴塞利斯蛇V3灯光闪烁排查记录/">加载中...</span></span><span class="item"><span class="icon"><i class="ic i-calendar-check"></i></span><span class="text">更新于 </span><time title="修改时间：2026-08-18 20:18:45" itemprop="dateModified" datetime="2026-08-18T20:18:45+08:00">2026-08-18</time></span></div><div class="reward"><button><i class="ic i-heartbeat"></i>赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img loading="lazy" src="/assets/wechatpay.png" alt="试末 微信支付"/><p>微信支付</p></div><div><img loading="lazy" src="/assets/alipay.jpg" alt="试末 支付宝"/><p>支付宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者：</strong>试末<i class="ic i-at"><em>@</em></i>Ciallo～(∠・ω )⌒☆</li><li class="link"><strong>本文链接：</strong><a href="https://simoxdcs.github.io/2026/08/18/jiaocheng/%E9%9B%B7%E8%9B%87%E5%B7%B4%E5%A1%9E%E5%88%A9%E6%96%AF%E8%9B%87V3%E7%81%AF%E5%85%89%E9%97%AA%E7%83%81%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95/" title="雷蛇巴塞利斯蛇 V3 灯光闪烁排查记录">https://simoxdcs.github.io/2026/08/18/jiaocheng/雷蛇巴塞利斯蛇V3灯光闪烁排查记录/</a></li><li class="license"><strong>版权声明：</strong>本站所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/2026/08/10/%E9%9A%8F%E7%AC%94%E4%B9%8B%E5%8D%81%E5%85%AB/" rel="prev" itemprop="url" data-background-image="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;simoxdcs&#x2F;csgo@v3.4&#x2F;haokande&#x2F;00.png" title="随笔之十八"><span class="type">上一篇</span><span class="category"><i class="ic i-flag"></i>生活の随笔</span><h3>随笔之十八</h3></a></div><div class="item right"></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%85%88%E6%8A%8A%E7%8E%B0%E8%B1%A1%E6%8F%8F%E8%BF%B0%E5%AE%8C%E6%95%B4"><span class="toc-number">1.</span> <span class="toc-text"> 一、先把现象描述完整</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%AC%AC%E4%B8%80%E8%BD%AE%E6%8E%92%E6%9F%A5%E4%B8%BA%E4%BB%80%E4%B9%88%E5%85%88%E6%80%80%E7%96%91%E9%A9%B1%E5%8A%A8%E5%92%8C%E6%97%A0%E7%BA%BF%E9%93%BE%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text"> 二、第一轮排查为什么先怀疑驱动和无线链路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-synapse-%E6%97%A5%E5%BF%97%E4%B8%80%E5%BA%A6%E6%8A%8A%E6%96%B9%E5%90%91%E5%B8%A6%E5%88%B0%E4%BA%86%E8%AE%BE%E5%A4%87%E9%87%8D%E8%BF%9E"><span class="toc-number">3.</span> <span class="toc-text"> 三、Synapse 日志一度把方向带到了设备重连</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%AE%9E%E6%97%B6%E8%A7%82%E5%AF%9F%E6%B2%A1%E6%9C%89%E5%A4%8D%E7%8E%B0%E8%AF%B4%E6%98%8E%E6%97%A5%E5%BF%97%E4%B8%8D%E7%AD%89%E4%BA%8E%E5%BD%93%E5%89%8D%E6%95%85%E9%9A%9C"><span class="toc-number">4.</span> <span class="toc-text"> 四、实时观察没有复现，说明日志不等于当前故障</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E4%B8%A4%E4%B8%AA%E6%96%B0%E7%8E%B0%E8%B1%A1%E6%94%B9%E5%8F%98%E4%BA%86%E6%8E%92%E6%9F%A5%E6%96%B9%E5%90%91"><span class="toc-number">5.</span> <span class="toc-text"> 五、两个新现象改变了排查方向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E6%8C%89%E5%BC%80%E6%9C%BA%E6%97%B6%E9%97%B4%E5%AF%B9%E9%BD%90%E8%BF%9B%E7%A8%8B%E4%B8%8E%E6%97%A5%E5%BF%97"><span class="toc-number">6.</span> <span class="toc-text"> 六、按开机时间对齐进程与日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-wallpaper-engine-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%8E%A7%E5%88%B6%E9%BC%A0%E6%A0%87%E7%81%AF%E5%85%89"><span class="toc-number">7.</span> <span class="toc-text"> 七、Wallpaper Engine 为什么会控制鼠标灯光</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E6%9C%80%E7%BB%88%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">8.</span> <span class="toc-text"> 八、最终解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D-%E5%A6%82%E6%9E%9C%E5%85%B3%E9%97%AD%E6%8F%92%E4%BB%B6%E5%90%8E%E4%BB%8D%E7%84%B6%E9%97%AA%E7%83%81%E5%8F%AF%E4%BB%A5%E6%80%8E%E6%A0%B7%E7%BB%A7%E7%BB%AD%E6%8E%92%E6%9F%A5"><span class="toc-number">9.</span> <span class="toc-text"> 九、如果关闭插件后仍然闪烁，可以怎样继续排查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%88%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E7%9C%9F%E7%9A%84%E6%8E%89%E7%BA%BF"><span class="toc-number">9.1.</span> <span class="toc-text"> 1. 先判断是否真的掉线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%8C%E5%85%A8%E9%80%80%E5%87%BA%E7%81%AF%E6%95%88%E8%BD%AF%E4%BB%B6%E5%81%9A-ab-%E6%B5%8B%E8%AF%95"><span class="toc-number">9.2.</span> <span class="toc-text"> 2. 完全退出灯效软件做 A&#x2F;B 测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%BE%93%E5%85%A5%E4%B9%9F%E4%B8%AD%E6%96%AD%E6%97%B6%E5%86%8D%E5%A4%84%E7%90%86%E5%9B%BA%E4%BB%B6%E4%B8%8E%E5%B9%B2%E6%89%B0"><span class="toc-number">9.3.</span> <span class="toc-text"> 3. 输入也中断时再处理固件与干扰</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81-%E8%BF%99%E6%AC%A1%E6%8E%92%E6%9F%A5%E4%B8%AD%E5%AE%B9%E6%98%93%E8%B8%A9%E7%9A%84%E5%87%A0%E4%B8%AA%E5%9D%91"><span class="toc-number">10.</span> <span class="toc-text"> 十、这次排查中容易踩的几个坑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8D%E8%A6%81%E6%8A%8A%E7%99%BD%E7%81%AF%E8%87%AA%E5%8A%A8%E7%AD%89%E5%90%8C%E4%BA%8E%E9%87%8D%E6%96%B0%E8%BF%9E%E6%8E%A5"><span class="toc-number">10.1.</span> <span class="toc-text"> 1. 不要把白灯自动等同于重新连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8D%E8%A6%81%E7%9C%8B%E5%88%B0%E5%8E%86%E5%8F%B2%E9%94%99%E8%AF%AF%E5%B0%B1%E5%81%9C%E6%AD%A2%E6%8E%92%E6%9F%A5"><span class="toc-number">10.2.</span> <span class="toc-text"> 2. 不要看到历史错误就停止排查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8%E6%97%B6%E9%97%B4%E4%B8%8D%E7%AD%89%E4%BA%8E%E6%8F%92%E4%BB%B6%E7%94%9F%E6%95%88%E6%97%B6%E9%97%B4"><span class="toc-number">10.3.</span> <span class="toc-text"> 3. 进程启动时间不等于插件生效时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%90%8D%E5%AD%97%E5%83%8F%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%BF%9B%E7%A8%8B%E4%B8%8D%E4%B8%80%E5%AE%9A%E6%98%AF%E6%A0%B9%E5%9B%A0"><span class="toc-number">10.4.</span> <span class="toc-text"> 4. 名字像驱动的进程不一定是根因</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80-%E8%BF%99%E6%AC%A1%E9%97%AE%E9%A2%98%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%90%AF%E5%8F%91"><span class="toc-number">11.</span> <span class="toc-text"> 十一、这次问题带来的启发</span></a></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li ><a href="/2020/11/18/jiaocheng/%E6%95%99%E7%A8%8B/" rel="bookmark" title="博客教程">博客教程</a></li><li ><a href="/2020/11/18/xuexi/linux%E6%8D%A2%E6%BA%90/" rel="bookmark" title="linux相关">linux相关</a></li><li ><a href="/2020/12/06/xuexi/MarkDown/" rel="bookmark" title="MarkDown">MarkDown</a></li><li ><a href="/2020/12/14/xuexi/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="bookmark" title="排序算法">排序算法</a></li><li ><a href="/2022/01/29/xuexi/c-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="bookmark" title="c++学习笔记">c++学习笔记</a></li><li ><a href="/2024/01/27/jiaocheng/G502%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/" rel="bookmark" title="G502折腾记录">G502折腾记录</a></li><li ><a href="/2024/01/31/jiaocheng/%E6%97%B6%E9%9A%94n%E4%B9%85%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BF%BB%E6%96%B0%E8%AE%B0%E5%BD%95/" rel="bookmark" title="时隔n久的博客翻新记录">时隔n久的博客翻新记录</a></li><li ><a href="/2024/09/24/jiaocheng/%E5%A4%A9%E9%80%89%E5%A7%AC%E8%B0%83%E6%95%99%E8%AE%B0%E5%BD%95/" rel="bookmark" title="折腾天选姬记录">折腾天选姬记录</a></li><li ><a href="/2025/10/23/xuexi/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="bookmark" title="人工智能学习笔记">人工智能学习笔记</a></li><li ><a href="/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/" rel="bookmark" title="从页面卡在加载中到恢复构建：一次 Hexo 博客故障排查记录">从页面卡在加载中到恢复构建：一次 Hexo 博客故障排查记录</a></li><li ><a href="/2026/07/23/jiaocheng/%E4%BB%8EShoka%E5%88%B0ShokaX%E7%9A%84%E8%BF%81%E7%A7%BB%E4%B8%8E%E7%AE%A1%E7%90%86%E5%8F%B0%E5%BC%80%E5%8F%91/" rel="bookmark" title="从 Shoka 到 ShokaX：一次 Hexo 主题迁移与博客管理台开发记录">从 Shoka 到 ShokaX：一次 Hexo 主题迁移与博客管理台开发记录</a></li><li ><a href="/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/" rel="bookmark" title="从一张被裁坏的封面开始：给 Hexo 管理台加入文章封面焦点选择">从一张被裁坏的封面开始：给 Hexo 管理台加入文章封面焦点选择</a></li><li ><a href="/2026/08/06/jiaocheng/Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%88%9B%E4%BD%9C%E5%B7%A5%E4%BD%9C%E5%8C%BA%E4%B8%8E%E5%9B%BE%E5%BA%8A%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/" rel="bookmark" title="从“能管理文章”到“能直接写文章”：Hexo 管理台创作工作区与图床优化记录">从“能管理文章”到“能直接写文章”：Hexo 管理台创作工作区与图床优化记录</a></li><li  class="active"><a href="/2026/08/18/jiaocheng/%E9%9B%B7%E8%9B%87%E5%B7%B4%E5%A1%9E%E5%88%A9%E6%96%AF%E8%9B%87V3%E7%81%AF%E5%85%89%E9%97%AA%E7%83%81%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95/" rel="bookmark" title="雷蛇巴塞利斯蛇 V3 灯光闪烁排查记录">雷蛇巴塞利斯蛇 V3 灯光闪烁排查记录</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" loading="lazy" decoding="async" itemprop="image" alt="试末" src="/assets/avatar.jpg"/><p class="name" itemprop="name">试末</p><div class="description" itemprop="description">合于时而动，不合于时而止</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">42</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">4</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">24</span><span class="name">标签</span></a></div></nav><div class="social"><a target="_blank" rel="noopener" href="https://github.com/simoxdcs" class="item github" title="https:&#x2F;&#x2F;github.com&#x2F;simoxdcs"><i class="ic i-github"></i></a><a target="_blank" rel="noopener" href="https://twitter.com/sikutimo?s=09" class="item twitter" title="https:&#x2F;&#x2F;twitter.com&#x2F;sikutimo?s&#x3D;09"><i class="ic i-twitter"></i></a><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/8646e25fb2bbbf1388cb6e40936cee5d" class="item zhihu" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;8646e25fb2bbbf1388cb6e40936cee5d"><i class="ic i-zhihu"></i></a><a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=536728338" class="item music" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;536728338"><i class="ic i-cloud-music"></i></a><a target="_blank" rel="noopener" href="https://weibo.com/u/7101341111" class="item weibo" title="https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;7101341111"><i class="ic i-weibo"></i></a><a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCm0Vhzr3Mx0BYy5wLN4U5CQ" class="item youtube" title="https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCm0Vhzr3Mx0BYy5wLN4U5CQ"><i class="ic i-youtube"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item dropdown"><a href="#" onclick="return false;"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/2026/08/10/%E9%9A%8F%E7%AC%94%E4%B9%8B%E5%8D%81%E5%85%AB/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div><div id="player"></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/xuexi/" title="分类于学习&amp;技术">学习&技术</a></div><span><a href="/2020/11/18/xuexi/linux%E6%8D%A2%E6%BA%90/">linux相关</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2021/09/21/suibi/%E9%9A%8F%E7%AC%94%E4%B9%8B%E5%8D%81%E4%B8%89/">随笔之十三</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2020/12/31/suibi/%E9%9A%8F%E7%AC%94%E4%B9%8B%E4%B8%83/">随笔之七</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/xuexi/" title="分类于学习&amp;技术">学习&技术</a></div><span><a href="/2026/08/18/jiaocheng/%E9%9B%B7%E8%9B%87%E5%B7%B4%E5%A1%9E%E5%88%A9%E6%96%AF%E8%9B%87V3%E7%81%AF%E5%85%89%E9%97%AA%E7%83%81%E6%8E%92%E6%9F%A5%E8%AE%B0%E5%BD%95/">雷蛇巴塞利斯蛇 V3 灯光闪烁排查记录</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2021/04/01/suibi/%E9%9A%8F%E7%AC%94%E4%B9%8B%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99/">随笔之不知道什么时候</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/youji/" title="分类于快乐の游记">快乐の游记</a></div><span><a href="/2021/08/22/youji/%E5%B1%B1%E5%8C%BA%E6%B8%B8%E8%AE%B0/">山区游记</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2021/10/13/suibi/%E9%9A%8F%E7%AC%94%E4%B9%8B%E5%8D%81%E5%9B%9B/">随笔之十四</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2022/01/10/suibi/%E9%9A%8F%E7%AC%94%E4%B9%8B%E5%8D%81%E5%85%AD/">随笔之十六</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/xuexi/" title="分类于学习&amp;技术">学习&技术</a></div><span><a href="/2020/12/06/xuexi/MarkDown/">MarkDown</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/suibi/" title="分类于生活の随笔">生活の随笔</a></div><span><a href="/2026/07/31/%E6%89%8B%E5%8A%9E%E8%AF%A6%E8%A7%A3/">手办详解</a></span></li></ul></div><div class="rpost pjax"><h2>最新评论</h2><ul class="leancloud-recent-comment" id="new-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2020 -<span itemprop="copyrightYear">2026</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">试末 @ Momingのsite</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">189k 字</span><span class="post-meta-divider"> | </span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长">2:52</span></div><div class="powered-by">基于 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & Theme.<a target="_blank" rel="noopener" href="https://github.com/theme-shoka-x/hexo-theme-shokaX/">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
+    ispost: true,
+    path: `2026/08/18/jiaocheng/雷蛇巴塞利斯蛇V3灯光闪烁排查记录/`,
+    favicon: {
+        show: `（●´3｀●）やれやれだぜ`,
+        hide: `(´Д｀)大変だ！`
+    },
+    search: {
+        placeholder: "文章搜索",
+        empty: "关于 「 ${query} 」，什么也没搜到",
+        stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    nocopy: "false",
+    copyright: `复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。`,
+    copy_tex: false,
+    katex: false,
+    mermaid: false,
+    audio: undefined,
+    nocopy: false,
+    outime: true,
+    template: `<div class="note warning"><p><span class="label warning">文章时效性提示</span><br>这是一篇发布于 {{publish}} 天前，最后一次更新在 {{updated}} 天前的文章，部分信息可能已经发生改变，请注意甄别。</p></div>`,
+    quiz: {
+        choice: `单选题`,
+        multiple: `多选题`,
+        true_false: `判断题`,
+        essay: `问答题`,
+        gap_fill: `填空题`,
+        mistake: `错题备注`
+    }
+};
+</script><script src="/js/siteInit.js?v=20260730-home-url-fix" type="module" fetchpriority="high" defer></script><!-- hexo injector body_end start -->
+<script id="legacy-footer-script">
+  (() => {
+    const startTime = Date.parse('2020-10-24T10:52:50+08:00');
+    const second = 1000;
+    const minute = second * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+    const year = day * 365;
+
+    const initLegacyFooter = () => {
+      const status = document.querySelector('#footer .status');
+      if (!status || document.getElementById('site-runtime')) return;
+
+      const powered = status.querySelector('.powered-by');
+      const runtime = document.createElement('div');
+      runtime.id = 'site-runtime';
+      runtime.className = 'site-runtime';
+      runtime.setAttribute('aria-label', '本站运行时间');
+      runtime.innerHTML = '<span class="site-runtime-text"></span>';
+
+      if (powered) status.insertBefore(runtime, powered);
+      else status.appendChild(runtime);
+
+      const counter = document.createElement('div');
+      counter.className = 'site-pixel-counter';
+
+      const counterImage = document.createElement('img');
+      counterImage.src = 'https://count.getloli.com/@simoxdcs?name=simoxdcs&theme=rule34&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto';
+      counterImage.alt = 'Moming 网站访问计数像素人物';
+      counterImage.loading = 'eager';
+      counterImage.decoding = 'async';
+      counterImage.referrerPolicy = 'no-referrer';
+      counter.appendChild(counterImage);
+
+      if (powered) powered.insertAdjacentElement('afterend', counter);
+      else status.appendChild(counter);
+
+      const text = runtime.querySelector('.site-runtime-text');
+      const updateRuntime = () => {
+        let diff = Math.max(0, Date.now() - startTime);
+        const years = Math.floor(diff / year);
+        diff -= years * year;
+        const days = Math.floor(diff / day);
+        diff -= days * day;
+        const hours = Math.floor(diff / hour);
+        diff -= hours * hour;
+        const minutes = Math.floor(diff / minute);
+        diff -= minutes * minute;
+        const seconds = Math.floor(diff / second);
+
+        text.textContent = '本站在风雨中运行了' + years + ' 年 ' + days + ' 天 ' + hours + ' 小时 ' + minutes + ' 分钟 ' + seconds + ' 秒';
+      };
+
+      updateRuntime();
+      const timer = window.setInterval(updateRuntime, second);
+      window.addEventListener('pagehide', () => window.clearInterval(timer), { once: true });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLegacyFooter, { once: true });
+    } else {
+      initLegacyFooter();
+    }
+  })();
+</script><script>
+  (() => {
+    // Keep the theme's own startup path unblocked.  Adding ?no-live2d=1 is a
+    // convenient diagnostic escape hatch if a model breaks in the future.
+    if (new URLSearchParams(window.location.search).has('no-live2d')) return;
+
+    const loadLive2D = () => {
+      if (document.querySelector('script[data-live2d-widget]')) return;
+      const script = document.createElement('script');
+      script.src = '/live2d-widget/autoload.js';
+      script.async = true;
+      script.dataset.live2dWidget = 'true';
+      document.body.appendChild(script);
+    };
+
+    if (document.readyState === 'complete') loadLive2D();
+    else window.addEventListener('load', loadLive2D, { once: true });
+  })();
+  </script><!-- hexo injector body_end end -->
+<script id="waline-recent-comments-fix">
+  (() => {
+    if (window.__walineRecentCommentsFix) return;
+    window.__walineRecentCommentsFix = true;
+
+    const serverURL = "https://commit-ywg7.vercel.app";
+    const lang = "zh-CN";
+    const boundLists = new WeakSet();
+
+    const htmlToText = (html) => {
+      const documentNode = new DOMParser().parseFromString(html || '', 'text/html');
+      return (documentNode.body.textContent || '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    };
+
+    const truncate = (text, length = 50) => {
+      const characters = Array.from(text);
+      return characters.length > length
+        ? characters.slice(0, length).join('') + '...'
+        : text;
+    };
+
+    const formatTime = (time) => {
+      const date = new Date(time);
+      const elapsed = Date.now() - date.getTime();
+
+      if (elapsed < 60 * 60 * 1000) {
+        return Math.max(0, Math.floor(elapsed / 60000)) + ' 分钟前';
+      }
+      if (elapsed < 24 * 60 * 60 * 1000) {
+        return Math.floor(elapsed / 3600000) + ' 小时前';
+      }
+      if (elapsed < 30 * 24 * 60 * 60 * 1000) {
+        return Math.floor(elapsed / 86400000) + ' 天前';
+      }
+      return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    };
+
+    const createItem = (comment) => {
+      const item = document.createElement('li');
+      const link = document.createElement('a');
+      const meta = document.createElement('span');
+      const content = document.createElement('span');
+      const path = String(comment.url || '/');
+      const plainText = htmlToText(comment.orig || comment.comment || '');
+
+      item.className = 'item';
+      link.href = (path.startsWith('/') ? path : '/' + path) + '#' + comment.objectId;
+      meta.className = 'breadcrumb';
+      meta.textContent = (comment.nick || '匿名') + ' @ ' + formatTime(comment.time);
+      content.textContent = truncate(plainText);
+
+      content.appendChild(document.createElement('br'));
+      link.appendChild(meta);
+      link.appendChild(content);
+      item.appendChild(link);
+      return item;
+    };
+
+    const bindList = (list) => {
+      if (boundLists.has(list) || !serverURL) return;
+      boundLists.add(list);
+
+      let comments = null;
+      let renderTimer = 0;
+      const observer = new MutationObserver(() => {
+        if (!comments) return;
+        window.clearTimeout(renderTimer);
+        renderTimer = window.setTimeout(render, 0);
+      });
+
+      const render = () => {
+        if (!comments || !list.isConnected) return;
+        observer.disconnect();
+        const fragment = document.createDocumentFragment();
+        comments.forEach((comment) => fragment.appendChild(createItem(comment)));
+        list.replaceChildren(fragment);
+        observer.observe(list, { childList: true });
+      };
+
+      observer.observe(list, { childList: true });
+
+      fetch(
+        serverURL + '/api/comment?type=recent&count=10&lang=' + encodeURIComponent(lang),
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          comments = Array.isArray(response.data) ? response.data : [];
+          render();
+        })
+        .catch(() => {
+          // Leave ShokaX's original list available if the extra formatting
+          // request fails; the normal comment component is unaffected.
+        });
+    };
+
+    const bindLists = () => {
+      document.querySelectorAll('#new-comment').forEach(bindList);
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bindLists, { once: true });
+    } else {
+      bindLists();
+    }
+
+    new MutationObserver(bindLists).observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+    });
+  })();
+</script></body></html>
