@@ -30,7 +30,7 @@
     <category term="Wallpaper Engine" />
     <entry>
         <id>https://simoxdcs.github.io/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/</id>
-        <title>从一张被裁坏的封面开始：给 Hexo 管理台加入文章封面焦点选择</title>
+        <title>给 Hexo 管理台加入文章封面焦点选择</title>
         <link rel="alternate" href="https://simoxdcs.github.io/2026/07/23/jiaocheng/%E7%BB%99Hexo%E7%AE%A1%E7%90%86%E5%8F%B0%E5%8A%A0%E5%85%A5%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2%E7%84%A6%E7%82%B9%E9%80%89%E6%8B%A9/"/>
         <content type="html">&lt;p&gt;完成 ShokaX 迁移和博客管理台之后，我原本以为文章封面的工作流已经比较完整了：可以从素材库选择图片，可以把图片地址填入文章，也可以在管理台里直接预览。实际使用一段时间后，我才发现“图片能够作为封面显示”和“封面在首页看起来合适”其实是两回事。&lt;/p&gt;
 &lt;p&gt;问题出现在首页的文章列表。为了让每张文章卡片保持统一高度，主题会把不同尺寸的图片放进一个固定比例的区域，再裁掉超出范围的部分。如果主体刚好在图片中央，效果通常没有问题；但如果人物、文字或者截图中的重点位于边缘，首页最终留下来的可能只是一块背景，真正想展示的内容反而被裁掉了。&lt;/p&gt;

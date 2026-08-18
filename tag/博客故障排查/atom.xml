@@ -30,7 +30,7 @@
     <category term="Wallpaper Engine" />
     <entry>
         <id>https://simoxdcs.github.io/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/</id>
-        <title>从页面卡在加载中到恢复构建：一次 Hexo 博客故障排查记录</title>
+        <title>一次 Hexo 博客故障排查记录</title>
         <link rel="alternate" href="https://simoxdcs.github.io/2026/07/23/jiaocheng/%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%8D%A1%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD%E5%88%B0%E6%81%A2%E5%A4%8D%E6%9E%84%E5%BB%BA/"/>
         <content type="html">&lt;p&gt;这次重新折腾博客，并不是从“我想换一个主题”开始的，而是从一个看起来很普通、实际上让我排查了很久的问题开始的。&lt;/p&gt;
 &lt;p&gt;当时我只是进入博客目录，执行了一条以前经常使用的命令：&lt;/p&gt;
